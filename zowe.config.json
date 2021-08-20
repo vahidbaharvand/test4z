@@ -1,0 +1,70 @@
+{
+    "$schema": "./zowe.schema.json",
+    "profiles": {
+        "lpar1": {
+            "properties": {
+                "host": ""
+            },
+            "profiles": {
+                "zosmf": {
+                    "type": "zosmf",
+                    "properties": {
+                        "port": 0,
+                        "host": ""
+                    },
+                    "secure": [
+                        "user",
+                        "password"
+                    ]
+                },
+                "test4z": {
+                    "type": "test4z",
+                    "properties": {
+                        "host": "",
+                        "protocol": "https",
+                        "type": "basic",
+                        "port": 0,
+                        "basePath": "/api/v1/test4z",
+                        "strictSSL": false,
+                        "hlq": "",
+                        "rejectUnauthorized": false
+                    },
+                    "secure": [
+                        "user",
+                        "password"
+                    ]
+                },
+                "db2": {
+                    "type": "db2",
+                    "properties": {
+                        "port": 0,
+                        "host": "",
+                        "database": "",
+                        "hlq": ""
+                    },
+                    "secure": [
+                        "user",
+                        "password"
+                    ]
+                }
+            }
+        },
+        "my_base": {
+            "type": "base",
+            "properties": {
+                "rejectUnauthorized": false
+            },
+            "secure": [
+                "user",
+                "password"
+            ]
+        }
+    },
+    "defaults": {
+        "zosmf": "lpar1.zosmf",
+        "base": "my_base",
+        "test4z": "lpar1.test4z",
+        "db2": "lpar1.db2"
+    },
+    "plugins": []
+}

@@ -1,0 +1,102 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. CUSTSEQ.
+       ENVIRONMENT DIVISION.
+       INPUT-OUTPUT SECTION.
+       FILE-CONTROL.
+           SELECT CUSTIN
+                  ASSIGN TO CUSTIN
+                  ORGANIZATION IS SEQUENTIAL
+                  ACCESS MODE  IS SEQUENTIAL.
+           SELECT CUSTOUT
+                  ASSIGN TO CUSTOUT
+                  ORGANIZATION IS SEQUENTIAL
+                  ACCESS MODE  IS SEQUENTIAL.
+       DATA DIVISION.
+       FILE SECTION.
+       FD  CUSTIN RECORDING MODE F
+           RECORD CONTAINS 80 CHARACTERS
+           BLOCK CONTAINS 0 RECORDS
+           DATA RECORD IS CUSTINREC.
+       01  CUSTINREC.
+           05  CUST-NAME                PIC X(20).
+           05  CUST-ADDR                PIC X(20).
+           05  ACCOUNT-NUMBER           PIC X(12).
+           05  PRODUCT-TYPE             PIC X(1).
+               88 SAVINGS      VALUE      'S'.
+               88 CURRENT      VALUE      'C'.
+           05  TOTAL-CHECKS             PIC 9(02).
+           05  ACTUAL-CHECKS            PIC 9(02).
+           05  NOTIFICATION-DATE        PIC 9(08).
+           05  REORDER-DATE             PIC 9(08).
+           05  REORDERED                PIC X(1).
+               88 YES          VALUE      'T'.
+               88 NOT-YES      VALUE      'F'.
+       FD  CUSTOUT RECORDING MODE F
+           RECORD CONTAINS 80 CHARACTERS
+           BLOCK CONTAINS 0 RECORDS
+           DATA RECORD IS CUSTOUTREC.
+       01  CUSTOUTREC.
+           05  CUST-NAME-O              PIC X(20).
+           05  CUST-ADDR-O              PIC X(20).
+           05  ACCOUNT-NUMBER-O         PIC X(12).
+           05  PRODUCT-TYPE-O           PIC X(1).
+               88 SAVINGS      VALUE      'S'.
+               88 CURRENT      VALUE      'C'.
+           05  TOTAL-CHECKS-O           PIC 9(02).
+           05  ACTUAL-CHECKS-O          PIC 9(02).
+           05  NOTIFICATION-DATE-O      PIC 9(08).
+           05  REORDER-DATE-O           PIC 9(08).
+           05  REORDERED-O              PIC X(1).
+               88 YES          VALUE      'T'.
+               88 NOT-YES      VALUE      'F'.
+      *
+       WORKING-STORAGE SECTION.
+       01  FLAGS.
+           05 LASTREC                      PIC X VALUE 'N'.
+       01 WS-CURRENT-DATE-DATA.
+           05  WS-CURRENT-DATE.
+               10  WS-CURRENT-YEAR         PIC 9(04).
+               10  WS-CURRENT-MONTH        PIC 9(02).
+               10  WS-CURRENT-DAY          PIC 9(02).
+           05  WS-CURRENT-TIME.
+               10  WS-CURRENT-HOURS        PIC 9(02).
+               10  WS-CURRENT-MINUTE       PIC 9(02).
+               10  WS-CURRENT-SECOND       PIC 9(02).
+               10  WS-CURRENT-MILLISECONDS PIC 9(02).
+      *
+       PROCEDURE DIVISION.
+       OPEN-FILES.
+           OPEN INPUT  CUSTIN.
+           OPEN OUTPUT CUSTOUT.
+       READ-NEXT-RECORD.
+           PERFORM READ-RECORD
+           PERFORM UNTIL LASTREC = 'Y'
+           PERFORM UPDATE-DETAILS
+           PERFORM WRITE-CUSTOUT-RECORD
+           PERFORM READ-RECORD
+           END-PERFORM.
+       CLOSE-STOP.
+           CLOSE CUSTIN.
+           CLOSE CUSTOUT.
+           GOBACK.
+       READ-RECORD.
+           READ CUSTIN
+           AT END MOVE 'Y' TO LASTREC
+           END-READ.
+       UPDATE-DETAILS.
+           DISPLAY 'UPDATE-DETAILS'.
+           MOVE FUNCTION CURRENT-DATE TO WS-CURRENT-DATE-DATA.
+           IF PRODUCT-TYPE = 'C' OR PRODUCT-TYPE = 'S' THEN
+           DISPLAY 'ACCOUNT-NUMBER :' ACCOUNT-NUMBER
+             IF (TOTAL-CHECKS = 30 AND ACTUAL-CHECKS <= 3) OR
+                (TOTAL-CHECKS = 50 AND ACTUAL-CHECKS <= 5) OR
+                (TOTAL-CHECKS = 80 AND ACTUAL-CHECKS <= 8) THEN
+                 MOVE WS-CURRENT-DATE TO NOTIFICATION-DATE
+                 DISPLAY "THE NAME OF THE UPDATED CUSTOMER: " CUST-NAME
+             END-IF
+           ELSE DISPLAY "PRODUCT TYPE IS INVALID"
+           END-IF.
+
+       WRITE-CUSTOUT-RECORD.
+           MOVE CUSTINREC TO CUSTOUTREC.
+           WRITE CUSTOUTREC.

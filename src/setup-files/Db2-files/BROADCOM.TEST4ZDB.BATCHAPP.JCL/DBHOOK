@@ -1,0 +1,58 @@
+$$JOBCARD
+//*********************************************************************
+//* Mainframe user ID: $$HLQ
+//*********************************************************************
+//DSN EXEC PGM=IKJEFT01,DYNAMNBR=20,REGION=0M
+//STEPLIB  DD DISP=SHR,DSN=AD02.PRIVATE.SDSNEXIT
+//         DD DISP=SHR,DSN=DB2.DB2C10.SDSNLOAD
+//SYSTSPRT DD SYSOUT=*
+//DBRMLIB  DD DISP=SHR,DSN=$$HLQ.TEST4ZDB.BATCHAPP.DBRMLIB
+//SYSTSIN  DD *
+ DSN SYSTEM($$subsystem) RETRY(0)
+ BIND PACKAGE     ( DBHOOK )                                     -
+     OWNER       ( $$HLQ )                                    -
+     QUALIFIER   ( $$HLQ )                                   -
+     ACTION      ( REPLACE )         DEGREE        ( 1 )          -
+     MEMBER      ( CUSTDB )                                     -
+                                                                  -
+     RELEASE     ( COMMIT     )      ISOLATION     ( CS  )        -
+     VALIDATE    ( RUN  )            EXPLAIN       ( NO  )        -
+     KEEPDYNAMIC ( NO  )             DYNAMICRULES  (      )       -
+     SQLERROR    ( NOPACKAGE )       CURRENTDATA   ( NO  )        -
+     DBPROTOCOL  ( DRDA )            NOREOPT       ( VARS   )     -
+     IMMEDWRITE  ( INHERITFROMPLAN ) ENCODING      ( 500 )        -
+     ROUNDING    ( HALFEVEN )                                     -
+     APREUSE     ( NONE  )                                        -
+     DESCSTAT    ( YES )             BUSTIMESENSITIVE ( YES )     -
+     SYSTIMESENSITIVE ( YES )     -
+                                     ARCHIVESENSITIVE ( YES )     -
+;
+//DSN EXEC PGM=IKJEFT01,DYNAMNBR=20,REGION=0M
+//STEPLIB  DD DISP=SHR,DSN=AD02.PRIVATE.SDSNEXIT
+//         DD DISP=SHR,DSN=DB2.DB2C10.SDSNLOAD
+//SYSTSPRT DD SYSOUT=*
+//DBRMLIB  DD DISP=SHR,DSN=$$HLQ.TEST4ZDB.BATCHAPP.DBRMLIB
+//SYSTSIN  DD *
+ DSN SYSTEM($$subsystem) RETRY(0)
+ BIND PLAN        ( HOOKDB )                                     -
+     OWNER       ( $$HLQ )                                     -
+     QUALIFIER   ( $$HLQ )                                     -
+     CACHESIZE   ( 3072 )                                         -
+     ACTION      ( REPLACE ) RETAIN  VALIDATE      ( RUN  )       -
+     ISOLATION   ( CS  )             ACQUIRE       ( USE )        -
+     RELEASE     ( COMMIT     )      EXPLAIN       ( NO  )        -
+                                                                  -
+     PKLIST      ( DBHOOK.*                                     -
+                ,HKDUMSQL_PKG.*                                   -
+                ,HKCKRBA1_PKG.* )                                 -
+                                                                  -
+     NODEFER       ( PREPARE )       CURRENTDATA   ( NO  )        -
+     SQLRULES      ( DB2 )           DEGREE        ( 1 )          -
+     DISCONNECT    ( EXPLICIT   )    DYNAMICRULES  ( BIND )       -
+                                                                  -
+     KEEPDYNAMIC   ( NO  )           NOREOPT       ( VARS   )     -
+     DBPROTOCOL    ( DRDA )                                       -
+     IMMEDWRITE    ( NO  )           ENCODING      ( 500 )        -
+     ROUNDING      ( HALFEVEN )                                   -
+     PROGAUTH      ( DISABLE    )                                 -
+;

@@ -1,0 +1,79 @@
+$$JOBCARD
+//* ------------------------------------------------------------------
+//*           PRECOMPILE AND COMPILE!                    -------------
+//* ------------------------------------------------------------------
+//COBOL   EXEC PGM=IGYCRCTL,REGION=4096K,COND=(4,LT),
+// PARM='SQL,LIST,MAP,APOST,NOSEQ,DYN'
+//STEPLIB  DD   DSN=DB2.$$subsystem.SDSNLOAD,DISP=SHR
+//DBRMLIB  DD  DSN=$$HLQ.TEST4ZDB.BATCHAPP.DBRMLIB(CUSTDB),DISP=SHR
+//SYSIN    DD   DSN=$$HLQ.TEST4ZDB.BATCHAPP.PGM(CUSTDB),DISP=SHR
+//SYSLIN   DD   DSN=&&OBJCOB,DISP=(NEW,PASS),
+//             UNIT=SYSDA,SPACE=(TRK,(60,40)),
+//             DCB=(RECFM=FB,LRECL=80,BLKSIZE=3120)
+//SYSPRINT DD   SYSOUT=*
+//SYSUT1   DD   UNIT=VIO,SPACE=(CYL,(4),,CONTIG)
+//SYSUT2   DD   UNIT=VIO,SPACE=(CYL,(4),,CONTIG)
+//SYSUT3   DD   UNIT=VIO,SPACE=(CYL,(4),,CONTIG)
+//SYSUT4   DD   UNIT=VIO,SPACE=(CYL,(4),,CONTIG)
+//SYSUT5   DD   UNIT=VIO,SPACE=(CYL,(4),,CONTIG)
+//SYSUT6   DD   UNIT=VIO,SPACE=(CYL,(4),,CONTIG)
+//SYSUT7   DD   UNIT=VIO,SPACE=(CYL,(4),,CONTIG)
+//SYSUT8   DD   UNIT=VIO,SPACE=(CYL,(5,3))
+//SYSUT9   DD   UNIT=VIO,SPACE=(CYL,(5,3))
+//SYSUT10  DD   UNIT=VIO,SPACE=(CYL,(5,3))
+//SYSUT11  DD   UNIT=VIO,SPACE=(CYL,(5,3))
+//SYSUT12  DD   UNIT=VIO,SPACE=(CYL,(5,3))
+//SYSUT13  DD   UNIT=VIO,SPACE=(CYL,(5,3))
+//SYSUT14  DD   UNIT=VIO,SPACE=(CYL,(5,3))
+//SYSUT15  DD   UNIT=VIO,SPACE=(CYL,(5,3))
+//SYSUDUMP DD   SYSOUT=*
+//SYSPUNCH DD   SYSOUT=*
+//SYSMDECK DD  DSN=$$HLQ.TEST4ZDB.BATCHAPP.JCL(SYSMDECK),DISP=SHR
+/*
+//* ------------------------------------------------------------------
+//*                       LINK-EDIT                      -------------
+//* ------------------------------------------------------------------
+//LINK    EXEC PGM=IEWL,REGION=1024K,COND=(4,LT),
+// PARM='LET,LIST,MAP,XREF'
+//SYSLIB   DD DISP=SHR,DSN=CEE.SCEELKED
+//         DD DISP=SHR,DSN=CEE.SCEELKEX
+//SYSPRINT DD   SYSOUT=*
+//SYSUT1   DD   DSN=&&SYSUT1,UNIT=SYSDA,SPACE=(CYL,(5,1))
+//SYSLMOD  DD   DISP=SHR,DSN=$$HLQ.TEST4ZDB.BATCHAPP.LOADLIB
+//SYSLIN   DD   DSN=&&OBJCOB,DISP=(OLD,DELETE)
+//         DD   *
+ MODE  AMODE(31),RMODE(ANY)
+ ENTRY CUSTDB
+ NAME  CUSTDB(R)
+/*
+//* ------------------------------------------------------------------
+//*        BIND                    -----------------------------------
+//* ------------------------------------------------------------------
+//BIND    EXEC PGM=IKJEFT01,DYNAMNBR=20,COND=(4,LT)
+//DBRMLIB   DD DSN=$$HLQ.TEST4ZDB.BATCHAPP.DBRMLIB(CUSTDB),
+//          DISP=SHR
+//STEPLIB  DD DSN=DB2.$$subsystem.SDSNLOAD,DISP=SHR
+//SYSTSPRT  DD SYSOUT=*
+//SYSPRINT  DD SYSOUT=*
+//SYSUDUMP  DD SYSOUT=*
+//SYSOUT    DD SYSOUT=*
+//SYSTSIN   DD *
+  DSN SYSTEM($$subsystem)
+  BIND PACKAGE(DBPCKG) MEMBER(CUSTDB)
+  BIND PLAN(DBPLAN) PKLIST(DBPCKG.*)
+  END
+/*
+//* ------------------------------------------------------------------
+//*              RUN                       ---------------------------
+//* ------------------------------------------------------------------
+//RUNPGM   EXEC PGM=IKJEFT01,DYNAMNBR=20
+//STEPLIB  DD DSN=DB2.$$subsystem.SDSNLOAD,DISP=SHR
+//SYSTSPRT DD SYSOUT=*
+//SYSPRINT DD SYSOUT=*
+//SYSUDUMP DD SYSOUT=*
+//SYSOUT   DD SYSOUT=*
+//SYSTSIN DD *
+DSN SYSTEM($$subsystem)
+RUN PROGRAM(CUSTDB) PLAN(DBPLAN)  -
+ LIB('$$HLQ.TEST4ZDB.BATCHAPP.LOADLIB')
+END

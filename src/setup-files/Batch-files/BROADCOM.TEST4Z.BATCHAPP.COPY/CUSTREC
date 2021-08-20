@@ -1,0 +1,15 @@
+       01  CUSTINREC.
+           05  CUST-NAME                PIC X(20).
+           05  CUST-ADDR                PIC X(20).
+           05  ACCOUNT-NUMBER           PIC X(12).
+           05  PRODUCT-TYPE             PIC X(1).
+               88 SAVINGS      VALUE      'S'.
+               88 CURRENT      VALUE      'C'.
+           05  TOTAL-CHECKS             PIC 9(02).
+           05  ACTUAL-CHECKS            PIC 9(02).
+           05  NOTIFICATION-DATE        PIC 9(08).
+           05  REORDER-DATE             PIC 9(08).
+           05  REORDERED                PIC X(1).
+               88 YES          VALUE      'T'.
+               88 NOT-YES      VALUE      'F'.
+           05  FILLER                   PIC X(6). 

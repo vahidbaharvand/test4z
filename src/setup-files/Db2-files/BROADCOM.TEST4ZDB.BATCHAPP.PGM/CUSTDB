@@ -1,0 +1,71 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. CUSTDB.
+       ENVIRONMENT DIVISION.
+       INPUT-OUTPUT SECTION.
+       FILE-CONTROL.
+       DATA DIVISION.
+       FILE SECTION.
+       WORKING-STORAGE SECTION.
+           EXEC SQL INCLUDE SQLCA    END-EXEC.
+      *    EXEC SQL BEGIN DECLARE SECTION END-EXEC.
+       01  CUSTREC.
+           05  CUST-NAME                PIC X(20).
+           05  CUST-ADDR                PIC X(20).
+           05  ACCOUNT-NUMBER           PIC X(12).
+           05  PRODUCT-TYPE             PIC X(1).
+               88 SAVINGS      VALUE      'S'.
+               88 CURRENT      VALUE      'C'.
+           05  TOTAL-CHECKS             PIC 9(02).
+           05  ACTUAL-CHECKS            PIC 9(02).
+           05  NOTIFICATION-DATE        PIC X(10).
+           05  REORDER-DATE             PIC X(10).
+           05  REORDERED                PIC X(1).
+               88 YES          VALUE      'T'.
+               88 NOT-YES      VALUE      'F'.
+      *    05  FILLER                   PIC X(6).
+       01 WS-CURRENT-DATE-DATA.
+           05  WS-CURRENT-DATE.
+               10  WS-CURRENT-YEAR         PIC 9(04).
+               10  WS-CURRENT-MONTH        PIC 9(02).
+               10  WS-CURRENT-DAY          PIC 9(02).
+           05  WS-CURRENT-TIME.
+               10  WS-CURRENT-HOURS        PIC 9(02).
+               10  WS-CURRENT-MINUTE       PIC 9(02).
+               10  WS-CURRENT-SECOND       PIC 9(02).
+               10  WS-CURRENT-MILLISECONDS PIC 9(02).
+      *    EXEC SQL END DECLARE SECTION END-EXEC.
+       01 WS-CURREN-DATE PIC X(10).
+      *    05  WS-CURREN-YEAR PIC X(04).
+      *    05  FILLER1 PIC X(1) VALUE '-'.
+      *    05  WS-CURREN-MONTH PIC X(02).
+      *    05  FILLER2 PIC X(1) VALUE '-'.
+      *    05  WS-CURREN-DAY PIC X(02).
+      *
+      *COPY CUSTREC.
+      *
+       PROCEDURE DIVISION.
+           DISPLAY 'NOTIFICATION DATE 1 IS ' WS-CURREN-DATE.
+           MOVE FUNCTION CURRENT-DATE TO WS-CURRENT-DATE-DATA.
+           DISPLAY 'CURRENT DATE IS ' WS-CURRENT-DATE-DATA.
+           MOVE WS-CURRENT-YEAR TO WS-CURREN-DATE(1:4).
+           MOVE '-' TO WS-CURREN-DATE(5:1).
+           MOVE WS-CURRENT-MONTH TO WS-CURREN-DATE(6:2).
+           MOVE '-' TO WS-CURREN-DATE(8:1).
+           MOVE WS-CURRENT-DAY TO WS-CURREN-DATE(9:2).
+           DISPLAY 'NOTIFICATION DATE 2 IS ' WS-CURREN-DATE.
+      *    IF PRODUCT-TYPE = 'C' OR PRODUCT-TYPE = 'S' THEN
+           EXEC SQL
+             UPDATE $$HLQ.$$tablename SET NOTIFICATION_DATE
+             = :WS-CURREN-DATE
+             WHERE (((TOTAL_CHECKS = 30 AND ACTUAL_CHECKS <=3) OR
+                   (TOTAL_CHECKS = 50 AND ACTUAL_CHECKS <=5) OR
+                   (TOTAL_CHECKS = 80 AND ACTUAL_CHECKS <=8)) AND
+                   PRODUCT_TYPE IN ("S","C"))
+           END-EXEC.
+           IF SQLCODE = 0 THEN
+             DISPLAY "SUCCESS"
+             ELSE DISPLAY SQLSTATE
+           END-IF.
+           DISPLAY "THE NOTIFICATION DATE IS : " WS-CURREN-DATE.
+           STOP RUN.
+      *    END-IF.
