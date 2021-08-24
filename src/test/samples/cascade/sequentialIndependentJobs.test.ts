@@ -4,8 +4,7 @@
 
    Example test suite for running independent jobs sequentially in multiple test blocks
 */
-export {};
-const { Test4zService } = require("test4z-sdk");
+import { Test4zService } from "@broadcom/test4z-sdk";
 
 let TS4ZJB1 = "TEST4Z.BATCHAPP.CASCADE(TS4ZJB1)";
 let TS4ZJB2 = "TEST4Z.BATCHAPP.CASCADE(TS4ZJB2)";

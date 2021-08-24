@@ -4,8 +4,7 @@
 
    Example test suite for Test4z compare feature
 */
-export {};
-const { Test4zService } = require("test4z-sdk");
+import { Test4zService } from "@broadcom/test4z-sdk";
 
 //Testing variables, the datasets
 let mainDataset = "TEST4Z.BATCHAPP.CUSTIN";

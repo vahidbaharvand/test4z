@@ -4,8 +4,7 @@
 
    Example test suite for Test4z search feature
 */
-export {};
-const {Test4zService, Filter, Operators, Types, QueryOperators, FilterBuilder, TestHelpers} = require("test4z-sdk");
+import { Test4zService, Filter, Operators, Types, QueryOperators, FilterBuilder, TestHelpers } from "@broadcom/test4z-sdk";
 
 //Testing variables, the datasets
 let batchAppJCLDataset = "TEST4Z.BATCHAPP.JCL(CUSTSEQ)";

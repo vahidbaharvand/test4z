@@ -4,8 +4,7 @@
 
    Example test suite for Test4z Snapshot feature.
 */
-export {};
-const { Test4zService, Filter, FilterBuilder, Types, Operators, QueryOperators, TestHelpers } = require("test4z-sdk");
+import { Test4zService, Filter, FilterBuilder, Types, Operators, QueryOperators, TestHelpers } from "@broadcom/test4z-sdk";
 
 //Testing variables, the datasets
 let mainDataset = "TEST4Z.BATCHAPP.CUSTIN";
