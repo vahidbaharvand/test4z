@@ -4,8 +4,7 @@
 
    User experience test suite.
 */
-export {};
-const { Test4zService, Filter, Operators, Types, FilterBuilder } = require("test4z-sdk");
+import { Test4zService, Filter, Operators, Types, FilterBuilder } from "@broadcom/test4z-sdk";
 
 //Testing variables, replace [HLQ] with the proper values
 let mainDataset = "TEST4Z.BATCHAPP.CUSTIN";

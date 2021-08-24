@@ -4,8 +4,7 @@
 
    Example test suite for DB2 use case
 */
-export {};
-const {Db2Service, Test4zService} = require("test4z-sdk");
+import { Db2Service, Test4zService } from "@broadcom/test4z-sdk";
 
 let tableName = "TEST4ZTB";
 let batchAppJCLDataset = "TEST4ZDB.BATCHAPP.JCL(CUSTDB)"
