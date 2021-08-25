@@ -4,7 +4,7 @@
 
    Example test suite for Test4z update feature
 */
-import { Test4zService, Filter, FilterBuilder, Operators, QueryOperators, UpdateCriteria, Types, UpdateModel, TestHelpers } from "@broadcom/test4z-sdk";
+import { Test4zService, Filter, FilterBuilder, Operators, QueryOperators, UpdateCriteria, Types, UpdateModel, TestHelpers } from "@broadcom/test4z-node-package";
 
 //Testing variables, replace [HLQ] with the proper values
 let batchAppJCLDataset = "TEST4Z.BATCHAPP.JCL(CUSTSEQ)";
