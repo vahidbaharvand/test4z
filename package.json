@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "run-script-os",
-    "test:win32": "set PATH=.\\node_modules\\@Broadcom\\test4z-node-package\\node_modules\\ibm_db\\installer\\clidriver\\bin;.\\node_modules\\@Broadcom\\test4z-node-package\\node_modules\\ibm_db\\installer\\clidriver\\bin\\amd64.VC12.CRT;.\\node_modules\\@Broadcom\\test4z-node-package\\node_modules\\ibm_db\\installer\\clidriver\\bin\\icc64;.\\node_modules\\@Broadcom\\test4z-node-package\\node_modules\\ibm_db\\installer\\clidriver\\lib;.\\node_modules\\@Broadcom\\test4z-node-package\\node_modules\\.bin;%PATH% && set LIB=.\\node_modules\\@Broadcom\\test4z-node-package\\node_modules\\ibm_db\\installer\\clidriver\\bin;.\\node_modules\\@Broadcom\\test4z-node-package\\node_modules\\ibm_db\\installer\\clidriver\\bin\\icc64;.\\node_modules\\@Broadcom\\test4z-node-package\\node_modules\\ibm_db\\installer\\clidriver\\lib;%LIB% && jest",
+    "test:win32": "set PATH=.\\node_modules\\@Broadcom\\test4z\\node_modules\\ibm_db\\installer\\clidriver\\bin;.\\node_modules\\@Broadcom\\test4z\\node_modules\\ibm_db\\installer\\clidriver\\bin\\amd64.VC12.CRT;.\\node_modules\\@Broadcom\\test4z\\node_modules\\ibm_db\\installer\\clidriver\\bin\\icc64;.\\node_modules\\@Broadcom\\test4z\\node_modules\\ibm_db\\installer\\clidriver\\lib;.\\node_modules\\@Broadcom\\test4z\\node_modules\\.bin;%PATH% && set LIB=.\\node_modules\\@Broadcom\\test4z\\node_modules\\ibm_db\\installer\\clidriver\\bin;.\\node_modules\\@Broadcom\\test4z\\node_modules\\ibm_db\\installer\\clidriver\\bin\\icc64;.\\node_modules\\@Broadcom\\test4z\\node_modules\\ibm_db\\installer\\clidriver\\lib;%LIB% && jest",
     "test:default": "jest",
     "uploadFiles": "cd src/setup-files/Batch-files && sh SetupBatchAppDS.sh",
     "uploadDb2Files": "cd src/setup-files/Db2-files && sh SetupBatchAppDb2.sh"
@@ -27,6 +27,6 @@
     "ts-node": "^10.2.1"
   },
   "dependencies": {
-    "@broadcom/test4z-node-package": "0.0.1"
+    "@broadcom/test4z": "0.0.1"
   }
 }

@@ -13,5 +13,5 @@ module.exports = {
     setupFilesAfterEnv: [
         '<rootDir>/jest.setup.js'
     ],
-    transformIgnorePatterns: ["/node_modules/(?!@broadcom/test4z-node-package)"],
+    transformIgnorePatterns: ["/node_modules/(?!@broadcom/test4z)"],
 }

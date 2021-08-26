@@ -4,7 +4,7 @@
 
    User experience test suite.
 */
-import { Test4zService, Filter, Operators, Types, FilterBuilder } from "@broadcom/test4z-node-package";
+import { Test4zService, Filter, Operators, Types, FilterBuilder } from "@broadcom/test4z";
 
 //Testing variables, replace [HLQ] with the proper values
 let mainDataset = "TEST4Z.BATCHAPP.CUSTIN";
