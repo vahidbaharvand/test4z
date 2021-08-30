@@ -103,7 +103,11 @@ The modified records are then used by the sample test case.
 
  ## Warnings
  
- * During the `npm install`, some of the dependencies may throw errors, as long as `npm install` doesn't interrupt, this errors must be ignored.
+ 1. During the `npm install`, some of the dependencies may throw errors, as long as `npm install` doesn't interrupt, this errors must be ignored.
 
+ 2. The samples using rollbackDataSet method have a limitation for the VSAM datasets. 
+ Independently the source dataset volume, as a result, target dataset always has NOVOL 
+ (temporary) storage class. If you roll back BackupDataset to OriginalDataset, OriginalDataset 
+ becomes a temporary dataset to be deleted. This limitation is in our backlog and will be resolved soon.
 ## License
 See LICENSE.md.
