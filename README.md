@@ -101,7 +101,7 @@ The modified records are then used by the sample test case.
  
 *  Cascading (dependent job) samples and cascading specific readme.md file: [/src/test/samples/cascade](./src/test/samples/cascade)
 
- ## Warnings
+ ## Notes
  
  1. During the `npm install`, some of the dependencies may throw errors, as long as `npm install` doesn't interrupt, this errors must be ignored.
 
