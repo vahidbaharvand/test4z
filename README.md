@@ -18,9 +18,7 @@ Before you attempt to install the Test4z Sample project, ensure you meet the fol
 * [Node.js](https://nodejs.org/en/download/) is installed.
 * If you use Windows, ensure VS Code uses bash to execute shell (.sh) scripts. Follow these steps:
     1. Download and install [Git BASH](https://git-scm.com/download/win).
-    2. In VS Code, open the command palette (Ctrl+Shift+P). 
-    3. Type and select “Terminal: Select Default Shell”. 
-    4. Select "Git Bash" as your default shell.
+    2. In VS Code, select "Git Bash" as your default shell. Check [here](https://code.visualstudio.com/docs/editor/integrated-terminal#_terminal-profiles) for guidance.
 * If you have VS Code running, restart it.
 
 ### Installing
