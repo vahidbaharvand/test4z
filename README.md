@@ -108,11 +108,13 @@ The modified records are then used by the sample test case.
  (temporary) storage class. If you roll back BackupDataset to OriginalDataset, OriginalDataset 
  becomes a temporary dataset to be deleted. This limitation is in our backlog and will be resolved soon.
  
- 3. Compare, search, snapshot and update samples are leaving a temporary dataset behind. 
-    To follow the Self Cleaning Test concept, it is recommended to delete this temporary dataset using the command below in your terminal:
+ 3. The compare, search, snapshot, and update samples  generate a temporary data set  when they run.
+    We recommend you to delete the temporary data set by opening the terminal and issuing the following command:
     
     `npx zowe zos-files delete data-set 'HLQ.TEST4Z.BATCHAPP.CUSTIN2' -f`
     
-    For more details about ZOWE dataset delete command, you can check [here](https://docs.zowe.org/stable/web_help/docs/zowe_zos-files_delete_data-set.html)
+    Click [here](https://docs.zowe.org/stable/web_help/docs/zowe_zos-files_delete_data-set.html)
+    for more information about the ZOWE data set delete command.
+
 ## License
 See LICENSE.md.
