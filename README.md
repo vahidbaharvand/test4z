@@ -117,4 +117,4 @@ The modified records are then used by the sample test case.
     for more information about the ZOWE data set delete command.
 
 ## License
-Visit [LICENSE.md](https://github.com/BroadcomMFD/test4z/blob/develop/LICENSE) file.
+Visit [LICENSE.md](./LICENSE) file.
