@@ -1,4 +1,4 @@
-The MIT License (MIT)
+BSD+Patent License
 
 Copyright (c) 2021 Broadcom MFD
 
