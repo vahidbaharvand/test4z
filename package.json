@@ -24,6 +24,6 @@
     "ts-node": "^10.2.1"
   },
   "dependencies": {
-    "@broadcom/test4z": "0.0.1"
+    "@broadcom/test4z": "1.0.0"
   }
 }
