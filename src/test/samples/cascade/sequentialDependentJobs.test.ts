@@ -26,7 +26,7 @@ describe('Dependent Jobs - Jobs are sequenced based on dependency', () => {
         const RCHighretCode: String = await Test4zService.submitJobUsingDataset(TS4ZHRC);
         expect(RCHighretCode).toBeSuccessful();
   
-        // This job will not be executed due to failure of job - ARGHRC
+        // This job will not be executed due to failure of job - TS4ZHRC
         const job2retCode: String = await Test4zService.submitJobUsingDataset(TS4ZJB2);
         expect(job2retCode).toBeSuccessful();
     })
