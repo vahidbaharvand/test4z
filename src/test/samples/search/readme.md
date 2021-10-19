@@ -217,7 +217,7 @@ In this example, the query returns results for all records that satisfy both of 
                 "fieldName": "REORDER-DATE",
                 "fieldOperator": "=",
                 "fieldType": "Number",
-                "fieldValue": "Current_date",
+                "fieldValue": "Current_date"
             }
         ]
     }
