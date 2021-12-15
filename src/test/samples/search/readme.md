@@ -52,7 +52,7 @@ You can find detailed information about the batch application used in the sample
                 "fieldName": "string",
                 "fieldOperator": "=, !=, >, >=, <, <=",
                 "fieldType": "Character, Number, Text, Packed, Hexidecimal",
-                "fieldValue": "string",
+                "fieldValue": ["string"],
                 "queryOperator": "AND", "OR"
             }
         ]
@@ -88,15 +88,15 @@ Comparison operator.
 
 ### "fieldType"
 
-    Character, Number, Text, Packed, Hexidecimal
+    Character, Number, Text, Packed, Hexadecimal
 
 Data type of the field.
 
 ### "fieldValue"
 
-    string
+    [string]
 
-Value of the field.
+Values of the field.
 
 ### "queryOperator"
 Combine two filter criteria in your query
