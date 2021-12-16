@@ -1,6 +1,6 @@
 {
   "name": "test4z-sample",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "description": "Test samples repository for test4z",
   "author": "Broadcom",
   "scripts": {
@@ -24,6 +24,6 @@
     "ts-node": "^10.2.1"
   },
   "dependencies": {
-    "@broadcom/test4z": "1.0.0"
+    "@broadcom/test4z": "^1.0.0"
   }
 }
