@@ -6,6 +6,7 @@ from zowe.zos_jobs_for_zowe_sdk import Jobs
 from polling import TimeoutException, poll
 from utility import GetZosmfConnection, GetPollingTimeOut, GetPollingInterval
 from .HttpClient import post_request
+from model import CopyModel
 
 # Job submission through ZOSMF
 # Waits until the job return code collection and returns it
@@ -33,11 +34,16 @@ def SubmitJobNotify(dataset):
 
 # Checks the given response status to see if the job execution completed
 # @response - polling request response
+# @returns - boolean status of the polling method
 def IsPollingSuccessful(response):
     return response['status']=='OUTPUT'
 
-def copy(copyModel):
-    response = post_request("/copy", json.dumps(copyModel.__dict__))
+# Copy the input dataset to the output dataset
+# @inputDataset - Source dataset - the dataset which you want to copy
+# @outputDataset - Target dataset - the result/output dataset
+# @response - boolean success of the request
+def copy(inputDataset, outputDataset):
+    response = post_request("/copy", json.dumps(CopyModel(inputDataset, outputDataset).__dict__))
     if ('data' in response):
         print("Copy successful")
         return True
