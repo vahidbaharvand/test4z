@@ -3,7 +3,7 @@ import configparser
 config = configparser.ConfigParser()
 config.read('../../../config.cfg')
 
-# Returns the ZOSMF connection informarmation as a dictionary
+# Returns the ZOSMF connection information as a dictionary
 def get_zosmf_connection():
     return {
         "host_url": config.get('ZOSMF','host_url'),
@@ -20,6 +20,7 @@ def get_polling_timeout():
 def get_polling_interval():
     return config.getint('POLLING','interval')
 
+# Returns the Test4z service connection information as a dictionary
 def get_test4z_connection():
     return {
         "url": config.get('TEST4Z','host_url') + ":" + config.get('TEST4Z','port') + config.get('TEST4Z','base_path'),

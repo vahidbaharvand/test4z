@@ -45,12 +45,16 @@ def is_polling_successful(response):
 def copy(inputDataset, outputDataset):
     response = post_request("/copy", json.dumps(CopyModel(inputDataset, outputDataset).__dict__))
     if ('data' in response):
-        print("Copy successful")
+        print("Copy was successful")
         return True
     else:
         raise Exception(response)
 
-def search():
-    searchm = SearchModel("cagin", "bektas", "test")
-    print(searchm.__dict__)
-    return 5
+def search(dataset, copybook, filters, limit=0, offset=0):
+    model = SearchModel(dataset, copybook, filters)
+    response = post_request("/search", json.dumps(model, default = lambda x: x.__dict__))
+    if ('Record' in response['data']):
+        print("Search was successful")
+        return response['data']['Record']
+    else:
+        raise Exception(response)
