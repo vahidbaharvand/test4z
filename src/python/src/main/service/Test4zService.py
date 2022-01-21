@@ -6,7 +6,7 @@ from zowe.zos_jobs_for_zowe_sdk import Jobs
 from polling import TimeoutException, poll
 from utility import get_zosmf_connection, get_polling_timeout, get_polling_interval
 from .HttpClient import post_request
-from model import CopyModel
+from model import CopyModel, SearchModel
 
 # Job submission through ZOSMF
 # Waits until the job return code collection and returns it
@@ -49,3 +49,8 @@ def copy(inputDataset, outputDataset):
         return True
     else:
         raise Exception(response)
+
+def search():
+    searchm = SearchModel("cagin", "bektas", "test")
+    print(searchm.__dict__)
+    return 5
