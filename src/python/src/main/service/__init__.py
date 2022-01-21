@@ -1,1 +1,1 @@
-from .Test4zService import SubmitJobNotify,copy
+from .Test4zService import submit_job_notify,copy

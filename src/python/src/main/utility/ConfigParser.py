@@ -4,7 +4,7 @@ config = configparser.ConfigParser()
 config.read('../../../config.cfg')
 
 # Returns the ZOSMF connection informarmation as a dictionary
-def GetZosmfConnection():
+def get_zosmf_connection():
     return {
         "host_url": config.get('ZOSMF','host_url'),
         "user": config.get('ZOSMF','user'),
@@ -13,11 +13,11 @@ def GetZosmfConnection():
     }
 
 # Returns the TimOut value as integer for the polling
-def GetPollingTimeOut():
+def get_polling_timeout():
     return config.getint('POLLING','timeout')
 
 # Returns the Interval value as integer for the polling
-def GetPollingInterval():
+def get_polling_interval():
     return config.getint('POLLING','interval')
 
 def get_test4z_session():
