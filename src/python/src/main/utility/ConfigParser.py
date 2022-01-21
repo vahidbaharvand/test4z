@@ -20,7 +20,7 @@ def get_polling_timeout():
 def get_polling_interval():
     return config.getint('POLLING','interval')
 
-def get_test4z_session():
+def get_test4z_connection():
     return {
         "url": config.get('TEST4Z','host_url') + ":" + config.get('TEST4Z','port') + config.get('TEST4Z','base_path'),
         "user": config.get('TEST4Z','user'),
