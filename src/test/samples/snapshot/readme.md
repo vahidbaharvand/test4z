@@ -11,6 +11,8 @@ Create copy of a data set.
 ## Reference to BatchApp in Samples Descriptions
 You can find detailed information about the batch application used in the samples [here](/README.md#the-batch-application-used-in-the-samples) under the Batch Application section.
 
+# api doc
+
 ## Model call
     {
         "inputDataset": "MYHLQ.SALEDATA.RECORDS1",
@@ -24,7 +26,7 @@ The source data set to be copied.
 ### "outputDataset"
 The target data set where the copy of the source data set is saved to.
 
-## Example
+## Example call
 Create a snapshot of the MYHLQ.SALEDATA.RECORDS1 data set and save it to MYHLQ.ARCHIVE.APRIL05.RECORDS1.
 
     POST /api/v1/snapshot?

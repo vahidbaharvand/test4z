@@ -14,6 +14,8 @@ Update dataset with or without filtering the records.
 ## Reference to BatchApp in Samples Descriptions
 You can find detailed information about the batch application used in the samples [here](/README.md#the-batch-application-used-in-the-samples)) under the Batch Application section.
 
+# api doc
+
 ## Model call 
     {
         "dataSet": "string",
@@ -22,7 +24,7 @@ You can find detailed information about the batch application used in the sample
             {
                 "fieldName": "string",
                 "fieldOperator": "=, !=, >, >=, <, <=",
-                "fieldType": "Character, Number, Text, Packed, Hexidecimal",
+                "fieldType": "Character, Number, Text, Packed, Hexadecimal",
                 "filterValue":"string",
                 "targetValue":"string"
             }
@@ -31,7 +33,7 @@ You can find detailed information about the batch application used in the sample
             "fieldName": "string",
             "fieldOperator": "=, !=, >, >=, <, <=",
             "fieldValue": "string",
-            "fieldType": "Character, Number, Text, Packed, Hexidecimal"
+            "fieldType": "Character, Number, Text, Packed, Hexadecimal"
         }
     }
 
@@ -65,7 +67,7 @@ Comparison operator.
 
 ### "fieldType"
 
-    Character, Number, Text, Packed, Hexidecimal
+    Character, Number, Text, Packed, Hexadecimal
 
 Data type of the field.
 
@@ -98,15 +100,15 @@ Comparison operator.
 
 ### "fieldType"
 
-    Character, Number, Text, Packed, Hexidecimal
+    Character, Number, Text, Packed, Hexadecimal
 
 Data type of the field.
 
-### "field"
+### "fieldValue"
 
-    string
+    [string]
 
-Value of the field.
+Values of the field.
 
 
 ## Example Call
@@ -128,7 +130,7 @@ Update the MYHLQ.SALEDATA.RECORDS1 dataset for records which are categorized as 
         "filterCriteria":{
             "fieldName":"TYPE", 
             "fieldOperator":"=", 
-            "fieldValue":"JEWELRY", 
+            "fieldValue": ["JEWELRY"], 
             "fieldType":"Text"
         }
     }

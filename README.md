@@ -6,6 +6,7 @@ Test4z leverages z/OSMF and Zowe to facilitate batch application testing for fla
 * **Search** through records in a data set.
 * Create a **snapshot** of a data set.
 * **Update** records in a dataset
+* **Copy** data set with filter, skip, limit possibilities
 
 ## Getting Started
 Follow these instructions to set up the Test4z Sample project on your local machine.

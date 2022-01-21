@@ -1,4 +1,7 @@
-# Purpose of the sample
+# /compare
+Compare two data sets and return a list of changed, inserted and deleted lines. This function is intended for comparing older and newer versions of the same data set. 
+
+Note that for partitioned data sets (PDS) you must pick two members to compare, not the entire partitioned data sets.
 
 *This test folder contains an example use case of the **compare** endpoint.*
 
@@ -14,10 +17,6 @@
 You can find detailed information about the batch application used in the samples [here](/README.md#the-batch-application-used-in-the-samples) under the Batch Application section.
 
 # api doc
-## /compare
-Compare two data sets and return a list of changed, inserted and deleted lines. This function is intended for comparing older and newer versions of the same data set. 
-
-Note that for partitioned data sets (PDS) you must pick two members to compare, not the entire partitioned data sets.
 
 ## Model call
     {
