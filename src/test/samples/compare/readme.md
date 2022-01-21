@@ -23,6 +23,16 @@ You can find detailed information about the batch application used in the sample
         "dataset1": "string",
         "dataset2": "string"
     }
+    
+    or
+    
+    {
+        "dataset1": "string",
+        "dataset2": "string",
+        "copyBook": "string",
+        "operation": "string",
+        "fields": "string[]"
+    }
 
 ## Parameters
 ### "dataset1"
@@ -31,7 +41,17 @@ Old data set.
 ### "dataset2"
 New data set.
 
-## Example call
+### "copyBook"
+Optional - A String value representing the copybook name
+
+### "operation" - keys: ["INCLUDE" or "EXCLUDE"]
+Optional - String value for specifying the operation, exclude/include
+
+### "fields"
+Optional - String array for specifying the included/excluded field names    
+
+
+## Example call #1
 Compare records in the (older) MYHLQ.SHOP.INVENTRY(APRIL06) data set to records in the (newer) MYHLQ.SHOP.INVENTRY(APRIL07) data set.
 
     POST /api/v1/compare?
@@ -40,7 +60,7 @@ Compare records in the (older) MYHLQ.SHOP.INVENTRY(APRIL06) data set to records 
         "dataset2": "MYHLQ.SHOP.INVENTRY(APRIL07)"
     }
 
-## Example output
+## Example output #1
 Upon a successful API call a data object is returned containing the summary and report objects. The report lists all the individual changes that were made between in the new data set.
 
     {
@@ -88,6 +108,47 @@ Upon a successful API call a data object is returned containing the summary and 
                         "oldContent": "Simple Ring - Platinum",
                         "newLineNum": 0,
                         "oldLineNum": 329
+                    }                    
+                }
+            ]
+        }
+    }
+    
+## Example call #2
+Compare records in the (older) MYHLQ.SHOP.INVENTRY(APRIL06) data set to records 
+in the (newer) MYHLQ.SHOP.INVENTRY(APRIL07) data set. Exclude the changes in the DESCRIPTION field.
+
+
+    POST /api/v1/compare?
+    {
+        "dataset1": "MYHLQ.SHOP.INVENTRY(APRIL06)",
+        "dataset2": "MYHLQ.SHOP.INVENTRY(APRIL07)",
+        "copyBook": "MYHLQ.SHOP.INVENTRY.COPY(APRIL)",
+        "operation": "EXCLUDE",
+        "fields": ["DESCRIPTION"]
+    }
+
+## Example output #2
+Upon a successful API call a data object is returned containing the summary and report objects. The report lists all the individual changes that were made between in the new data set.
+
+    {
+        "data" : {
+            "summary": {
+                "insertedLines": 0,
+                "deletedLines": 0,
+                "matchedLines": 719,
+                "changedLines": 1,
+                "oldRecordsProcessed": 720,
+                "newRecordsProcessed": 720
+            },
+            "report": [
+                {
+                    "type": "Change",
+                    "compareRecord": {
+                        "newContent": "Embroidered Bracelet - Gold",
+                        "oldContent": "Hooped Earrings - Gold",
+                        "newLineNum": 497,
+                        "oldLineNum": 497
                     }                    
                 }
             ]

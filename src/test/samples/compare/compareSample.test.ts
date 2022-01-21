@@ -9,6 +9,7 @@ import { Test4zService } from "@broadcom/test4z";
 //Testing variables, the datasets
 let mainDataset = "TEST4Z.BATCHAPP.CUSTIN";
 let copyDataset = "TEST4Z.BATCHAPP.CUSTIN2";
+let copybook = "TEST4Z.BATCHAPP.COPY(CUSTREC)";
 let batchAppJCLDataset = "TEST4Z.BATCHAPP.JCL(CUSTSEQ)"
 
 describe("COMPARE-TEST - Batchapp validation", function () {
@@ -16,6 +17,7 @@ describe("COMPARE-TEST - Batchapp validation", function () {
         //Retrieve HLQ from config property
          const HLQ: any = await Test4zService.getProfileProp("hlq");
          mainDataset = HLQ+"."+mainDataset;
+         copybook = HLQ+"."+copybook;
          copyDataset = HLQ+"."+copyDataset;
          batchAppJCLDataset = HLQ+"."+batchAppJCLDataset;
     });
@@ -30,6 +32,30 @@ describe("COMPARE-TEST - Batchapp validation", function () {
 
         //Compare the mainDataset with the copyDataset to identify any changes.
         const compareResult = await Test4zService.compare(copyDataset, mainDataset);
+        expect(compareResult).toBeSuccessfulResult(); //Verify the API Request was successful
+
+        //Asserting the compare result summary
+        expect(compareResult.data.summary.oldRecordsProcessed).toBe(75);
+        expect(compareResult.data.summary.newRecordsProcessed).toBe(75);
+        expect(compareResult.data.summary.insertedLines).toBe(0);
+        expect(compareResult.data.summary.changedLines).toBe(24);
+        expect(compareResult.data.summary.matchedLines).toBe(51);
+        expect(compareResult.data.summary.deletedLines).toBe(0);
+    });
+
+    test("COMPARE002 - Test using snapshot, job submit, compare (with field include feature) and roll-back-data", async function () {
+        //Take a Snapshot from mainDataset to copyDataset
+        const snapshotResult = await Test4zService.takeSnapShot(mainDataset, copyDataset);
+        expect(snapshotResult).toBeSuccessfulResult(); //Verify the API Request was successful
+
+        //Execute Batch Application to modify the main dataset
+        const job = await Test4zService.submitJobUsingDataset(batchAppJCLDataset);
+        expect(job).toBeSuccessful(); //Verify BatchApp JCL executed successfully
+
+        //Compare the mainDataset with the copyDataset to identify any changes.
+        //Notice the additional parameters in the compare request, the service only
+        //considers the changes within the NOTIFICATION-DATE field, CUST-NAME field is a reference field without any changes.
+        const compareResult = await Test4zService.compare(copyDataset, mainDataset, "INCLUDE", ["CUST-NAME","NOTIFICATION-DATE"], copybook);
         expect(compareResult).toBeSuccessfulResult(); //Verify the API Request was successful
 
         //Asserting the compare result summary

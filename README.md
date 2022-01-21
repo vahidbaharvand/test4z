@@ -116,6 +116,9 @@ The modified records are then used by the sample test case.
     
     Click [here](https://docs.zowe.org/stable/web_help/docs/zowe_zos-files_delete_data-set.html)
     for more information about the ZOWE data set delete command.
-
+   
+  4. Exclude feature of the Compare endpoint requires a certain File Master Plus version 
+   12.0 and the required PTF installation. Make sure you have the required PTF to be able to use the field exclusion.
+  
 ## License
 Visit [LICENSE.md](LICENSE.md) file.
