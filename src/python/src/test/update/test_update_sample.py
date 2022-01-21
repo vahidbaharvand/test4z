@@ -1,7 +1,7 @@
 import sys
 import json
 sys.path.append("../../main")
-from service import submit_job_notify, copy, search
+from service import submit_job_notify, copy, roll_back_dataset, search
 from model import FilterBuilder, Types, Operators, QueryOperators
 import unittest
 
@@ -32,19 +32,20 @@ filters = [
           .build()
 ]
 class TestApis(unittest.TestCase):
-    def test_before(self):
-      print("\n---------------Before Test---------------")
-      assert copy(mainDataset, copyDataset) == True
-      print("\n---------------Before Test---------------")
-
     def test_job_submit(self):
       print("\n---------------Update Sample---------------")
+      #take snapshsot
+
       #assert submit_job_notify("BEKHI01.TEST4Z.BATCHAPP.JCL(CUSTSEQ)") == "CC 0000"
+
       records_1 = search(mainDataset, copybook, filters)
       assert len(records_1) == 13
+
+      assert roll_back_dataset(copyDataset, mainDataset) == True
+
+      #update
+      #job submit
+      #search
       print("----------------Completed----------------")
 
-    def test_after(self):
-      print("\n---------------After Test---------------")
-      assert copy(copyDataset, mainDataset) == True
-      print("\n---------------After Test---------------")
+

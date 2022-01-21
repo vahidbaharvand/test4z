@@ -50,6 +50,18 @@ def copy(inputDataset, outputDataset):
     else:
         raise Exception(response)
 
+# Reverting data back to the original state using the snapshot endpoint
+# @inputDataset - Source dataset - the dataset which you have the backup data
+# @outputDataset - Target dataset - the dataset which you want to override data from the source dataset (original dataset)
+# @response - boolean success of the request
+def roll_back_dataset(inputDataset, outputDataset):
+    response = post_request("/copy", json.dumps(CopyModel(inputDataset, outputDataset).__dict__))
+    if ('data' in response):
+        print("Roll back was successful")
+        return True
+    else:
+        raise Exception(response)
+
 def search(dataset, copybook, filters, limit=0, offset=0):
     model = SearchModel(dataset, copybook, filters)
     response = post_request("/search", json.dumps(model, default = lambda x: x.__dict__))
