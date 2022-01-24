@@ -6,7 +6,7 @@ from zowe.zos_jobs_for_zowe_sdk import Jobs
 from polling import TimeoutException, poll
 from utility import get_zosmf_connection, get_polling_timeout, get_polling_interval
 from .HttpClient import post_request
-from model import CopyModel, SearchModel
+from model import CopyModel, SearchModel, UpdateModel
 
 # Job submission through ZOSMF
 # Waits until the job return code collection and returns it
@@ -15,7 +15,7 @@ def submit_job_notify(dataset):
     connection = Jobs(get_zosmf_connection())
     try:
         job = connection.submit_from_mainframe(dataset)
-        print("Batch application job submitted\nJobId: " + job['jobid'] + "\nWaiting for the return code...")
+        print("\nBatch application job submitted\nJobId: " + job['jobid'] + "\nWaiting for the return code...")
     except:
         raise Exception("An error occurred during the job submission. Check the ZOSMF access, health status and verify the config.cfg values")
     try:
@@ -68,5 +68,14 @@ def search(dataset, copybook, filters, limit=0, offset=0):
     if ('Record' in response['data']):
         print("Search was successful")
         return response['data']['Record']
+    else:
+        raise Exception(response)
+
+def update(dataset, copybook, update_criteria, filter_criteria):
+    model = UpdateModel(dataset, copybook, update_criteria, filter_criteria)
+    response = post_request("/update", json.dumps(model, default = lambda x: x.__dict__))
+    if ('recordsChanged' in response['data']):
+            print("Update was successful")
+            return response['data']['recordsChanged']
     else:
         raise Exception(response)
