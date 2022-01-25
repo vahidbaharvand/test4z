@@ -55,18 +55,18 @@ update_criteria = [
 filter_criteria = FilterBuilder().field_name("ACCOUNT-NUMBER").field_operator(Operators.EQUAL.value).field_value(["123456000003"]).field_type(Types.CHARACTER.value).build()
 
 class UpdateSample(unittest.TestCase, CustomAssertions):
-    def test_job_submit(self):
-        print("\n---------------Update Sample---------------")
+    def setup_method(self, method):
         HLQ = get_config_prop("TEST4Z", "hlq")
         global main_dataset, copy_dataset, copybook, batch_app_jcl_dataset
         main_dataset = HLQ + main_dataset
         copy_dataset = HLQ + copy_dataset
         copybook = HLQ + copybook
         batch_app_jcl_dataset = HLQ + batch_app_jcl_dataset
-        #-------------------------------------
+
         copy_result = copy(main_dataset, copy_dataset)
         self.assertRequestSuccessful(copy_result)
 
+    def test_job_submit(self):
         job = submit_job_notify(batch_app_jcl_dataset)
         self.assertJobSuccessful(job)
 
@@ -88,7 +88,6 @@ class UpdateSample(unittest.TestCase, CustomAssertions):
         self.assertRequestSuccessful(search_result2)
         assert len(search_result2['data']['Record']) == 14
 
+    def teardown_method(self, method):
         roll_back_result2 = roll_back_dataset(copy_dataset, main_dataset)
         self.assertRequestSuccessful(roll_back_result2)
-
-        print("----------------Completed----------------")
