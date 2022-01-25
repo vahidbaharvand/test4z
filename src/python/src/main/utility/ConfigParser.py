@@ -30,3 +30,10 @@ def get_test4z_connection():
         "ssl_verification": config.getboolean('TEST4Z','ssl_verification'),
         "timeout": config.getint('TEST4Z','timeout')
     }
+
+# Returns the given property from the given section
+def get_prop(section, prop):
+    try:
+        return config.get(section, prop)
+    except Exception:
+        raise Exception("Unexpected error")

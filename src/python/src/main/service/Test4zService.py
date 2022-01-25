@@ -6,6 +6,7 @@ sys.path.append("../../main")
 from .HttpClient import post_request
 from .ZoweClient import zowe_submit_job_notify
 from model import CopyModel, SearchModel, UpdateModel
+from utility import get_prop
 
 # Job submission through Z/OSMF
 # @dataset - JCL dataset with the job/s
@@ -25,7 +26,7 @@ def copy(input_dataset, output_dataset):
         else:
             raise Exception(response)
     except Exception:
-            raise Exception("Unexpected error")
+        raise Exception("Unexpected error")
 
 # Reverting data back to the original state using the snapshot endpoint
 # @inputDataset - Source dataset - the dataset which you have the backup data
@@ -59,7 +60,7 @@ def search(dataset, copybook, filters, limit=0, offset=0):
         else:
             raise Exception(response)
     except Exception:
-            raise Exception("Unexpected error")
+        raise Exception("Unexpected error")
 
 # Update dataset, with or without a filter(filter_criteria)
 # @dataset: Input dataset to perform update
@@ -77,4 +78,11 @@ def update(dataset, copybook, update_criteria, filter_criteria):
         else:
             raise Exception(response)
     except Exception:
-            raise Exception("Unexpected error")
+        raise Exception("Unexpected error")
+
+# Returns the given property from the given section
+# @section: Section name in the config.cfg
+# @prop: Property name in the particular section
+# @response: Value of the property
+def get_config_prop(section, prop):
+    return get_prop(section, prop)

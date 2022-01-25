@@ -10,15 +10,15 @@ import sys
 import unittest
 import json
 sys.path.append("../../main")
-from service import submit_job_notify, copy, roll_back_dataset, search, update
+from service import submit_job_notify, get_config_prop, copy, roll_back_dataset, search, update
 from model import FilterBuilder, UpdateCriteriaBuilder, Types, Operators, QueryOperators
 
 #Testing variables
-batchAppJCLDataset = "BEKHI01.TEST4Z.BATCHAPP.JCL(CUSTSEQ)"
-mainDataset = "BEKHI01.TEST4Z.BATCHAPP.CUSTIN"
-copyDataset = "BEKHI01.TEST4Z.BATCHAPP.CUSTIN2"
-copybook = "BEKHI01.TEST4Z.BATCHAPP.COPY(CUSTREC)"
-searchFilters = [
+batch_app_jcl_dataset = ".TEST4Z.BATCHAPP.JCL(CUSTSEQ)"
+main_dataset = ".TEST4Z.BATCHAPP.CUSTIN"
+copy_dataset = ".TEST4Z.BATCHAPP.CUSTIN2"
+copybook = ".TEST4Z.BATCHAPP.COPY(CUSTREC)"
+search_filters = [
     FilterBuilder()
       .field_name("TOTAL-CHECKS")
       .field_operator(Operators.EQUAL.value)
@@ -56,21 +56,28 @@ filter_criteria = FilterBuilder().field_name("ACCOUNT-NUMBER").field_operator(Op
 class UpdateSample(unittest.TestCase):
     def test_job_submit(self):
         print("\n---------------Update Sample---------------")
-        assert copy(mainDataset, copyDataset) == True
+        HLQ = get_config_prop("TEST4Z", "hlq")
+        global main_dataset, copy_dataset, copybook, batch_app_jcl_dataset
+        main_dataset = HLQ + main_dataset
+        copy_dataset = HLQ + copy_dataset
+        copybook = HLQ + copybook
+        batch_app_jcl_dataset = HLQ + batch_app_jcl_dataset
 
-        assert submit_job_notify(batchAppJCLDataset) == "CC 0000"
+        assert copy(main_dataset, copy_dataset) == True
 
-        search_result = search(mainDataset, copybook, searchFilters)
+        assert submit_job_notify(batch_app_jcl_dataset) == "CC 0000"
+
+        search_result = search(main_dataset, copybook, search_filters)
         assert len(search_result) == 13
 
-        assert roll_back_dataset(copyDataset, mainDataset) == True
+        assert roll_back_dataset(copy_dataset, main_dataset) == True
 
-        assert update(mainDataset, copybook, update_criteria, filter_criteria) == 1
+        assert update(main_dataset, copybook, update_criteria, filter_criteria) == 1
 
-        assert submit_job_notify(batchAppJCLDataset) == "CC 0000"
+        assert submit_job_notify(batch_app_jcl_dataset) == "CC 0000"
 
-        search_result2 = search(mainDataset, copybook, searchFilters)
+        search_result2 = search(main_dataset, copybook, search_filters)
         assert len(search_result2) == 14
 
-        assert roll_back_dataset(copyDataset, mainDataset) == True
+        assert roll_back_dataset(copy_dataset, main_dataset) == True
         print("----------------Completed----------------")
