@@ -1,3 +1,5 @@
+# Test4z http client for the API requests
+
 import requests
 import json
 from utility import get_test4z_connection

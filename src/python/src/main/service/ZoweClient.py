@@ -1,3 +1,5 @@
+# ZOWE and Z/OSMF client for the job submission
+
 import sys
 sys.path.append("../../main")
 from zowe.zos_console_for_zowe_sdk import Console

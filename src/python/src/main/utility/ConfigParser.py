@@ -1,4 +1,5 @@
-# Parser for the config file, returns the required values.
+# Parser for the config file
+
 import configparser
 config = configparser.ConfigParser()
 config.read('../../../config.cfg')

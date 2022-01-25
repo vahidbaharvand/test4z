@@ -1,3 +1,5 @@
+# Helper class for building the proper filter for search.
+
 from .Filter import Filter
 class FilterBuilder(object):
 

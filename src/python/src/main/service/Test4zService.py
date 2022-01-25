@@ -1,4 +1,5 @@
 # Test4z Endpoint access methods
+
 import sys
 import json
 sys.path.append("../../main")
@@ -15,9 +16,9 @@ def submit_job_notify(dataset):
 # @inputDataset - Source dataset - the dataset which you want to copy
 # @outputDataset - Target dataset - the result/output dataset
 # @response - boolean success of the request
-def copy(inputDataset, outputDataset):
+def copy(input_dataset, output_dataset):
     try:
-        response = post_request("/copy", json.dumps(CopyModel(inputDataset, outputDataset).__dict__))
+        response = post_request("/copy", json.dumps(CopyModel(input_dataset, output_dataset).__dict__))
         if ('data' in response):
             print("Copy was successful")
             return True
@@ -30,9 +31,9 @@ def copy(inputDataset, outputDataset):
 # @inputDataset - Source dataset - the dataset which you have the backup data
 # @outputDataset - Target dataset - the dataset which you want to override data from the source dataset (original dataset)
 # @response - boolean success of the request
-def roll_back_dataset(inputDataset, outputDataset):
+def roll_back_dataset(input_dataset, output_dataset):
     try:
-        response = post_request("/copy", json.dumps(CopyModel(inputDataset, outputDataset).__dict__))
+        response = post_request("/copy", json.dumps(CopyModel(input_dataset, output_dataset).__dict__))
         if ('data' in response):
             print("Roll back was successful")
             return True
@@ -50,7 +51,7 @@ def roll_back_dataset(inputDataset, outputDataset):
 # @response: Records array
 def search(dataset, copybook, filters, limit=0, offset=0):
     try:
-        model = SearchModel(dataset, copybook, filters)
+        model = SearchModel(dataset, copybook, filters, limit, offset)
         response = post_request("/search", json.dumps(model, default = lambda x: x.__dict__))
         if ('Record' in response['data']):
             print("Search was successful")

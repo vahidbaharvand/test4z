@@ -1,3 +1,5 @@
+# Helper class for building the proper update criteria
+
 from .UpdateCriteria import UpdateCriteria
 class UpdateCriteriaBuilder(object):
 

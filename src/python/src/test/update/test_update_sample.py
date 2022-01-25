@@ -1,10 +1,11 @@
 """
-Copyright (c) 2021 Broadcom.
+Copyright (c) 2022 Broadcom.
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED
 FOR DETAILED INFORMATION ABOUT THIS TEST SUITE AND THE USE CASE, PLEASE CHECK THE readme.md
 
 Example test suite for Test4z update feature with Python
 """
+
 import sys
 import unittest
 import json
