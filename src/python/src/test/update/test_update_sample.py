@@ -56,38 +56,46 @@ filter_criteria = FilterBuilder().field_name("ACCOUNT-NUMBER").field_operator(Op
 
 class UpdateSample(unittest.TestCase, CustomAssertions):
     def setup_method(self, method):
+        # Retrieve HLQ from config property
         HLQ = get_config_prop("TEST4Z", "hlq")
         global main_dataset, copy_dataset, copybook, batch_app_jcl_dataset
         main_dataset = HLQ + main_dataset
         copy_dataset = HLQ + copy_dataset
         copybook = HLQ + copybook
         batch_app_jcl_dataset = HLQ + batch_app_jcl_dataset
-
+        # Take a backup of the main_dataset
         copy_result = copy(main_dataset, copy_dataset)
         self.assertRequestSuccessful(copy_result)
 
     def test_job_submit(self):
+        # Execute Batch Application to modify the main data set
         job = submit_job_notify(batch_app_jcl_dataset)
         self.assertJobSuccessful(job)
 
+        # Pick some customers using the given inputs and assert the number of the customers
         search_result = search(main_dataset, copybook, search_filters)
         self.assertRequestSuccessful(search_result)
         assert len(search_result['data']['Record']) == 13
 
+        # Roll back the changes by replacing the main data set with the copy data set
         roll_back_result = roll_back_dataset(copy_dataset, main_dataset)
         self.assertRequestSuccessful(roll_back_result)
 
+        # Update a particular record in the dataset and assert the number of the customers affected
         update_result = update(main_dataset, copybook, update_criteria, filter_criteria)
         self.assertRequestSuccessful(update_result)
         assert update_result['data']['recordsChanged'] == 1
 
+        # Execute Batch Application again to modify the main data set
         job2 = submit_job_notify(batch_app_jcl_dataset)
         self.assertJobSuccessful(job2)
 
+        # Pick some customers using the given inputs and assert the number of the customers
         search_result2 = search(main_dataset, copybook, search_filters)
         self.assertRequestSuccessful(search_result2)
         assert len(search_result2['data']['Record']) == 14
 
     def teardown_method(self, method):
-        roll_back_result2 = roll_back_dataset(copy_dataset, main_dataset)
-        self.assertRequestSuccessful(roll_back_result2)
+        # Roll back the main dataset
+        roll_back_result = roll_back_dataset(copy_dataset, main_dataset)
+        self.assertRequestSuccessful(roll_back_result)
