@@ -6,5 +6,5 @@ class CustomAssertions:
             raise AssertionError(response)
 
     def assertJobSuccessful(self, response):
-        if not response['retcode'] == "CC 0000":
-            raise AssertionError("Expected return code CC 0000 but received: " + response['retcode'])
+        if not response['retcode'] in ["CC 0000", "CC 0004"]:
+            raise AssertionError("Expected return code CC 0000 or CC 0004 but received: " + response['retcode'])
