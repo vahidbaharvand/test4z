@@ -19,12 +19,7 @@ def submit_job_notify(dataset):
 # @response - boolean success of the request
 def copy(input_dataset, output_dataset):
     try:
-        response = post_request("/copy", json.dumps(CopyModel(input_dataset, output_dataset).__dict__))
-        if ('data' in response):
-            print("Copy was successful")
-            return True
-        else:
-            raise Exception(response)
+        return post_request("/copy", json.dumps(CopyModel(input_dataset, output_dataset).__dict__))
     except Exception:
         raise Exception("Unexpected error")
 
@@ -33,15 +28,11 @@ def copy(input_dataset, output_dataset):
 # @outputDataset - Target dataset - the dataset which you want to override data from the source dataset (original dataset)
 # @response - boolean success of the request
 def roll_back_dataset(input_dataset, output_dataset):
-    try:
-        response = post_request("/copy", json.dumps(CopyModel(input_dataset, output_dataset).__dict__))
-        if ('data' in response):
-            print("Roll back was successful")
-            return True
-        else:
-            raise Exception(response)
-    except Exception:
-        raise Exception("Unexpected error")
+     try:
+         return copy(input_dataset, output_dataset)
+     except Exception:
+         raise Exception("Unexpected error")
+
 
 # Search the dataset using the filter query
 # @dataset: Input dataset to perform search
@@ -53,12 +44,7 @@ def roll_back_dataset(input_dataset, output_dataset):
 def search(dataset, copybook, filters, limit=0, offset=0):
     try:
         model = SearchModel(dataset, copybook, filters, limit, offset)
-        response = post_request("/search", json.dumps(model, default = lambda x: x.__dict__))
-        if ('Record' in response['data']):
-            print("Search was successful")
-            return response['data']['Record']
-        else:
-            raise Exception(response)
+        return post_request("/search", json.dumps(model, default = lambda x: x.__dict__))
     except Exception:
         raise Exception("Unexpected error")
 
@@ -71,12 +57,7 @@ def search(dataset, copybook, filters, limit=0, offset=0):
 def update(dataset, copybook, update_criteria, filter_criteria):
     try:
         model = UpdateModel(dataset, copybook, update_criteria, filter_criteria)
-        response = post_request("/update", json.dumps(model, default = lambda x: x.__dict__))
-        if ('recordsChanged' in response['data']):
-                print("Update was successful")
-                return response['data']['recordsChanged']
-        else:
-            raise Exception(response)
+        return post_request("/update", json.dumps(model, default = lambda x: x.__dict__))
     except Exception:
         raise Exception("Unexpected error")
 

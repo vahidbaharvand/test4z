@@ -17,6 +17,7 @@ def post_request(method, payload):
             verify=SESSION["ssl_verification"],
             timeout=SESSION["timeout"]
         )
+        print("Request completed")
         return response.json()
     except Exception:
             raise Exception("Unexpected error")

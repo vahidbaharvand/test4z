@@ -25,7 +25,7 @@ def zowe_submit_job_notify(dataset):
             check_success=is_polling_successful
         )
         print ("Return code: " + result['retcode'])
-        return result['retcode']
+        return result
     except TimeoutException:
         raise Exception("Timeout value exceeded by the function. Job return code could not be retrieved")
     except Exception:

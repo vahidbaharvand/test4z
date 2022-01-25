@@ -12,6 +12,7 @@ import json
 sys.path.append("../../main")
 from service import submit_job_notify, get_config_prop, copy, roll_back_dataset, search, update
 from model import FilterBuilder, UpdateCriteriaBuilder, Types, Operators, QueryOperators
+from utility import CustomAssertions
 
 #Testing variables
 batch_app_jcl_dataset = ".TEST4Z.BATCHAPP.JCL(CUSTSEQ)"
@@ -53,7 +54,7 @@ update_criteria = [
 
 filter_criteria = FilterBuilder().field_name("ACCOUNT-NUMBER").field_operator(Operators.EQUAL.value).field_value(["123456000003"]).field_type(Types.CHARACTER.value).build()
 
-class UpdateSample(unittest.TestCase):
+class UpdateSample(unittest.TestCase, CustomAssertions):
     def test_job_submit(self):
         print("\n---------------Update Sample---------------")
         HLQ = get_config_prop("TEST4Z", "hlq")
@@ -62,22 +63,32 @@ class UpdateSample(unittest.TestCase):
         copy_dataset = HLQ + copy_dataset
         copybook = HLQ + copybook
         batch_app_jcl_dataset = HLQ + batch_app_jcl_dataset
+        #-------------------------------------
+        copy_result = copy(main_dataset, copy_dataset)
+        self.assertRequestSuccessful(copy_result)
 
-        assert copy(main_dataset, copy_dataset) == True
-
-        assert submit_job_notify(batch_app_jcl_dataset) == "CC 0000"
+        job = submit_job_notify(batch_app_jcl_dataset)
+        self.assertJobSuccessful(job)
 
         search_result = search(main_dataset, copybook, search_filters)
-        assert len(search_result) == 13
+        self.assertRequestSuccessful(search_result)
+        assert len(search_result['data']['Record']) == 13
 
-        assert roll_back_dataset(copy_dataset, main_dataset) == True
+        roll_back_result = roll_back_dataset(copy_dataset, main_dataset)
+        self.assertRequestSuccessful(roll_back_result)
 
-        assert update(main_dataset, copybook, update_criteria, filter_criteria) == 1
+        update_result = update(main_dataset, copybook, update_criteria, filter_criteria)
+        self.assertRequestSuccessful(update_result)
+        assert update_result['data']['recordsChanged'] == 1
 
-        assert submit_job_notify(batch_app_jcl_dataset) == "CC 0000"
+        job2 = submit_job_notify(batch_app_jcl_dataset)
+        self.assertJobSuccessful(job2)
 
         search_result2 = search(main_dataset, copybook, search_filters)
-        assert len(search_result2) == 14
+        self.assertRequestSuccessful(search_result2)
+        assert len(search_result2['data']['Record']) == 14
 
-        assert roll_back_dataset(copy_dataset, main_dataset) == True
+        roll_back_result2 = roll_back_dataset(copy_dataset, main_dataset)
+        self.assertRequestSuccessful(roll_back_result2)
+
         print("----------------Completed----------------")
