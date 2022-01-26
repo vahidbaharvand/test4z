@@ -7,7 +7,6 @@ Example test suite for Test4z update feature with Python
 """
 
 import sys
-import json
 import pytest
 sys.path.append("../../main")
 from service import submit_job_notify, get_config_prop, copy, roll_back_dataset, search, update
