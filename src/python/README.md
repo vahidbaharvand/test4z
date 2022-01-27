@@ -1,8 +1,8 @@
 # Test4z Python Samples
 
-This repository contains the UpdateSample of Test4z in Python and the tests are written using Pytest framework.
+This repository contains the Test4z Update Sample in Python. The tests are written using the Pytest framework.
 
-# Installations
+# Installing
 
 1. Download Python from https://www.python.org/downloads
 
@@ -10,9 +10,7 @@ This repository contains the UpdateSample of Test4z in Python and the tests are 
 
 3. Install pip from https://pip.pypa.io/en/stable/installation
 
-4. Restart the command prompt
-
-5. Install the following dependencies:
+4. Restart the command prompt. Install the following dependencies:
 
         ZOWE:
             pip install zowe
@@ -32,8 +30,7 @@ This repository contains the UpdateSample of Test4z in Python and the tests are 
       
 # Configuration 
 
-1. Open the **src/python/config.cfg** file and fill in the parameters.
-
+1. Open the **src/python/config.cfg** file and enter the required parameters.
 
 # Run Test4z Python Samples
 
