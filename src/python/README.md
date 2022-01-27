@@ -6,19 +6,29 @@ This repository contains the UpdateSample of Test4z in Python and the tests are 
 
 1. Download Python from https://www.python.org/downloads
 
-2. Install pip from https://pip.pypa.io/en/stable/installation
+2. Restart the command prompt
 
-3. Install **PyTest** testing framework:
- 
-      pip install –U pytest pytest-html
+3. Install pip from https://pip.pypa.io/en/stable/installation
 
-4. Install **requests** to handle the API requests:
- 
-      pip install –U requests
+4. Restart the command prompt
 
-5. Install **json validator**:
- 
-      pip install –U jsonschema 
+5. Install the following dependencies:
+
+        ZOWE:
+            pip install zowe
+
+        PyTest:
+            pip install pytest pytest-html
+          
+        Requests:
+            pip install requests
+         
+        Polling:      
+            pip install polling
+            
+        Json schema:
+            pip install jsonschema
+         
       
 # Configuration 
 
