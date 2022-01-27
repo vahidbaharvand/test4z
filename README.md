@@ -66,7 +66,7 @@ Once you have met the prerequisites, follow these steps to install the Test4z Sa
     
    The uploadFiles script adds our test data sets, copybooks and batch application to the z/OS. The Test4z sample tests will use this data to perform the tests. We recommend you use the Zowe Explorer to verify this content was copied to your z/OS system.
 
-9. **After installing the Test4z Sample project and copying the JCL test files to your z/OS system, you can start running the sample tests provided in this project. Follow these steps to run the sample tests in Typescript. Click [here](./src/python/src/README.md) to run the the sample tests in Python.**
+9. **After installing the Test4z Sample project and copying the JCL test files to your z/OS system, you can start running the sample tests provided in this project. Follow these steps to run the sample tests in Typescript. Click [here](./src/python/README.md) to run the the sample tests in Python.**
 
 ## Run Test4z Test Samples
 After installing the Test4z Sample project and copying the JCL test files to your z/OS system, you can start running the sample tests provided in this project. Follow these steps:
