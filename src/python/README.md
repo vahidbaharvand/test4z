@@ -36,8 +36,8 @@ This repository contains the Test4z Update Sample in Python. The tests are writt
 
 1. Navigate to the test directory
 
-      cd src/python/src/test/update 
+        cd src/python/src/test/update 
 
 2. Run the test using the following command:
 
-      pytest -s  test_update_sample.py 
+        pytest -s  test_update_sample.py 
