@@ -8,7 +8,10 @@ This repository contains the Test4z Update Sample in Python. The tests are writt
 
 2. Restart the command prompt
 
-3. Install pip from https://pip.pypa.io/en/stable/installation
+3. Make sure you have pip installed by executing the following command:
+
+        pip --version
+    If it's not installed, install pip from https://pip.pypa.io/en/stable/installation
 
 4. Restart the command prompt. Install the following dependencies:
 
