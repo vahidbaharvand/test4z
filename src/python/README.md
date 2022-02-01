@@ -13,23 +13,9 @@ This repository contains the Test4z Update Sample in Python. The tests are writt
         pip --version
     If it's not installed, install pip from https://pip.pypa.io/en/stable/installation
 
-4. Restart the command prompt. Install the following dependencies:
+4. Restart the command prompt. Execute the following command to install the dependencies:
 
-        ZOWE:
-            pip install zowe
-
-        PyTest:
-            pip install pytest pytest-html
-          
-        Requests:
-            pip install requests
-         
-        Polling:      
-            pip install polling
-            
-        Json schema:
-            pip install jsonschema
-         
+        python -m pip install -r requirements.txt        
       
 # Configuration 
 
