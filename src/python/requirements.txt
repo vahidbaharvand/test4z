@@ -1,0 +1,5 @@
+zowe
+pytest
+requests
+polling
+jsonschema

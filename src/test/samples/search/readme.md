@@ -49,11 +49,11 @@ You can find detailed information about the batch application used in the sample
         "searchQuery": 
         [
             {
-                "FieldName": "string",
-                "FieldOperator": "=, !=, >, >=, <, <=",
-                "FieldType": "Character, Number, Text, Packed, Hexidecimal",
-                "FieldValue": "string",
-                "QueryOperator": "AND", "OR"
+                "fieldName": "string",
+                "fieldOperator": "=, !=, >, >=, <, <=",
+                "fieldType": "Character, Number, Text, Packed, Hexidecimal",
+                "fieldValue": ["string"],
+                "queryOperator": "AND", "OR"
             }
         ]
     }
@@ -74,31 +74,31 @@ Name of a COBOL copy book that interprets the data set you want to search throug
 ### "searchQuery"
 Array of one or more conditions used to search the data set for records that match these conditions.
 
-### "FieldName"
+### "fieldName"
 
     string
 
 Name of a field that is part of a record.
 
-### "FieldOperator"
+### "fieldOperator"
 
     =, !=, >, >=, <, <=
 
 Comparison operator. 
 
-### "FieldType"
+### "fieldType"
 
-    Character, Number, Text, Packed, Hexidecimal
+    Character, Number, Text, Packed, Hexadecimal
 
 Data type of the field.
 
-### "FieldValue"
+### "fieldValue"
 
-    string
+    [string]
 
-Value of the field.
+Values of the field.
 
-### "QueryOperator"
+### "queryOperator"
 Combine two filter criteria in your query
 
 * AND - The AND operator specifies that the results must satisfy all the filter condition.
@@ -130,17 +130,17 @@ In this example, the query returns results for all records that satisfy either o
         "searchQuery": 
         [		
             {
-                "FieldName": "TOTAL-CHECKS",
-                "FieldOperator": ">",
-                "FieldType": "Number",
-                "FieldValue": "30",
-                "QueryOperator": "AND", 
+                "fieldName": "TOTAL-CHECKS",
+                "fieldOperator": ">",
+                "fieldType": "Number",
+                "fieldValue": "30",
+                "queryOperator": "AND"
             },
             {
-                "FieldName": "REORDER-DATE",
-                "FieldOperator": "=",
-                "FieldType": "Number",
-                "FieldValue": "Current_date" 
+                "fieldName": "REORDER-DATE",
+                "fieldOperator": "=",
+                "fieldType": "Number",
+                "fieldValue": "Current_date" 
             }
         ]
     }
@@ -158,31 +158,31 @@ In this example, the query returns results for all records that satisfy either o
     "searchQuery": 
     [
         {
-            "FieldName": "TOTAL-CHECKS",
-            "FieldOperator": ">",
-            "FieldType": "Number",
-            "FieldValue": "30",
-            "QueryOperator": "AND", 
+            "fieldName": "TOTAL-CHECKS",
+            "fieldOperator": ">",
+            "fieldType": "Number",
+            "fieldValue": "30",
+            "queryOperator": "AND"
         },
         {
-            "FieldName": "REORDER-DATE",
-            "FieldOperator": "=",
-            "FieldType": "Number",
-            "FieldValue": "Current_date",
-            "QueryOperator": "OR",
+            "fieldName": "REORDER-DATE",
+            "fieldOperator": "=",
+            "fieldType": "Number",
+            "fieldValue": "Current_date",
+            "queryOperator": "OR"
         }
         {
-            "FieldName": "ACTUAL-CHECKS",
-            "FieldOperator": "<",
-            "FieldType": "Number",
-            "FieldValue": "5",
-            "QueryOperator": "AND", 
+            "fieldName": "ACTUAL-CHECKS",
+            "fieldOperator": "<",
+            "fieldType": "Number",
+            "fieldValue": "5",
+            "queryOperator": "AND"
         },
         {
-            "FieldName": "REORDER-DATE",
-            "FieldOperator": "=",
-            "FieldType": "Number",
-            "FieldValue": "Current_date",
+            "fieldName": "REORDER-DATE",
+            "fieldOperator": "=",
+            "fieldType": "Number",
+            "fieldValue": "Current_date"
         }
     ]
     }
@@ -200,24 +200,24 @@ In this example, the query returns results for all records that satisfy both of 
         "searchQuery": 
         [
             {
-                "FieldName": "TOTAL-CHECKS",
-                "FieldOperator": ">",
-                "FieldType": "Number",
-                "FieldValue": "30",
-                "QueryOperator": "AND", 
+                "fieldName": "TOTAL-CHECKS",
+                "fieldOperator": ">",
+                "fieldType": "Number",
+                "fieldValue": "30",
+                "queryOperator": "AND"
             },
             {
-                "FieldName": "ACTUAL-CHECKS",
-                "FieldOperator": "<",
-                "FieldType": "Number",
-                "FieldValue": "5",
-                "QueryOperator": "OR", 
+                "fieldName": "ACTUAL-CHECKS",
+                "fieldOperator": "<",
+                "fieldType": "Number",
+                "fieldValue": "5",
+                "queryOperator": "OR"
             },
             {
-                "FieldName": "REORDER-DATE",
-                "FieldOperator": "=",
-                "FieldType": "Number",
-                "FieldValue": "Current_date",
+                "fieldName": "REORDER-DATE",
+                "fieldOperator": "=",
+                "fieldType": "Number",
+                "fieldValue": "Current_date"
             }
         ]
     }

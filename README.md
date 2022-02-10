@@ -6,6 +6,7 @@ Test4z leverages z/OSMF and Zowe to facilitate batch application testing for fla
 * **Search** through records in a data set.
 * Create a **snapshot** of a data set.
 * **Update** records in a dataset
+* **Copy** data set with filter, skip, limit possibilities
 
 ## Getting Started
 Follow these instructions to set up the Test4z Sample project on your local machine.
@@ -43,25 +44,29 @@ Once you have met the prerequisites, follow these steps to install the Test4z Sa
    2. "test4z" property. Fill in thespecific information of the server where your Test4z service is running. 
         * Optional - Test4z is shipped with a self signed certificate. The rejectUnauthorized property is false by default. You may need to set it true depending on your installation. Ask your mainframe administrator for this information.
 
-5. Enter your Mainframe username and password by executing the following commands in the given order through the Terminal (enter the command, hit the enter and the terminal will ask your information):
-         
+5. Enter your Mainframe username and password by executing the following commands in the given order through the Terminal (enter the command and press Enter. You will be prompted to enter the information information):
+     
          ZOSMF profile:
          
          npx zowe config set --secure profiles.lpar1.profiles.zosmf.properties.user 
          npx zowe config set --secure profiles.lpar1.profiles.zosmf.properties.password
        
+6. (Optional). _**You can skip this step if you will run only the Python samples**_. Enter again your Mainframe username and password by executing the following commands in the given order through the Terminal (enter the command and press Enter. You will be prompted to enter the information information):
+
          Test4z profile:
         
          npx zowe config set --secure profiles.lpar1.profiles.test4z.properties.user 
          npx zowe config set --secure profiles.lpar1.profiles.test4z.properties.password 
          
-6. Open the **src/setup-files/Batch-files/SetupBatchAppDS.sh** file and fill in the required parameters listed at the beginning of the file. **Important:** Make sure you use UPPER CASE for HLQ and Job Card fields.
+7. Open the **src/setup-files/Batch-files/SetupBatchAppDS.sh** file and fill in the required parameters listed at the beginning of the file. **Important:** Make sure you use UPPER CASE for HLQ and Job Card fields.
     
-7. Copy the JCL test files to your z/OS system by executing the following command (**make sure all the necessary fields are filled as mentioned in the previous step**):
+8. Copy the JCL test files to your z/OS system by executing the following command (**make sure all the necessary fields are filled as mentioned in the previous step**):
     
         npm run uploadFiles
     
    The uploadFiles script adds our test data sets, copybooks and batch application to the z/OS. The Test4z sample tests will use this data to perform the tests. We recommend you use the Zowe Explorer to verify this content was copied to your z/OS system.
+
+9. **After installing the Test4z Sample project and copying the JCL test files to your z/OS system, you can start running the sample tests provided in this project. Follow these steps to run the sample tests in Typescript. Click [here](./src/python/README.md) to run the the sample tests in Python.**
 
 ## Run Test4z Test Samples
 After installing the Test4z Sample project and copying the JCL test files to your z/OS system, you can start running the sample tests provided in this project. Follow these steps:
@@ -115,6 +120,9 @@ The modified records are then used by the sample test case.
     
     Click [here](https://docs.zowe.org/stable/web_help/docs/zowe_zos-files_delete_data-set.html)
     for more information about the ZOWE data set delete command.
-
+   
+  4. Exclude feature of the Compare endpoint requires a certain File Master Plus version 
+   12.0 and the required PTF installation. Make sure you have the required PTF to be able to use the field exclusion.
+  
 ## License
-See LICENSE.md.
+Visit [LICENSE.md](LICENSE.md) file.
