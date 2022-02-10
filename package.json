@@ -8,7 +8,8 @@
     "test:win32": "set PATH=.\\node_modules\\ibm_db\\installer\\clidriver\\bin;.\\node_modules\\ibm_db\\installer\\clidriver\\bin\\amd64.VC12.CRT;.\\node_modules\\ibm_db\\installer\\clidriver\\bin\\icc64;.\\node_modules\\ibm_db\\installer\\clidriver\\lib;.\\node_modules\\.bin;%PATH% && set LIB=.\\node_modules\\ibm_db\\installer\\clidriver\\bin;.\\node_modules\\ibm_db\\installer\\clidriver\\bin\\icc64;.\\node_modules\\ibm_db\\installer\\clidriver\\lib;%LIB% && jest",
     "test:default": "jest",
     "uploadFiles": "cd src/setup-files/Batch-files && sh SetupBatchAppDS.sh",
-    "uploadDb2Files": "cd src/setup-files/Db2-files && sh SetupBatchAppDb2.sh"
+    "uploadDb2Files": "cd src/setup-files/Db2-files && sh SetupBatchAppDb2.sh",
+    "diagnostic": "npx ts-node src/test/DiagnosticCheck.ts"
   },
   "repository": {
     "type": "git",
