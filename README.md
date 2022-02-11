@@ -68,6 +68,21 @@ Once you have met the prerequisites, follow these steps to install the Test4z Sa
 
 9. **After installing the Test4z Sample project and copying the JCL test files to your z/OS system, you can start running the sample tests provided in this project. Follow these steps to run the sample tests in Typescript. Click [here](./src/python/README.md) to run the the sample tests in Python.**
 
+10. Before running the samples, check Test4z Service health status by executing the following command:
+
+        npm run diagnostic
+        
+    It controls the 7 main permissions that enable you to run the Test4z Samples
+    1. **dsCreate**         : Checks whether the user ID has sufficient rights to create data sets
+    2. **commandExec**      : Checks whether the user ID has sufficient rights to execute TSO commands through TSOCMD
+    3. **fmpLoadLibExist**  : Checks whether the load library exists
+    4. **fmpLoadLibValid**  : Checks whether the load library belongs to File Master Plus
+    5. **fmpLoadLibAccess** : Checks whether the user ID has sufficient rights to access the load library
+    6. **dsDelete**         : Checks whether the user ID has sufficient rights to delete existing data sets. If the user ID does not have sufficient rights to delete data sets, the Test4z APIs execute, but do not delete the temporary data sets created during execution
+    7. **dsWrite**          : Checks whether the user ID has sufficient rights to write records in existing data sets
+                              
+    Possible values for these controls : Pass, Fail and Skip
+
 ## Run Test4z Test Samples
 After installing the Test4z Sample project and copying the JCL test files to your z/OS system, you can start running the sample tests provided in this project. Follow these steps:
 
