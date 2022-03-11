@@ -20,25 +20,67 @@ copy_dataset = "TEST4Z.BATCHAPP.CUSTIN2"
 copybook = "TEST4Z.BATCHAPP.COPY(CUSTREC)"
 search_filters = [
     FilterBuilder()
-      .field_name("TOTAL-CHECKS")
-      .field_operator(Operators.EQUAL.value)
-      .field_value(["30","50","80"])
+      .field_name("ACTUAL-CHECKS")
+      .field_operator(Operators.LESSOREQUAL.value)
+      .field_value(["3"])
       .field_type(Types.NUMBER.value)
       .query_operator(QueryOperators.AND.value)
     .build(),
     FilterBuilder()
-      .field_name("ACTUAL-CHECKS")
-      .field_operator(Operators.LESSOREQUAL.value)
-      .field_value(["3","5","8"])
+      .field_name("TOTAL-CHECKS")
+      .field_operator(Operators.EQUAL.value)
+      .field_value(["30"])
       .field_type(Types.NUMBER.value)
       .query_operator(QueryOperators.AND.value)
     .build(),
     FilterBuilder()
       .field_name("PRODUCT-TYPE")
       .field_operator(Operators.EQUAL.value)
-      .field_value(["C","P"])
+      .field_value(["S,C"])
       .field_type(Types.CHARACTER.value)
-    .build()
+      .query_operator(QueryOperators.OR.value)
+    .build(),
+    FilterBuilder()
+      .field_name("ACTUAL-CHECKS")
+      .field_operator(Operators.LESSOREQUAL.value)
+      .field_value(["5"])
+      .field_type(Types.NUMBER.value)
+      .query_operator(QueryOperators.AND.value)
+    .build(),
+    FilterBuilder()
+      .field_name("TOTAL-CHECKS")
+      .field_operator(Operators.EQUAL.value)
+      .field_value(["50"])
+      .field_type(Types.NUMBER.value)
+      .query_operator(QueryOperators.AND.value)
+    .build(),
+    FilterBuilder()
+      .field_name("PRODUCT-TYPE")
+      .field_operator(Operators.EQUAL.value)
+      .field_value(["S,C"])
+      .field_type(Types.CHARACTER.value)
+      .query_operator(QueryOperators.OR.value)
+    .build(),
+    FilterBuilder()
+      .field_name("ACTUAL-CHECKS")
+      .field_operator(Operators.LESSOREQUAL.value)
+      .field_value(["8"])
+      .field_type(Types.NUMBER.value)
+      .query_operator(QueryOperators.AND.value)
+    .build(),
+    FilterBuilder()
+      .field_name("TOTAL-CHECKS")
+      .field_operator(Operators.EQUAL.value)
+      .field_value(["80"])
+      .field_type(Types.NUMBER.value)
+      .query_operator(QueryOperators.AND.value)
+    .build(),
+    FilterBuilder()
+      .field_name("PRODUCT-TYPE")
+      .field_operator(Operators.EQUAL.value)
+      .field_value(["S,C"])
+      .field_type(Types.CHARACTER.value)
+    .build(),
 ]
 
 update_criteria = [
@@ -46,12 +88,12 @@ update_criteria = [
         .field_name("PRODUCT-TYPE")
         .field_operator(Operators.LIKE.value)
         .field_type(Types.CHARACTER.value)
-        .filter_value("S")
+        .filter_value("B")
         .target_value("C")
     .build()
 ]
 
-filter_criteria = FilterBuilder().field_name("ACCOUNT-NUMBER").field_operator(Operators.EQUAL.value).field_value(["123456000003"]).field_type(Types.CHARACTER.value).build()
+filter_criteria = FilterBuilder().field_name("ACCOUNT-NUMBER").field_operator(Operators.EQUAL.value).field_value(["123456000068"]).field_type(Types.CHARACTER.value).build()
 
 @pytest.fixture
 def yield_fixture():
@@ -78,7 +120,7 @@ def test_with_yield_fixture(yield_fixture):
     # Pick some customers using the given inputs and assert the number of the customers
     search_result = search(main_dataset, copybook, search_filters)
     assert request_successful(search_result)
-    assert len(search_result['data']['Record']) == 13
+    assert len(search_result['data']['Record']) == 24
 
     # Roll back the changes by replacing the main data set with the copy data set
     roll_back_result = roll_back_dataset(copy_dataset, main_dataset)
@@ -96,4 +138,4 @@ def test_with_yield_fixture(yield_fixture):
     # Pick some customers using the given inputs and assert the number of the customers
     search_result2 = search(main_dataset, copybook, search_filters)
     assert request_successful(search_result2)
-    assert len(search_result2['data']['Record']) == 14
+    assert len(search_result2['data']['Record']) == 25
