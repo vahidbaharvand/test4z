@@ -15,29 +15,72 @@ let copybook = "TEST4Z.BATCHAPP.COPY(CUSTREC)";
 //Filter creation for the search request
 const searchFilters: InstanceType<typeof Filter>[] = [
     new FilterBuilder()
-            .Fieldname("TOTAL-CHECKS")
-            .Operator(Operators.EQUAL)
-            .Value(["30","50","80"])
-            .Type(Types.NUMBER)
-            .QueryOperator(QueryOperators.AND)
+        .Fieldname("ACTUAL-CHECKS")
+        .Operator(Operators.LESSOREQUAL)
+        .Value(["3"])
+        .Type(Types.NUMBER)
+        .QueryOperator(QueryOperators.AND)
         .build(),
     new FilterBuilder()
-            .Fieldname("ACTUAL-CHECKS")
-            .Operator(Operators.LESSOREQUAL)
-            .Value(["3","5","8"])
-            .Type(Types.NUMBER)
-            .QueryOperator(QueryOperators.AND)
+        .Fieldname("TOTAL-CHECKS")
+        .Operator(Operators.EQUAL)
+        .Value(["30"])
+        .Type(Types.NUMBER)
+        .QueryOperator(QueryOperators.AND)
         .build(),
     new FilterBuilder()
-            .Fieldname("PRODUCT-TYPE")
-            .Operator(Operators.EQUAL)
-            .Value(["C,P"])
-            .Type(Types.CHARACTER)
-        .build()];
+        .Fieldname("PRODUCT-TYPE")
+        .Operator(Operators.EQUAL)
+        .Value(["S,C"])
+        .Type(Types.CHARACTER)
+        .QueryOperator(QueryOperators.OR)
+        .build(),
+    new FilterBuilder()
+        .Fieldname("ACTUAL-CHECKS")
+        .Operator(Operators.LESSOREQUAL)
+        .Value(["5"])
+        .Type(Types.NUMBER)
+        .QueryOperator(QueryOperators.AND)
+        .build(),
+    new FilterBuilder()
+        .Fieldname("TOTAL-CHECKS")
+        .Operator(Operators.EQUAL)
+        .Value(["50"])
+        .Type(Types.NUMBER)
+        .QueryOperator(QueryOperators.AND)
+        .build(),
+    new FilterBuilder()
+        .Fieldname("PRODUCT-TYPE")
+        .Operator(Operators.EQUAL)
+        .Value(["S,C"])
+        .Type(Types.CHARACTER)
+        .QueryOperator(QueryOperators.OR)
+        .build(),
+    new FilterBuilder()
+        .Fieldname("ACTUAL-CHECKS")
+        .Operator(Operators.LESSOREQUAL)
+        .Value(["8"])
+        .Type(Types.NUMBER)
+        .QueryOperator(QueryOperators.AND)
+        .build(),
+    new FilterBuilder()
+        .Fieldname("TOTAL-CHECKS")
+        .Operator(Operators.EQUAL)
+        .Value(["80"])
+        .Type(Types.NUMBER)
+        .QueryOperator(QueryOperators.AND)
+        .build(),
+    new FilterBuilder()
+        .Fieldname("PRODUCT-TYPE")
+        .Operator(Operators.EQUAL)
+        .Value(["S,C"])
+        .Type(Types.CHARACTER)
+        .build(),
+];
 
 //Update input creation
-const updateCriteria = new UpdateCriteria( "PRODUCT-TYPE", Operators.LIKE, Types.CHARACTER, "S","C");
-const filterCriteria: InstanceType<typeof Filter> = new FilterBuilder().Fieldname("ACCOUNT-NUMBER").Operator(Operators.EQUAL).Value(["123456000003"]).Type(Types.CHARACTER)
+const updateCriteria = new UpdateCriteria( "PRODUCT-TYPE", Operators.LIKE, Types.CHARACTER, "B","C");
+const filterCriteria: InstanceType<typeof Filter> = new FilterBuilder().Fieldname("ACCOUNT-NUMBER").Operator(Operators.EQUAL).Value(["123456000068"]).Type(Types.CHARACTER)
     .build();
 var updateModel: InstanceType<typeof UpdateModel>;
 
@@ -75,7 +118,7 @@ describe("UPDATE-TEST - Batchapp validation", function () {
         expect(searchResult).toBeSuccessfulResult(); //Verify the API Request was successful
         const records = searchResult.data;
         //Verify the number of the records changed after the batch application
-        expect(records.Record.length).toBe(13);
+        expect(records.Record.length).toBe(24);
         const todaysDate = new Date().toISOString().slice(0, 10).replace(/[-]/g, ""); //Get today's date in YYYYMMDD format
         expect(TestHelpers.getNotificationDates(records)).toBeNotificationDatesEqualTo(todaysDate); //Verify all the notification dates were updated today for the selected records
 
@@ -98,7 +141,7 @@ describe("UPDATE-TEST - Batchapp validation", function () {
         expect(searchResult2).toBeSuccessfulResult(); //Verify the API Request was successful
         const records2 = searchResult2.data;
         //Verify the number of the records changed after the batch application (it is +1 after the Update performed above)
-        expect(records2.Record.length).toBe(14);
+        expect(records2.Record.length).toBe(25);
         expect(TestHelpers.getNotificationDates(records2)).toBeNotificationDatesEqualTo(todaysDate); //Verify all the notification dates were updated.
     });
 
