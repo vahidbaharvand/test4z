@@ -111,7 +111,7 @@ describe("SEARCH-TEST - Batchapp validation", function () {
         expect(searchResult2).toBeSuccessfulResult(); //Verify the API Request was successful
         const records2 = searchResult2.data;
         expect(records2).toBeHaveTestData(); //Verify the API Result's Data contains records to test.
-        expect(records.Record.length).toBe(24); //Verify number of the records
+        expect(records2.Record.length).toBe(24); //Verify number of the records
         const todaysDate = new Date().toISOString().slice(0, 10).replace(/[-]/g, ""); //Get today's date in YYYYMMDD format
         expect(TestHelpers.getNotificationDates(records2)).toBeNotificationDatesEqualTo(todaysDate); //Verify all the notification dates were updated.
     });
