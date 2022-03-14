@@ -112,8 +112,12 @@ You can search, compare, copy, and update sequential and VSAM files using Test4z
 
 For the samples, a batch application has been created and is submitted using Zowe. The batch application performs the following steps:
 
-1. Filter out records from the main dataset based on the TOTAL_CHECKS, ACTUAL_CHECKS, and PRODUCT_TYPE parameters. The records are filtered according to the following criteria:
-((TOTAL_CHECKS=30 **AND** ACTUAL_CHECKS<=3) **OR** (TOTAL_CHECKS=50 **AND** ACTUAL_CHECKS<=5) **OR** (TOTAL_CHECKS=80 **AND** ACTUAL_CHECKS<=8)) **AND** PRODUCT_TYPE IN ('S','C')
+1. Filter out records from the main dataset based on the **TOTAL_CHECKS**, **ACTUAL_CHECKS**, and **PRODUCT_TYPE** parameters. The records are filtered according to the following criteria:
+          
+       (ACTUAL-CHECKS <= 3 AND TOTAL-CHECKS = 30 AND (PRODUCT-TYPE='S' OR PRODUCT-TYPE='C)) OR
+       (ACTUAL-CHECKS <= 5 AND TOTAL-CHECKS = 50 AND (PRODUCT-TYPE='S' OR PRODUCT-TYPE='C)) OR
+       (ACTUAL-CHECKS <= 8 AND TOTAL-CHECKS = 80 AND (PRODUCT-TYPE='S' OR PRODUCT-TYPE='C))
+      
 2. Modify the filtered records by setting the notification date to the current (today) date.
 The modified records are then used by the sample test case.
 
