@@ -15,25 +15,67 @@ let copybook = "TEST4Z.BATCHAPP.COPY(CUSTREC)";
 //Filter creation for the search request
 const searchFilters: InstanceType<typeof Filter>[] = [
     new FilterBuilder()
-            .Fieldname("TOTAL-CHECKS")
-            .Operator(Operators.EQUAL)
-            .Value(["30","50","80"])
-            .Type(Types.NUMBER)
-            .QueryOperator(QueryOperators.AND)
+        .Fieldname("ACTUAL-CHECKS")
+        .Operator(Operators.LESSOREQUAL)
+        .Value(["3"])
+        .Type(Types.NUMBER)
+        .QueryOperator(QueryOperators.AND)
         .build(),
     new FilterBuilder()
-            .Fieldname("ACTUAL-CHECKS")
-            .Operator(Operators.LESSOREQUAL)
-            .Value(["3","5","8"])
-            .Type(Types.NUMBER)
-            .QueryOperator(QueryOperators.AND)
+        .Fieldname("TOTAL-CHECKS")
+        .Operator(Operators.EQUAL)
+        .Value(["30"])
+        .Type(Types.NUMBER)
+        .QueryOperator(QueryOperators.AND)
         .build(),
     new FilterBuilder()
-            .Fieldname("PRODUCT-TYPE")
-            .Operator(Operators.EQUAL)
-            .Value(["C","P"])
-            .Type(Types.CHARACTER)
-        .build()
+        .Fieldname("PRODUCT-TYPE")
+        .Operator(Operators.EQUAL)
+        .Value(["S,C"])
+        .Type(Types.CHARACTER)
+        .QueryOperator(QueryOperators.OR)
+        .build(),
+    new FilterBuilder()
+        .Fieldname("ACTUAL-CHECKS")
+        .Operator(Operators.LESSOREQUAL)
+        .Value(["5"])
+        .Type(Types.NUMBER)
+        .QueryOperator(QueryOperators.AND)
+        .build(),
+    new FilterBuilder()
+        .Fieldname("TOTAL-CHECKS")
+        .Operator(Operators.EQUAL)
+        .Value(["50"])
+        .Type(Types.NUMBER)
+        .QueryOperator(QueryOperators.AND)
+        .build(),
+    new FilterBuilder()
+        .Fieldname("PRODUCT-TYPE")
+        .Operator(Operators.EQUAL)
+        .Value(["S,C"])
+        .Type(Types.CHARACTER)
+        .QueryOperator(QueryOperators.OR)
+        .build(),
+    new FilterBuilder()
+        .Fieldname("ACTUAL-CHECKS")
+        .Operator(Operators.LESSOREQUAL)
+        .Value(["8"])
+        .Type(Types.NUMBER)
+        .QueryOperator(QueryOperators.AND)
+        .build(),
+    new FilterBuilder()
+        .Fieldname("TOTAL-CHECKS")
+        .Operator(Operators.EQUAL)
+        .Value(["80"])
+        .Type(Types.NUMBER)
+        .QueryOperator(QueryOperators.AND)
+        .build(),
+    new FilterBuilder()
+        .Fieldname("PRODUCT-TYPE")
+        .Operator(Operators.EQUAL)
+        .Value(["S,C"])
+        .Type(Types.CHARACTER)
+        .build(),
 ];
 
 describe("SNAPSHOT-TEST - Batchapp validation", function () {
@@ -66,6 +108,7 @@ describe("SNAPSHOT-TEST - Batchapp validation", function () {
         expect(updatedDataset).toBeSuccessfulResult(); //Verify the API Request was successful
         const updatedRecords = updatedDataset.data;
         expect(updatedRecords).toBeHaveTestData(); //Verify the API Result's Data contains records to test.
+        expect(updatedRecords.Record.length).toBe(24); //Verify number of the records
 
 
         expect(updatedRecords).not.toEqual(oldRecords); //Verify updated records are different than the old records.

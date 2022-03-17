@@ -36,7 +36,7 @@ $$JOBCARD
 //SYSUT15  DD   UNIT=VIO,SPACE=(CYL,(5,3))
 //SYSUDUMP DD   SYSOUT=*
 //SYSPUNCH DD   SYSOUT=*
-//SYSMDECK DD  DSN=&HLQ..TEST4Z.BATCHAPP.JCL(SYSMDECK),DISP=SHR
+//SYSMDECK DD  UNIT=SYSALLDA
 /*
 //* ------------------------------------------------------------------
 //*                       LINK-EDIT                      -------------

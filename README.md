@@ -68,6 +68,24 @@ Once you have met the prerequisites, follow these steps to install the Test4z Sa
 
 9. **After installing the Test4z Sample project and copying the JCL test files to your z/OS system, you can start running the sample tests provided in this project. Follow these steps to run the sample tests in Typescript. Click [here](./src/python/README.md) to run the the sample tests in Python.**
 
+10. Before running the samples, check Test4z Service health status by executing the following command:
+
+        npm run diagnostic
+        
+    It controls the 7 main permissions that enable you to run the Test4z Samples
+    
+    | Permission | Description |
+    | --- | --- |  
+    **dsCreate**         | Checks whether the user ID has sufficient rights to create data sets
+    **commandExec**      | Checks whether the user ID has sufficient rights to execute TSO commands through TSOCMD
+    **fmpLoadLibExist**  | Checks whether the load library exists
+    **fmpLoadLibValid**  | Checks whether the load library belongs to File Master Plus
+    **fmpLoadLibAccess** | Checks whether the user ID has sufficient rights to access the load library
+    **dsDelete**         | Checks whether the user ID has sufficient rights to delete existing data sets. If the user ID does not have sufficient rights to delete data sets, the Test4z APIs execute, but do not delete the temporary data sets created during execution
+    **dsWrite**          | Checks whether the user ID has sufficient rights to write records in existing data sets
+                              
+    **Possible values for these controls : Pass, Fail and Skip**
+
 ## Run Test4z Test Samples
 After installing the Test4z Sample project and copying the JCL test files to your z/OS system, you can start running the sample tests provided in this project. Follow these steps:
 
@@ -94,8 +112,12 @@ You can search, compare, copy, and update sequential and VSAM files using Test4z
 
 For the samples, a batch application has been created and is submitted using Zowe. The batch application performs the following steps:
 
-1. Filter out records from the main dataset based on the TOTAL_CHECKS, ACTUAL_CHECKS, and PRODUCT_TYPE parameters. The records are filtered according to the following criteria:
-((TOTAL_CHECKS=30 **AND** ACTUAL_CHECKS<=3) **OR** (TOTAL_CHECKS=50 **AND** ACTUAL_CHECKS<=5) **OR** (TOTAL_CHECKS=80 **AND** ACTUAL_CHECKS<=8)) **AND** PRODUCT_TYPE IN ('S','C')
+1. Filter out records from the main dataset based on the **TOTAL_CHECKS**, **ACTUAL_CHECKS**, and **PRODUCT_TYPE** parameters. The records are filtered according to the following criteria:
+          
+       (ACTUAL-CHECKS <= 3 AND TOTAL-CHECKS = 30 AND (PRODUCT-TYPE='S' OR PRODUCT-TYPE='C)) OR
+       (ACTUAL-CHECKS <= 5 AND TOTAL-CHECKS = 50 AND (PRODUCT-TYPE='S' OR PRODUCT-TYPE='C)) OR
+       (ACTUAL-CHECKS <= 8 AND TOTAL-CHECKS = 80 AND (PRODUCT-TYPE='S' OR PRODUCT-TYPE='C))
+      
 2. Modify the filtered records by setting the notification date to the current (today) date.
 The modified records are then used by the sample test case.
 
