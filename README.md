@@ -39,25 +39,21 @@ Once you have met the prerequisites, follow these steps to install the Test4z Sa
 
         npm install
         
-4. Open the zowe.config.json file and enter the following parameters. Ask your mainframe administrator for the specific information.
-   1. "zosmf" property. Fill in your ZOSMF specific information.
-   2. "test4z" property. Fill in thespecific information of the server where your Test4z service is running. 
-        * Optional - Test4z is shipped with a self signed certificate. The rejectUnauthorized property is false by default. You may need to set it true depending on your installation. Ask your mainframe administrator for this information.
-
-5. Enter your Mainframe username and password by executing the following commands in the given order through the Terminal (enter the command and press Enter. You will be prompted to enter the information information):
-     
-         ZOSMF profile:
+4. Open the zowe.config.json file and fill in the ZOSMF specific information to the "zosmf" profile scope. Ask your mainframe administrator for the information.
+         
+         Execute the following commands through the Terminal:
          
          npx zowe config set --secure profiles.lpar1.profiles.zosmf.properties.user 
-         npx zowe config set --secure profiles.lpar1.profiles.zosmf.properties.password
-       
-6. (Optional). _**You can skip this step if you will run only the Python samples**_. Enter again your Mainframe username and password by executing the following commands in the given order through the Terminal (enter the command and press Enter. You will be prompted to enter the information information):
+         npx zowe config set --secure profiles.lpar1.profiles.zosmf.properties.password    
+    
+5. _**(Optional). You can skip this step if you will run only the Python samples**_. Open the zowe.config.json file and fill in your Test4z specific information to the "test4z" profile scope. Ask your mainframe administrator for the information. 
+**Test4z is shipped with a self signed certificate. The rejectUnauthorized property is false by default.**
 
-         Test4z profile:
+         Execute the following commands through the Terminal:
         
          npx zowe config set --secure profiles.lpar1.profiles.test4z.properties.user 
-         npx zowe config set --secure profiles.lpar1.profiles.test4z.properties.password 
-         
+         npx zowe config set --secure profiles.lpar1.profiles.test4z.properties.password   
+  
 7. Open the **src/setup-files/Batch-files/SetupBatchAppDS.sh** file and fill in the required parameters listed at the beginning of the file. **Important:** Make sure you use UPPER CASE for HLQ and Job Card fields.
     
 8. Copy the JCL test files to your z/OS system by executing the following command (**make sure all the necessary fields are filled as mentioned in the previous step**):
