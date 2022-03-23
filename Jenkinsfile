@@ -54,12 +54,12 @@ pipeline
 
                 // Set secure parameters and credentials picked up from jenkins credential store
                 withCredentials([usernamePassword(credentialsId: "zosmf_profile1", usernameVariable: 'ZOWE_OPT_USER', passwordVariable: 'ZOWE_OPT_PASSWORD')]) {
-                    sh "cd test4z && npx zowe config set --secure profiles.lpar1.profiles.zosmf.properties.user ${USERNAME}"
-                    sh "cd test4z && npx zowe config set --secure profiles.lpar1.profiles.zosmf.properties.password ${PASSWORD}"
+                    // sh "cd test4z && npx zowe config set --secure profiles.lpar1.profiles.zosmf.properties.user ${USERNAME}"
+                    // sh "cd test4z && npx zowe config set --secure profiles.lpar1.profiles.zosmf.properties.password ${PASSWORD}"
                 }
                 withCredentials([usernamePassword(credentialsId: "zosmf_profile1", usernameVariable: 'ZOWE_OPT_USER', passwordVariable: 'ZOWE_OPT_PASSWORD')]){
-                    sh "cd test4z && npx zowe config set --secure profiles.lpar1.profiles.test4z.properties.user ${USERNAME}"
-                    sh "cd test4z && npx zowe config set --secure profiles.lpar1.profiles.test4z.properties.password ${PASSWORD}"
+                    // sh "cd test4z && npx zowe config set --secure profiles.lpar1.profiles.test4z.properties.user ${USERNAME}"
+                    // sh "cd test4z && npx zowe config set --secure profiles.lpar1.profiles.test4z.properties.password ${PASSWORD}"
         		}   
             }
                
