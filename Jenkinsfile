@@ -1,5 +1,8 @@
 pipeline
 {
+	agent {
+        label 'test4z_sonar'
+    }
 	parameters {
         string(name: 'TEST_NAME', defaultValue: 'searchSlickoil', description: 'Name of test')
         string(name: 'ZOSMF_PORT', defaultValue: '1443', description: 'The z/OSMF server port.')
