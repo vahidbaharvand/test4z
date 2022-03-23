@@ -1,7 +1,7 @@
 pipeline
 {
 	agent {
-        label 'test4z_sonar'
+        label 'argo-agent-2'
     }
 	parameters {
         string(name: 'TEST_NAME', defaultValue: 'searchSlickoil', description: 'Name of test')
