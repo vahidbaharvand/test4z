@@ -26,11 +26,11 @@ pipeline
         //         }
         // }
 
-        stage('Install project dependencies') {
-            steps {
-                sh ''' cd test4z && npm install '''
-                  }
-        }
+        // stage('Install project dependencies') {
+        //     steps {
+        //         sh ''' cd test4z && npm install '''
+        //           }
+        // }
 
         // Set zowe config  of all related parameters
         stage('Set project configurations') {
