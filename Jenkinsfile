@@ -18,17 +18,17 @@ pipeline
     }
     //agent {label 'test4z_sonar'}
 	stages {
-        // stage('Clone Test4z project') {
-        //     steps {
-        //         bat "del /f /s /q test4z"
-        //         bat "rd /s /q test4z"
-        //         bat "git clone --branch SlickOilBatch https://github.com/BroadcomMFD/test4z.git"
-        //         }
-        // }
+        stage('Clone Test4z project') {
+            steps {
+                sh "del /f /s /q test4z"
+                sh "rd /s /q test4z"
+                sh "git clone --branch SlickOilBatch https://github.com/BroadcomMFD/test4z.git"
+                }
+        }
 
         stage('Install project dependencies') {
             steps {
-                bat ''' cd test4z && npm install '''
+                sh ''' cd test4z && npm install '''
                   }
         }
 
@@ -37,36 +37,36 @@ pipeline
             steps {
                 // Set not secured parameters for zosmf profile 
                 // Values are picked from the parameters to zowe.config.json
-                bat "cd test4z && npx zowe config set profiles.lpar1.profiles.zosmf.properties.host ${ZOSMF_HOST} "
-                bat " cd test4z && npx zowe config set profiles.lpar1.profiles.zosmf.properties.port ${ZOSMF_PORT} "
+                sh "cd test4z && npx zowe config set profiles.lpar1.profiles.zosmf.properties.host ${ZOSMF_HOST} "
+                sh " cd test4z && npx zowe config set profiles.lpar1.profiles.zosmf.properties.port ${ZOSMF_PORT} "
                 
                 // Set not secured parameters for test4z profile
-                bat "cd test4z && npx zowe config set profiles.lpar1.profiles.test4z.properties.host ${TEST4Z_HOST} "
-                bat "cd test4z && npx zowe config set profiles.lpar1.profiles.test4z.properties.protocol ${TEST4Z_PROTOCOL} "
-                bat "cd test4z && npx zowe config set profiles.lpar1.profiles.test4z.properties.type ${TEST4Z_TYPE} "
-                bat "cd test4z && npx zowe config set profiles.lpar1.profiles.test4z.properties.port ${TEST4Z_PORT} "
-                bat "cd test4z && npx zowe config set profiles.lpar1.profiles.test4z.properties.basePath ${TEST4Z_BASEPATH} "
-                bat "cd test4z && npx zowe config set profiles.lpar1.profiles.test4z.properties.strictSSL ${TEST4Z_STRICTSSL} "
-                bat "cd test4z && npx zowe config set profiles.lpar1.profiles.test4z.properties.hlq ${TEST4Z_HLQ} "
-                bat "cd test4z && npx zowe config set profiles.lpar1.profiles.test4z.properties.rejectUnauthorized ${TEST4Z_REJECTUNAUTHORIZED} "
+                sh "cd test4z && npx zowe config set profiles.lpar1.profiles.test4z.properties.host ${TEST4Z_HOST} "
+                sh "cd test4z && npx zowe config set profiles.lpar1.profiles.test4z.properties.protocol ${TEST4Z_PROTOCOL} "
+                sh "cd test4z && npx zowe config set profiles.lpar1.profiles.test4z.properties.type ${TEST4Z_TYPE} "
+                sh "cd test4z && npx zowe config set profiles.lpar1.profiles.test4z.properties.port ${TEST4Z_PORT} "
+                sh "cd test4z && npx zowe config set profiles.lpar1.profiles.test4z.properties.basePath ${TEST4Z_BASEPATH} "
+                sh "cd test4z && npx zowe config set profiles.lpar1.profiles.test4z.properties.strictSSL ${TEST4Z_STRICTSSL} "
+                sh "cd test4z && npx zowe config set profiles.lpar1.profiles.test4z.properties.hlq ${TEST4Z_HLQ} "
+                sh "cd test4z && npx zowe config set profiles.lpar1.profiles.test4z.properties.rejectUnauthorized ${TEST4Z_REJECTUNAUTHORIZED} "
 
                 
 
                 // Set secure parameters and credentials picked up from jenkins credential store
                 withCredentials([usernamePassword(credentialsId: "zosmf_profile", usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                    bat "cd test4z && npx zowe config set --secure profiles.lpar1.profiles.zosmf.properties.user ${USERNAME}"
-                    bat "cd test4z && npx zowe config set --secure profiles.lpar1.profiles.zosmf.properties.password ${PASSWORD}"
+                    sh "cd test4z && npx zowe config set --secure profiles.lpar1.profiles.zosmf.properties.user ${USERNAME}"
+                    sh "cd test4z && npx zowe config set --secure profiles.lpar1.profiles.zosmf.properties.password ${PASSWORD}"
                 }
                 withCredentials([usernamePassword(credentialsId: "test4z_profile", usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
-                    bat "cd test4z && npx zowe config set --secure profiles.lpar1.profiles.test4z.properties.user ${USERNAME}"
-                    bat "cd test4z && npx zowe config set --secure profiles.lpar1.profiles.test4z.properties.password ${PASSWORD}"
+                    sh "cd test4z && npx zowe config set --secure profiles.lpar1.profiles.test4z.properties.user ${USERNAME}"
+                    sh "cd test4z && npx zowe config set --secure profiles.lpar1.profiles.test4z.properties.password ${PASSWORD}"
         		}   
             }
                
 		}
 		stage('Run test') {
             steps {
-                bat "cd test4z && npm run test ${TEST_NAME}.test.ts"
+                sh "cd test4z && npm run test ${TEST_NAME}.test.ts"
             }
 		}	
 	}
