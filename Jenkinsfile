@@ -53,21 +53,22 @@ pipeline
                 
 
                 // Set secure parameters and credentials picked up from jenkins credential store
-                withCredentials([usernamePassword(credentialsId: "zosmf_profile1", usernameVariable: 'ZOWE_OPT_USER', passwordVariable: 'ZOWE_OPT_PASSWORD')]) {
-                    sh "cd test4z && npx zowe config set profiles.lpar1.profiles.zosmf.properties.user ${ZOWE_OPT_USER}"
-                    sh "cd test4z && npx zowe config set profiles.lpar1.profiles.zosmf.properties.password ${ZOWE_OPT_PASSWORD}"
+                withCredentials([usernamePassword(credentialsId: "zosmf_profile", usernameVariable: 'ZOWE_OPT_USER', passwordVariable: 'ZOWE_OPT_PASSWORD')]) {
+                    // sh "cd test4z && npx zowe config set profiles.lpar1.profiles.zosmf.properties.user ${ZOWE_OPT_USER}"
+                    // sh "cd test4z && npx zowe config set profiles.lpar1.profiles.zosmf.properties.password ${ZOWE_OPT_PASSWORD}"
+					sh "cd test4z && npm run test ${TEST_NAME}.test.ts"
                 }
-                withCredentials([usernamePassword(credentialsId: "zosmf_profile1", usernameVariable: 'ZOWE_OPT_USER', passwordVariable: 'ZOWE_OPT_PASSWORD')]){
-                    sh "cd test4z && npx zowe config set profiles.lpar1.profiles.test4z.properties.user ${ZOWE_OPT_USER}"
-                    sh "cd test4z && npx zowe config set profiles.lpar1.profiles.test4z.properties.password ${ZOWE_OPT_PASSWORD}"
-        		}   
+                // withCredentials([usernamePassword(credentialsId: "zosmf_profile1", usernameVariable: 'ZOWE_OPT_USER', passwordVariable: 'ZOWE_OPT_PASSWORD')]){
+                //     sh "cd test4z && npx zowe config set profiles.lpar1.profiles.test4z.properties.user ${ZOWE_OPT_USER}"
+                //     sh "cd test4z && npx zowe config set profiles.lpar1.profiles.test4z.properties.password ${ZOWE_OPT_PASSWORD}"
+        		// }   
             }
                
 		}
-		stage('Run test') {
-            steps {
-                sh "cd test4z && npm run test ${TEST_NAME}.test.ts"
-            }
-		}	
+		// stage('Run test') {
+        //     steps {
+        //         sh "cd test4z && npm run test ${TEST_NAME}.test.ts"
+        //     }
+		// }	
 	}
 }
