@@ -1,7 +1,7 @@
 pipeline
 {
 	agent {
-        label 'argo-agent-2'
+        label 'test4z_integration'
     }
 	parameters {
         string(name: 'TEST_NAME', defaultValue: 'searchSlickoil', description: 'Name of test')
