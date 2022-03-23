@@ -1,7 +1,7 @@
 pipeline
 {
 	agent {
-        label 'argo-agent-2'
+        label 'test4z_sonar'
     }
 	parameters {
         string(name: 'TEST_NAME', defaultValue: 'searchSlickoil', description: 'Name of test')
@@ -20,8 +20,8 @@ pipeline
 	stages {
         stage('Clone Test4z project') {
             steps {
-                bat "del /f /s /q test4z"
-                bat "rd /s /q test4z"
+                //bat "del /f /s /q test4z"
+                //bat "rd /s /q test4z"
                 bat "git clone https://github.com/BroadcomMFD/test4z.git"
                 }
         }
