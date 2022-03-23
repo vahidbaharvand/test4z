@@ -58,8 +58,8 @@ pipeline
                 //     // sh "cd test4z && npx zowe config set profiles.lpar1.profiles.zosmf.properties.password ${ZOWE_OPT_PASSWORD}"
 					
                 // }
-                withCredentials([usernamePassword(credentialsId: "test4z_profile", usernameVariable: 'ZOWE_OPT_USER', passwordVariable: 'ZOWE_OPT_PASSWORD')]){
-                	//sh "cd test4z && npx zowe config set profiles.lpar1.profiles.test4z.properties.user ${USERNAME}"
+                withCredentials([usernamePassword(credentialsId: "test4z_profile1", usernameVariable: 'ZOWE_OPT_USER', passwordVariable: 'ZOWE_OPT_PASSWORD')]){
+                	//sh "cd test4z && npx zowe config set profiles.lpar1.profiles.test4z.properties.user ${ZOWE_OPT_USER}"
                     //sh "cd test4z && npx zowe config set profiles.lpar1.profiles.test4z.properties.password ${PASSWORD}"
 				    sh "cd test4z && npm run test ${TEST_NAME}.test.ts"
         		}   
