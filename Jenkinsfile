@@ -62,7 +62,7 @@ pipeline
                 //     sh "cd test4z && npx zowe config set profiles.lpar1.profiles.test4z.properties.user ${USERNAME}"
                 //     sh "cd test4z && npx zowe config set profiles.lpar1.profiles.test4z.properties.password ${PASSWORD}"
 				sh "cd test4z && npm run test ${TEST_NAME}.test.ts"
-        		// }   
+        		}   
             }
                
 		}
