@@ -3,14 +3,14 @@
     "profiles": {
         "lpar1": {
             "properties": {
-                "host": ""
+                "host": "ca32.lvn.broadcom.net"
             },
             "profiles": {
                 "zosmf": {
                     "type": "zosmf",
                     "properties": {
-                        "port": 0,
-                        "host": ""
+                        "port": 1443,
+                        "host": "usilca32.lvn.broadcom.net"
                     },
                     "secure": [
                         "user",
@@ -20,13 +20,13 @@
                 "test4z": {
                     "type": "test4z",
                     "properties": {
-                        "host": "",
+                        "host": "ca32.lvn.broadcom.net",
                         "protocol": "https",
                         "type": "basic",
-                        "port": 0,
+                        "port": 6400,
                         "basePath": "/api/v1/test4z",
                         "strictSSL": false,
-                        "hlq": "",
+                        "hlq": "PTCINCUB",
                         "rejectUnauthorized": false
                     },
                     "secure": [
