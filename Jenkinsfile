@@ -18,13 +18,13 @@ pipeline
     }
     //agent {label 'test4z_sonar'}
 	stages {
-        stage('Clone Test4z project') {
-            steps {
-                bat "del /f /s /q test4z"
-                bat "rd /s /q test4z"
-                bat "git clone --branch SlickOilBatch https://github.com/BroadcomMFD/test4z.git"
-                }
-        }
+        // stage('Clone Test4z project') {
+        //     steps {
+        //         bat "del /f /s /q test4z"
+        //         bat "rd /s /q test4z"
+        //         bat "git clone --branch SlickOilBatch https://github.com/BroadcomMFD/test4z.git"
+        //         }
+        // }
 
         stage('Install project dependencies') {
             steps {
