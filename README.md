@@ -54,17 +54,17 @@ Once you have met the prerequisites, follow these steps to install the Test4z Sa
          npx zowe config set --secure profiles.lpar1.profiles.test4z.properties.user 
          npx zowe config set --secure profiles.lpar1.profiles.test4z.properties.password   
   
-7. Open the **src/setup-files/Batch-files/SetupBatchAppDS.sh** file and fill in the required parameters listed at the beginning of the file. **Important:** Make sure you use UPPER CASE for HLQ and Job Card fields.
+6. Open the **src/setup-files/Batch-files/SetupBatchAppDS.sh** file and fill in the required parameters listed at the beginning of the file. **Important:** Make sure you use UPPER CASE for HLQ and Job Card fields.
     
-8. Copy the JCL test files to your z/OS system by executing the following command (**make sure all the necessary fields are filled as mentioned in the previous step**):
+7. Copy the JCL test files to your z/OS system by executing the following command (**make sure all the necessary fields are filled as mentioned in the previous step**):
     
         npm run uploadFiles
     
    The uploadFiles script adds our test data sets, copybooks and batch application to the z/OS. The Test4z sample tests will use this data to perform the tests. We recommend you use the Zowe Explorer to verify this content was copied to your z/OS system.
 
-9. **After installing the Test4z Sample project and copying the JCL test files to your z/OS system, you can start running the sample tests provided in this project. Follow these steps to run the sample tests in Typescript. Click [here](./src/python/README.md) to run the the sample tests in Python.**
+8. **After installing the Test4z Sample project and copying the JCL test files to your z/OS system, you can start running the sample tests provided in this project. Follow these steps to run the sample tests in Typescript. Click [here](./src/python/README.md) to run the the sample tests in Python.**
 
-10. Before running the samples, check Test4z Service health status by executing the following command:
+9. Before running the samples, check Test4z Service health status by executing the following command:
 
         npm run diagnostic
         
