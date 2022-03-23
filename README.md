@@ -39,14 +39,14 @@ Once you have met the prerequisites, follow these steps to install the Test4z Sa
 
         npm install
         
-4. Open the zowe.config.json file and fill in the ZOSMF specific information to the "zosmf" section. Ask your mainframe administrator for the information.
+4. Open the zowe.config.json file and fill in the "zosmf" profile section with the ZOSMF specific information. Ask your mainframe administrator for the information.
          
          Execute the following commands through the Terminal:
          
          npx zowe config set --secure profiles.lpar1.profiles.zosmf.properties.user 
          npx zowe config set --secure profiles.lpar1.profiles.zosmf.properties.password    
     
-5. _**(Optional). You can skip this step if you run only the Python samples**_. Open the zowe.config.json file and fill in your Test4z specific information to the "test4z" section. Ask your mainframe administrator for the information. 
+5. _**(Optional). You can skip this step if you run only the Python samples**_. Open the zowe.config.json file and fill in the the "test4z" profile section with the Test4z specific information. Ask your mainframe administrator for the information. 
 **Test4z is shipped with a self signed certificate. The rejectUnauthorized property is false by default.**
 
          Execute the following commands through the Terminal:
