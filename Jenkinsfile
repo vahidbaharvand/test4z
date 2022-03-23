@@ -22,7 +22,7 @@ pipeline
             steps {
                 // sh "rm /f /s /q test4z"
                 // sh "rd /s /q test4z"
-                sh "git clone --branch SlickOilBatch https://github.com/BroadcomMFD/test4z.git"
+                //sh "git clone --branch SlickOilBatch https://github.com/BroadcomMFD/test4z.git"
                 }
         }
 
