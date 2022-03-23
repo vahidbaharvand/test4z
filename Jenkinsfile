@@ -1,16 +1,16 @@
 pipeline
 {
 	parameters {
-        string(name: 'TEST_NAME', defaultValue: 'searchSample', description: 'Name of test')
-        string(name: 'ZOSMF_PORT', defaultValue: '0', description: 'The z/OSMF server port.')
-        string(name: 'ZOSMF_HOST', defaultValue: '', description: 'The z/OSMF server host name.')
-        string(name: 'TEST4Z_HOST', defaultValue: '', description: 'The Test4z server host.')
+        string(name: 'TEST_NAME', defaultValue: 'searchSlickoil', description: 'Name of test')
+        string(name: 'ZOSMF_PORT', defaultValue: '1443', description: 'The z/OSMF server port.')
+        string(name: 'ZOSMF_HOST', defaultValue: 'usilca31.lvn.broadcom.net', description: 'The z/OSMF server host name.')
+        string(name: 'TEST4Z_HOST', defaultValue: 'ca32.lvn.broadcom.net', description: 'The Test4z server host.')
         choice(name: 'TEST4Z_PROTOCOL', choices: ['http', 'https'], description: 'The protocol used')
         string(name: 'TEST4Z_TYPE', defaultValue: 'basic', description: 'The Test4z server type.')
-        string(name: 'TEST4Z_PORT', defaultValue: '0', description: 'The Test4z server port.')
+        string(name: 'TEST4Z_PORT', defaultValue: '6400', description: 'The Test4z server port.')
         string(name: 'TEST4Z_BASEPATH', defaultValue: '/api/v1/test4z', description: 'The Test4z basepath.')
         choice(name: 'TEST4Z_STRICTSSL', choices: ['true', 'false'], description: 'Strict SSL')
-        string(name: 'TEST4Z_HLQ', defaultValue: '', description: 'HLQ of the test4z batchapp sample at mainframe.')
+        string(name: 'TEST4Z_HLQ', defaultValue: 'PTCINCUB', description: 'HLQ of the test4z batchapp sample at mainframe.')
         choice(name: 'TEST4Z_REJECTUNAUTHORIZED', choices: ['true', 'false'], description: 'Reject self-signed certificates.')
     }
     //agent {label 'test4z_sonar'}
