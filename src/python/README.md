@@ -7,8 +7,6 @@ This repository contains the Test4z Update Sample in Python. The tests are writt
 
 # Installing
 
-1. Make sure you comp
-
 1. Download Python 3 from https://www.python.org/downloads
 
 2. Restart the command prompt
