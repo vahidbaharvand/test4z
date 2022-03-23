@@ -2,6 +2,9 @@
 
 This repository contains the Test4z Update Sample in Python. The tests are written using the Pytest framework.
 
+# Note
+**Before installing the Test4z Python samples, make sure that you set up the Test4z Sample project on your system. Click [here](/README.md) for more information**
+
 # Installing
 
 1. Download Python 3 from https://www.python.org/downloads
