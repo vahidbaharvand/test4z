@@ -13,7 +13,7 @@ pipeline
         string(name: 'TEST4Z_HLQ', defaultValue: '', description: 'HLQ of the test4z batchapp sample at mainframe.')
         choice(name: 'TEST4Z_REJECTUNAUTHORIZED', choices: ['true', 'false'], description: 'Reject self-signed certificates.')
     }
-    agent {label 'test4z_sonar'}
+    //agent {label 'test4z_sonar'}
 	stages {
         stage('Clone Test4z project') {
             steps {
@@ -34,18 +34,18 @@ pipeline
             steps {
                 // Set not secured parameters for zosmf profile 
                 // Values are picked from the parameters to zowe.config.json
-                bat "cd test4z && npx zowe config set profiles.lpar1.profiles.zosmf.properties.host usilca32.lvn.broadcom.net "
-                bat " cd test4z && npx zowe config set profiles.lpar1.profiles.zosmf.properties.port 1443 "
+                bat "cd test4z && npx zowe config set profiles.lpar1.profiles.zosmf.properties.host ${ZOSMF_HOST} "
+                bat " cd test4z && npx zowe config set profiles.lpar1.profiles.zosmf.properties.port ${ZOSMF_PORT} "
                 
                 // Set not secured parameters for test4z profile
-                bat "cd test4z && npx zowe config set profiles.lpar1.profiles.test4z.properties.host usilca32.lvn.broadcom.net "
-                bat "cd test4z && npx zowe config set profiles.lpar1.profiles.test4z.properties.protocol https "
-                bat "cd test4z && npx zowe config set profiles.lpar1.profiles.test4z.properties.type basic "
-                bat "cd test4z && npx zowe config set profiles.lpar1.profiles.test4z.properties.port 6400 "
-                bat "cd test4z && npx zowe config set profiles.lpar1.profiles.test4z.properties.basePath /api/vi/test4z "
-                bat "cd test4z && npx zowe config set profiles.lpar1.profiles.test4z.properties.strictSSL false "
-                bat "cd test4z && npx zowe config set profiles.lpar1.profiles.test4z.properties.hlq PTCINCUB "
-                bat "cd test4z && npx zowe config set profiles.lpar1.profiles.test4z.properties.rejectUnauthorized false "
+                bat "cd test4z && npx zowe config set profiles.lpar1.profiles.test4z.properties.host ${TEST4Z_HOST} "
+                bat "cd test4z && npx zowe config set profiles.lpar1.profiles.test4z.properties.protocol ${TEST4Z_PROTOCOL} "
+                bat "cd test4z && npx zowe config set profiles.lpar1.profiles.test4z.properties.type ${TEST4Z_TYPE} "
+                bat "cd test4z && npx zowe config set profiles.lpar1.profiles.test4z.properties.port ${TEST4Z_PORT} "
+                bat "cd test4z && npx zowe config set profiles.lpar1.profiles.test4z.properties.basePath ${TEST4Z_BASEPATH} "
+                bat "cd test4z && npx zowe config set profiles.lpar1.profiles.test4z.properties.strictSSL ${TEST4Z_STRICTSSL} "
+                bat "cd test4z && npx zowe config set profiles.lpar1.profiles.test4z.properties.hlq ${TEST4Z_HLQ} "
+                bat "cd test4z && npx zowe config set profiles.lpar1.profiles.test4z.properties.rejectUnauthorized ${TEST4Z_REJECTUNAUTHORIZED} "
 
                 
 
