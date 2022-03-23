@@ -1,7 +1,7 @@
 pipeline
 {
 	agent {
-        label 'test4z_integration'
+        label 'test4z_sonar'
     }
 	parameters {
         string(name: 'TEST_NAME', defaultValue: 'searchSlickoil', description: 'Name of test')
