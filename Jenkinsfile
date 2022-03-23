@@ -53,11 +53,11 @@ pipeline
                 
 
                 // Set secure parameters and credentials picked up from jenkins credential store
-                withCredentials([usernamePassword(credentialsId: "zosmf_profile", usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                withCredentials([usernamePassword(credentialsId: "zosmf_profile1", usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     sh "cd test4z && npx zowe config set --secure profiles.lpar1.profiles.zosmf.properties.user ${USERNAME}"
                     sh "cd test4z && npx zowe config set --secure profiles.lpar1.profiles.zosmf.properties.password ${PASSWORD}"
                 }
-                withCredentials([usernamePassword(credentialsId: "test4z_profile", usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
+                withCredentials([usernamePassword(credentialsId: "test4z_profile1", usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
                     sh "cd test4z && npx zowe config set --secure profiles.lpar1.profiles.test4z.properties.user ${USERNAME}"
                     sh "cd test4z && npx zowe config set --secure profiles.lpar1.profiles.test4z.properties.password ${PASSWORD}"
         		}   
