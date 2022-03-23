@@ -4,22 +4,24 @@ This repository contains the Test4z Update Sample in Python. The tests are writt
 
 # Installing
 
-1. Download Python from https://www.python.org/downloads
+1. Download Python 3 from https://www.python.org/downloads
 
 2. Restart the command prompt
 
 3. Make sure you have pip installed by executing the following command:
 
         pip --version
-    If it's not installed, install pip from https://pip.pypa.io/en/stable/installation
+    If it's not installed, install pip from https://pip.pypa.io/en/stable/installation, or from a reliable source
 
 4. Restart the command prompt. Execute the following command to install the dependencies:
 
-        python -m pip install -r requirements.txt        
+        python -m pip install -r requirements.txt
+   on macOS use python3 command instead of python as default may be an earlier version.
+
       
 # Configuration 
 
-1. Open the **src/python/config.cfg** file and enter the required parameters.
+1. Open the **src/python/config.cfg** file and enter the required parameters. TEST4Z host url must start with https://...
 
 # Run Test4z Python Samples
 
