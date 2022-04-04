@@ -19,15 +19,15 @@ describe('Dependent Jobs - Jobs are sequenced based on dependency', () => {
         TS4ZHRC = HLQ+"."+TS4ZHRC;
     });
     test('DSEQ001 - Test should submit 3 jobs and expected to return RC = 00 or 04', async () => {
-        const job1retCode: String = await Test4zService.submitJobUsingDataset(TS4ZJB1);
+        const job1retCode: String = await Test4zService.submitJobViaZOSMF(TS4ZJB1);
         expect(job1retCode).toMatch("0000|0004")
 
         // The job returns RC = 12, hence fails
-        const RCHighretCode: String = await Test4zService.submitJobUsingDataset(TS4ZHRC);
+        const RCHighretCode: String = await Test4zService.submitJobViaZOSMF(TS4ZHRC);
         expect(RCHighretCode).toMatch("0000|0004")
 
         // This job will not be executed due to failure of job - TS4ZHRC
-        const job2retCode: String = await Test4zService.submitJobUsingDataset(TS4ZJB2);
+        const job2retCode: String = await Test4zService.submitJobViaZOSMF(TS4ZJB2);
         expect(job2retCode).toMatch("0000|0004")
     })
 });

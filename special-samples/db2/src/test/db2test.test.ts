@@ -24,7 +24,7 @@ describe("DB2-TEST - Batchapp validation", function () {
 
     test("DB2001 - Testing the cobol batch application which modifies the db2 table", async function () {
         //Execute Batch Application to modify the records in the DB2 table.
-        const job = await Test4zService.submitJobUsingDataset(batchAppJCLDataset);
+        const job = await Test4zService.submitJobViaZOSMF(batchAppJCLDataset);
         expect(job).toMatch("0000|0004"); //Verify BatchApp JCL executed successfully
 
         const today = new Date().toISOString().slice(0, 10); //Get today's date in YYYY-MM-DD SQL format

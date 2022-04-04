@@ -108,7 +108,7 @@ describe("UPDATE-TEST - Batchapp validation", function () {
 
     test("UPDATE001 - Test using snapshot, job submit, search, update and roll-back-data", async function () {
         //Execute Batch Application to modify the main data set
-        const job = await Test4zService.submitJobUsingDataset(batchAppJCLDataset);
+        const job = await Test4zService.submitJobViaZOSMF(batchAppJCLDataset);
         expect(job).toBeSuccessful(); //Verify BatchApp JCL executed successfully
 
         //Pick some customers using the given inputs
@@ -131,7 +131,7 @@ describe("UPDATE-TEST - Batchapp validation", function () {
         expect(updateResult.data.recordsChanged).toBe(1);//Verify number of the records updated
 
         //Execute Batch Application to modify the main data set
-        const job2 = await Test4zService.submitJobUsingDataset(batchAppJCLDataset);
+        const job2 = await Test4zService.submitJobViaZOSMF(batchAppJCLDataset);
         expect(job2).toBeSuccessful(); //Verify the job submission was successful
 
         //Pick the same customers using the same inputs as used above,
