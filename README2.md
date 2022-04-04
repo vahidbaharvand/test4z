@@ -6,7 +6,7 @@ Open new terminal
 `npm install`
 *****
 
-`npx zowe config set profiles.lpar1.profiles.zosmf.properties.host <value>`
+`npx zowe config set profiles.lpar1.profiles.zosmf.properties.host`
 
 `npx zowe config set profiles.lpar1.profiles.zosmf.properties.port`
 
