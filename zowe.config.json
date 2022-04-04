@@ -10,7 +10,8 @@
                     "type": "zosmf",
                     "properties": {
                         "port": 0,
-                        "host": ""
+                        "host": "",
+                        "hlq": ""
                     },
                     "secure": [
                         "user",

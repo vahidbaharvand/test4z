@@ -59,6 +59,10 @@
                                                 "description": "The z/OSMF server port.",
                                                 "default": 443
                                             },
+                                            "hlq": {
+                                                "type": "string",
+                                                "description": "User HLQ information"
+                                            },
                                             "user": {
                                                 "type": "string",
                                                 "description": "Mainframe (z/OSMF) user name, which can be the same as your TSO login."

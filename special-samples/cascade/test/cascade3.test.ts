@@ -13,7 +13,7 @@ let TS4ZHRC = "TEST4Z.BATCHAPP.CASCADE(TS4ZHRC)";
 describe('Independent jobs - Test submits all 3 jobs sequentially', () => {
     beforeAll(async () => {
         //Retrieve HLQ from config property
-        const HLQ: any = await Test4zService.getProfileProp("hlq");
+        const HLQ: any = await Test4zService.getProfileProp("zosmf", "hlq");
         TS4ZJB1 = HLQ+"."+TS4ZJB1;
         TS4ZJB2 = HLQ+"."+TS4ZJB2;
         TS4ZHRC = HLQ+"."+TS4ZHRC;

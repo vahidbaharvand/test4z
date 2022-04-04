@@ -13,7 +13,7 @@ let copybook = "TEST4Z.BATCHAPP.COPY(CUSTREC)";
 describe("compare - Batchapp validation", function () {
     beforeAll(async () => {
         //Retrieve HLQ from config property
-        const HLQ: any = await Test4zService.getProfileProp("hlq");
+        const HLQ: any = await Test4zService.getProfileProp("test4z", "hlq");
         mainDataset = HLQ+"."+mainDataset;
         copyDataset = HLQ+"."+copyDataset;
         copybook = HLQ+"."+copybook;

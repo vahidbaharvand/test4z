@@ -85,7 +85,7 @@ var updateModel: InstanceType<typeof UpdateModel>;
 describe("UPDATE-TEST - Batchapp validation", function () {
     beforeAll(async () => {
         //Retrieve HLQ from config property
-        const HLQ: any = await Test4zService.getProfileProp("hlq");
+        const HLQ: any = await Test4zService.getProfileProp("test4z", "hlq");
         mainDataset = HLQ+"."+mainDataset;
         copyDataset = HLQ+"."+copyDataset;
         batchAppJCLDataset = HLQ+"."+batchAppJCLDataset;

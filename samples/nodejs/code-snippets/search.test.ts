@@ -31,7 +31,7 @@ const filters: InstanceType<typeof Filter>[] = [
 describe("SEARCH-TEST - Batchapp validation", function () {
     beforeAll(async () => {
         //Retrieve HLQ from config property
-        const HLQ: any = await Test4zService.getProfileProp("hlq");
+        const HLQ: any = await Test4zService.getProfileProp("test4z", "hlq");
         mainDataset = HLQ+"."+mainDataset;
         copybook = HLQ+"."+copybook;
     });
