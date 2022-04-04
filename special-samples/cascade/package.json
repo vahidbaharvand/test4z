@@ -5,8 +5,7 @@
   "author": "Broadcom",
   "scripts": {
     "test": "jest",
-    "setup": "cd setup && sh script.sh",
-    "diagnostic": "npx ts-node DiagnosticCheck.ts"
+    "setup": "cd setup && sh script.sh"
   },
   "repository": {
     "type": "git",
