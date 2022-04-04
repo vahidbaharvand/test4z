@@ -14,16 +14,16 @@ describe('Independent Jobs - Test submits all 3 jobs simultaneously ', () => {
     test.concurrent('CONCUR001 - The job is expected to return RC 00 or 04', async () => {
         const HLQ: any = await Test4zService.getProfileProp("hlq");
         const job2retCode: String = await Test4zService.sendJobZOSMF(HLQ+"."+TS4ZJB1);
-        expect(job2retCode).toBeSuccessful();
+        expect(job2retCode).toMatch("0000|0004")
     })
     test.concurrent('CONCUR002 - The job is expected to return RC 00 or 04 but returns RC 12 and hence fails', async () => {
         const HLQ: any = await Test4zService.getProfileProp("hlq");
         const job2retCode: String = await Test4zService.sendJobZOSMF(HLQ+"."+TS4ZHRC);
-        expect(job2retCode).toBeSuccessful();
+        expect(job2retCode).toMatch("0000|0004")
     })
     test.concurrent('CONCUR003 -The job is expected to return RC 00 or 04', async () => {
         const HLQ: any = await Test4zService.getProfileProp("hlq");
         const job2retCode: String = await Test4zService.sendJobZOSMF(HLQ+"."+TS4ZJB2);
-        expect(job2retCode).toBeSuccessful();
+        expect(job2retCode).toMatch("0000|0004")
     })
 });

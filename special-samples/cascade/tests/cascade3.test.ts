@@ -20,17 +20,17 @@ describe('Independent jobs - Test submits all 3 jobs sequentially', () => {
     });
     test('ISEQ001 - Expected to return RC 00 or 04 ', async () => {
         const job1retCode: String = await Test4zService.submitJobUsingDataset(TS4ZJB1);
-        expect(job1retCode).toBeSuccessful();
+        expect(job1retCode).toMatch("0000|0004")
     })
 
     //The job is expected to fail as it returns high RC = 12
     test('ISEQ002 - Expected to return RC 00 or 04 but returns RC 12', async () => {
         const jobRCHighretcode: String = await Test4zService.submitJobUsingDataset(TS4ZHRC);
-        expect(jobRCHighretcode).toBeSuccessful();
+        expect(jobRCHighretcode).toMatch("0000|0004")
     })
 
     test('ISEQ003 - Expected to return RC 00 or 04', async () => {
         const jobRCHighretcode: String = await Test4zService.submitJobUsingDataset(TS4ZJB2);
-        expect(jobRCHighretcode).toBeSuccessful();
+        expect(jobRCHighretcode).toMatch("0000|0004")
     })
 });
