@@ -10,6 +10,8 @@ Open new terminal
 
 `npx zowe config set profiles.lpar1.profiles.zosmf.properties.port`
 
+`npx zowe config set profiles.lpar1.profiles.test4z.properties.hlq`
+
 `npx zowe config set --secure profiles.lpar1.profiles.zosmf.properties.user`
  
 `npx zowe config set --secure profiles.lpar1.profiles.zosmf.properties.password`
@@ -48,16 +50,22 @@ run the following command for testing:
 ***
 PYTHON
 
+Open new terminal 
+
 run following: 
 
-    cd python/src/test/update/ 
+    cd samples/python/src/test/update/ 
 
 fill config.cfg
 
     pytest -s  test_update_sample.py 
 ------------
 
+Open new terminal 
 
+run following: 
+
+    cd special-samples/db2
 
 db2:
 
@@ -74,3 +82,9 @@ db2:
 `npx zowe config set --secure profiles.lpar1.profiles.db2.properties.user`
 
 `npx zowe config set --secure profiles.lpar1.profiles.db2.properties.password`
+
+edit /setup/script.sh
+
+run following command:
+
+`npm run setup`
