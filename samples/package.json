@@ -4,7 +4,7 @@
   "description": "Test samples repository for test4z",
   "author": "Broadcom",
   "scripts": {
-    "test": "jest",
+    "test": "cd  nodejs && jest",
     "setup": "cd setup && sh script.sh && cd ..",
     "diagnostic": "npx ts-node DiagnosticCheck.ts"
   },

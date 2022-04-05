@@ -10,7 +10,7 @@ Open new terminal
 
 `npx zowe config set profiles.lpar1.profiles.zosmf.properties.port`
 
-`npx zowe config set profiles.lpar1.profiles.test4z.properties.hlq`
+`npx zowe config set profiles.lpar1.profiles.zosmf.properties.hlq`
 
 `npx zowe config set --secure profiles.lpar1.profiles.zosmf.properties.user`
  
