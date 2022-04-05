@@ -48,7 +48,7 @@ run the following command for testing:
     npm run test search
     npm run test update
     
-    npm run test checkordering    
+    npm run test checkOrdering    
 ***
 #Python Samples
 
