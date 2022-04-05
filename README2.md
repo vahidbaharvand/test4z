@@ -11,8 +11,6 @@
 
     npx zowe config set profiles.lpar1.profiles.zosmf.properties.port
 
-    npx zowe config set profiles.lpar1.profiles.zosmf.properties.hlq
-
     npx zowe config set --secure profiles.lpar1.profiles.zosmf.properties.user
  
     npx zowe config set --secure profiles.lpar1.profiles.zosmf.properties.password
