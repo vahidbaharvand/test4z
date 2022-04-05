@@ -95,8 +95,6 @@ run the following command for testing:
 
     npm run setup
     
-    npm run test db2Test
-    
     npm run test cascade1
     
     npm run test cascade2
@@ -124,7 +122,6 @@ run the following command for testing:
     npx zowe config set profiles.lpar1.profiles.test4z.properties.database
 
     npx zowe config set profiles.lpar1.profiles.test4z.properties.hlq
-
 
 
     npx zowe config set --secure profiles.lpar1.profiles.db2.properties.user
