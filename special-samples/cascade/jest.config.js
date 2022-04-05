@@ -9,6 +9,5 @@ module.exports = {
     "transform": {
         "^.+\\.(ts|tsx)$": "ts-jest"
     },
-    "testTimeout": 130000,
-    transformIgnorePatterns: ["/node_modules/(?!@broadcom/test4z)"],
+    "testTimeout": 130000
 }
