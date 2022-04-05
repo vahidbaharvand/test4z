@@ -2,9 +2,9 @@
 *****
 * Open new terminal 
 
-`cd samples`
+    cd samples
 
-`npm install`
+    npm install 
 *****
 
     npx zowe config set profiles.lpar1.profiles.zosmf.properties.host
@@ -21,7 +21,7 @@
 
 * run following command
 
-`npm run setup`
+    npm run setup
 ***
 #NodeJS Samples
 OPTIONAL (only for nodejes samples, skip for python)
