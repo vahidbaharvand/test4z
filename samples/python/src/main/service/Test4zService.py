@@ -3,9 +3,9 @@
 import sys
 import json
 sys.path.append("../../main")
-from .HttpClient import post_request
+from .HttpClient import post_request, get_request
 from .ZoweClient import zowe_submit_job_notify
-from model import CopyModel, SearchModel, UpdateModel
+from model import CopyModel, SearchModel, UpdateModel, DiagnosticModel
 from utility import get_prop
 
 # Job submission through Z/OSMF
@@ -60,6 +60,15 @@ def update(dataset, copybook, update_criteria, filter_criteria):
         return post_request("/update", json.dumps(model, default = lambda x: x.__dict__))
     except Exception:
         raise Exception("Unexpected error")
+
+# Performs a set of controls to verify the health status of the Test4z Service components
+# @response: Status of each privileges
+def diagnostic():
+    try:
+      data = get_request("/diagnostic")['data']
+      diagnostic_model = DiagnosticModel(**data)
+    except Exception:
+      raise Exception("Service is unavailable")
 
 # Returns the given property from the given section
 # @section: Section name in the config.cfg

@@ -52,13 +52,19 @@ run the following command for testing:
 
 * Open new terminal 
 
+* fill config.cfg
+
 * run following: 
 
 
     cd samples/python/src/test/update/
 
-* fill config.cfg
-* run following:
+* Check service status by executing the following command:
+
+
+    pytest -s  diagnostic_check.py 
+
+* run following test:
 
 
     pytest -s  test_update_sample.py 

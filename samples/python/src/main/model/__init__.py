@@ -7,3 +7,4 @@ from .update.UpdateCriteriaBuilder import UpdateCriteriaBuilder
 from .Types import Types
 from .Operators import Operators
 from .QueryOperators import QueryOperators
+from .diagnostic.DiagnosticModel import DiagnosticModel

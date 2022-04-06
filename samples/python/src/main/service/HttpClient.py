@@ -21,3 +21,20 @@ def post_request(method, payload):
         return response.json()
     except Exception:
             raise Exception("Unexpected error")
+
+def get_request(method):
+    try:
+        print("\nTest4z " + method + " request...")
+        SESSION = get_test4z_connection()
+        HEADERS={'content-type' : "application/json"}
+        response = requests.get(
+            SESSION["url"] + method,
+            auth=(SESSION["user"], SESSION["password"]),
+            headers=HEADERS,
+            verify=SESSION["ssl_verification"],
+            timeout=SESSION["timeout"]
+        )
+        print("Request completed")
+        return response.json()
+    except Exception:
+            raise Exception("Unexpected error")
