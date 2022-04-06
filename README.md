@@ -7,7 +7,7 @@ Test4z leverages z/OSMF and Zowe to facilitate batch application testing for fla
 * **Update** records in a dataset
 * **Copy** data set with filter, skip, limit possibilities
 
-#SOME EXPLANATION OF THE SAMPLE TYPES
+#SOME EXPLANATION OF THE SAMPLE TYPES.
 
 ## Getting Started
 Follow these instructions to set up the Test4z Sample project on your local machine.
@@ -43,29 +43,7 @@ Once you have met the prerequisites,
         * [DB2](/special-samples/db2/README.md)
         * [Cascade](/special-samples/cascade/README.md)
 
-
- ## The Batch Application used in the Samples
-You can search, compare, copy, and update sequential and VSAM files using Test4z. All the services available with Test4z have a sample provided that shows how to use the service. Each sample has also a readme file.
-
-**Note:** Keep in mind that these are just samples and only meant to help you get started with Test4z.
-
-For the samples, a batch application has been created and is submitted using Zowe. The batch application performs the following steps:
-
-1. Filter out records from the main dataset based on the **TOTAL_CHECKS**, **ACTUAL_CHECKS**, and **PRODUCT_TYPE** parameters. The records are filtered according to the following criteria:
-          
-       (ACTUAL-CHECKS <= 3 AND TOTAL-CHECKS = 30 AND (PRODUCT-TYPE='S' OR PRODUCT-TYPE='C)) OR
-       (ACTUAL-CHECKS <= 5 AND TOTAL-CHECKS = 50 AND (PRODUCT-TYPE='S' OR PRODUCT-TYPE='C)) OR
-       (ACTUAL-CHECKS <= 8 AND TOTAL-CHECKS = 80 AND (PRODUCT-TYPE='S' OR PRODUCT-TYPE='C))
-      
-2. Modify the filtered records by setting the notification date to the current (today) date.
-The modified records are then used by the sample test case.
-
- ## Additional
-*  DB2 samples and DB2 specific readme.md file: [/src/test/samples/db2](./src/test/samples/db2)
- 
-*  Cascading (dependent job) samples and cascading specific readme.md file: [/src/test/samples/cascade](./src/test/samples/cascade)
-
- ## Notes
+## Notes
  
 1. Exclude feature of the Compare endpoint requires a certain File Master Plus version 
    12.0 and the required PTF installation. Make sure you have the required PTF to be able to use the field exclusion.
