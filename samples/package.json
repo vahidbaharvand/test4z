@@ -6,7 +6,7 @@
   "scripts": {
     "test": "cd  nodejs && jest",
     "setup": "cd setup && sh script.sh && cd ..",
-    "diagnostic": "npx ts-node DiagnosticCheck.ts"
+    "diagnostic": "npx ts-node nodejs/DiagnosticCheck.ts"
   },
   "repository": {
     "type": "git",
@@ -24,7 +24,7 @@
     "keytar": "7.8.0"
   },
   "dependencies": {
-    "@broadcom/test4z": "6.6.6",
+    "@broadcom/test4z": "2.0.0",
     "@zowe/cli": "7.0.0-next.202203101634"
   }
 }

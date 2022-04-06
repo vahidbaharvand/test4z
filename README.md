@@ -4,9 +4,10 @@ The Test4z sample project contains client-side installation of Test4z as well as
 Test4z leverages z/OSMF and Zowe to facilitate batch application testing for flat files on the z/OS platform. Installing Test4z on your z/OS system lets you perform certain operations on your data sets from a client machine. Currently, the following operations are supported:
 * **Compare** records contained in two different versions of a data set.
 * **Search** through records in a data set.
-* Create a **snapshot** of a data set.
 * **Update** records in a dataset
 * **Copy** data set with filter, skip, limit possibilities
+
+#SOME EXPLANATION OF THE SAMPLE TYPES
 
 ## Getting Started
 Follow these instructions to set up the Test4z Sample project on your local machine.
@@ -23,7 +24,7 @@ Before you attempt to install the Test4z Sample project, ensure you meet the fol
 * If you have VS Code running, restart it.
 
 ### Installing
-Once you have met the prerequisites, follow these steps to install the Test4z Sample project on your local machine:
+Once you have met the prerequisites, 
 
 1. Clone the repository to your local machine. In VS Code:
     1. Open the command palette (Ctrl+Shift+P). 
@@ -34,73 +35,15 @@ Once you have met the prerequisites, follow these steps to install the Test4z Sa
 2. Open the Test4z Project in VS Code:
     1. Go to File > Open Folder.
     2. Open the cloned git repository.
-
-3. Open a new terminal in VS Code (Terminal > New Terminal) and install the project dependencies using the following command:
-
-        npm install
-        
-4. Open the zowe.config.json file and fill in the "zosmf" profile section with the ZOSMF specific information. Ask your mainframe administrator for the information.
-         
-         Execute the following commands through the Terminal:
-         
-         npx zowe config set --secure profiles.lpar1.profiles.zosmf.properties.user 
-         npx zowe config set --secure profiles.lpar1.profiles.zosmf.properties.password    
     
-5. _**(Optional). You can skip this step if you run only the [Python](samples/python/README.md) samples**_. Open the zowe.config.json file and fill in the the "test4z" profile section with the Test4z specific information. Ask your mainframe administrator for the information. 
-**Test4z is shipped with a self signed certificate. The rejectUnauthorized property is false by default.**
+3. Choose one 
 
-         Execute the following commands through the Terminal:
-        
-         npx zowe config set --secure profiles.lpar1.profiles.test4z.properties.user 
-         npx zowe config set --secure profiles.lpar1.profiles.test4z.properties.password   
-  
-6. Open the **src/setup-files/Batch-files/SetupBatchAppDS.sh** file and fill in the required parameters listed at the beginning of the file. **Important:** Make sure you use UPPER CASE for HLQ and Job Card fields.
-    
-7. Copy the JCL test files to your z/OS system by executing the following command (**make sure all the necessary fields are filled as mentioned in the previous step**):
-    
-        npm run uploadFiles
-    
-   The uploadFiles script adds our test data sets, copybooks and batch application to the z/OS. The Test4z sample tests will use this data to perform the tests. We recommend you use the Zowe Explorer to verify this content was copied to your z/OS system.
+    * [Samples](/samples/README.md)
+    * Special Samples:
+        * [DB2](/special-samples/db2/README.md)
+        * [Cascade](/special-samples/cascade/README.md)
 
-8. **After installing the Test4z Sample project and copying the JCL test files to your z/OS system, you can start running the sample tests provided in this project. Follow these steps to run the sample tests in Typescript. Click [here](samples/python/README.md) to run the the sample tests in Python.**
 
-9. Before running the samples, check Test4z Service health status by executing the following command:
-
-        npm run diagnostic
-        
-    It controls the 7 main permissions that enable you to run the Test4z Samples
-    
-    | Permission | Description |
-    | --- | --- |  
-    **dsCreate**         | Checks whether the user ID has sufficient rights to create data sets
-    **commandExec**      | Checks whether the user ID has sufficient rights to execute TSO commands through TSOCMD
-    **fmpLoadLibExist**  | Checks whether the load library exists
-    **fmpLoadLibValid**  | Checks whether the load library belongs to File Master Plus
-    **fmpLoadLibAccess** | Checks whether the user ID has sufficient rights to access the load library
-    **dsDelete**         | Checks whether the user ID has sufficient rights to delete existing data sets. If the user ID does not have sufficient rights to delete data sets, the Test4z APIs execute, but do not delete the temporary data sets created during execution
-    **dsWrite**          | Checks whether the user ID has sufficient rights to write records in existing data sets
-                              
-    **Possible values for these controls : Pass, Fail and Skip**
-
-## Run Test4z Test Samples
-After installing the Test4z Sample project and copying the JCL test files to your z/OS system, you can start running the sample tests provided in this project. Follow these steps:
-
-  1. In VS Code, go to the src/test/samples/ directory. 
-      
-      This folder contains sets of sample tests for each type of Test4z operation.
-
-  2. Open one of the folders. 
-  
-      Each folder contains a readme file describing an API endpoint that lets you perform one type of Test4z operation. Within each folder there is also a *.test.ts file containing the sample tests.
-
-  3. Open the sample *.test.ts file.
-
-  4. Run the tests. Run the tests using the following command:
-
-          npm run test <FILENAME>.test.ts 
-  
-      The sample tests use the sample data sets you copied to your z/OS system earlier. If everything was set up properly, all the sample tests should pass.
-  ---
  ## The Batch Application used in the Samples
 You can search, compare, copy, and update sequential and VSAM files using Test4z. All the services available with Test4z have a sample provided that shows how to use the service. Each sample has also a readme file.
 
@@ -124,22 +67,7 @@ The modified records are then used by the sample test case.
 
  ## Notes
  
- 1. During the `npm install`, some of the dependencies may throw errors, as long as `npm install` doesn't interrupt, this errors must be ignored.
-
- 2. The samples using rollbackDataSet method have a limitation for the VSAM datasets. 
- Independently the source dataset volume, as a result, target dataset always has NOVOL 
- (temporary) storage class. If you roll back BackupDataset to OriginalDataset, OriginalDataset 
- becomes a temporary dataset to be deleted. This limitation is in our backlog and will be resolved soon.
- 
- 3. The compare, search, snapshot, and update samples  generate a temporary data set  when they run.
-    We recommend you to delete the temporary data set by opening the terminal and issuing the following command:
-    
-    `npx zowe zos-files delete data-set 'HLQ.TEST4Z.BATCHAPP.DATA(CUSTINC)' -f`
-    
-    Click [here](https://docs.zowe.org/stable/web_help/docs/zowe_zos-files_delete_data-set.html)
-    for more information about the ZOWE data set delete command.
-   
-  4. Exclude feature of the Compare endpoint requires a certain File Master Plus version 
+1. Exclude feature of the Compare endpoint requires a certain File Master Plus version 
    12.0 and the required PTF installation. Make sure you have the required PTF to be able to use the field exclusion.
   
 ## License

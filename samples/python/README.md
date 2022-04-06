@@ -2,10 +2,12 @@
 
 This repository contains the Test4z Update Sample in Python. The tests are written using the Pytest framework.
 
-# Note
-**Before installing the Test4z Python samples, make sure that you set up the Test4z Sample project on your system. Click [here](/README.md) for more information**
+## Note
+Before continue to this installation, make sure you completed the following installations:
+* [/Readme.md](/README.md)
+* [/samples/README.md](/samples/README.md)
 
-# Installing
+## Installing
 
 1. Navigate to the Python directory **/test4z/samples/python**
 
@@ -35,6 +37,10 @@ This repository contains the Test4z Update Sample in Python. The tests are writt
 1. Navigate to the test directory /test4z/samples/python/src/test/update
 
         cd src/test/update/ 
+        
+2. Check service status by executing the following command:
+
+        pytest -s  diagnostic_check.py 
 
 2. Run the test using the following command:
 
