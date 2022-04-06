@@ -65,8 +65,7 @@ def update(dataset, copybook, update_criteria, filter_criteria):
 # @response: Status of each privileges
 def diagnostic():
     try:
-      data = get_request("/diagnostic")['data']
-      diagnostic_model = DiagnosticModel(**data)
+      return get_request("/diagnostic")
     except Exception:
       raise Exception("Service is unavailable")
 

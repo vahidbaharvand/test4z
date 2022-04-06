@@ -9,13 +9,6 @@ class DiagnosticModel:
         self.fmpLoadLibAccess = self.get_status(fmpLoadLibAccess)
         self.dsDelete = self.get_status(dsDelete)
         self.dsWrite = self.get_status(dsWrite)
-        self.print()
 
     def get_status(self, input):
         return input['status']
-
-    def print(self):
-        print ("\n---------Diagnostic Result----------\n")
-        for attr, value in self.__dict__.items():
-            print ("{:<18} {:<4}".format(attr, value))
-        print ("------------------------------------")
