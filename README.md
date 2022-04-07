@@ -37,7 +37,7 @@ Once you have met the prerequisites,
 3. Select the samples you want to work and proceed with the installation. 
 
     * [Samples](/samples/README.md)  ***(Test case samples demonstrating Test4z features and functions using different languages and test frameworks.)***
-    * Supportive Cases: ***(Handy test case samples demonstrating various techniques, integrations and subsystem)***
+    * Supportive Cases: ***(Handy test case samples demonstrating various techniques, integrations and subsystems)***
         * [DB2](/supportive-cases/db2/README.md)
         * [Job Cascade](/supportive-cases/cascade/README.md)
 
