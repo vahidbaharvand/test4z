@@ -1,15 +1,15 @@
-# Test4z Python Samples
+# Test4z NodeJS Samples
 
 This repository contains the Test4z Samples in NodeJS. 
 
 # Note
 Before continuing with the installation, make sure you completed the following installations:
-* [/Readme.md](/README.md)
+
 * [/samples/README.md](/samples/README.md)
 
 ## Continue Installing
 
-1. Run the following commands and enter the Test4z specific information. Ask your mainframe administrator for the information. Test4z is shipped with a self signed certificate. The rejectUnauthorized property is false by default.
+1. Run the following commands and enter the Test4z specific information. Ask your mainframe administrator for the information. 
 
         npx zowe config set profiles.lpar1.profiles.test4z.properties.host
 
@@ -25,7 +25,7 @@ Before continuing with the installation, make sure you completed the following i
 
         npm run diagnostic
         
-    It controls the 7 main permissions that enable you to run the Test4z Samples
+    It checks the 7 main permissions that enable you to run the Test4z Samples
     
     | Permission | Description |
     | --- | --- |  
@@ -38,16 +38,18 @@ Before continuing with the installation, make sure you completed the following i
     **dsWrite**          | Checks whether the user ID has sufficient rights to write records in existing data sets
                               
     **Possible values for these controls : Pass, Fail and Skip**
+    
+    In case of a failure get in touch with your System Administrator
 
 ## Test4z Test Samples
 
-* In the code snippets folder, you can find small code snippets for each of the Tezt4z features. These functional snippets can lead you to create your own test suite
+* In the [code-snippets](/samples/nodejs/code-snippets) folder, you can find small code snippets for each of the Tezt4z features. These functional snippets can lead you to use in your own tests
     * compare
     * copy
     * search
     * update
     
-* In the business cases folder, you can find test suites of real world applications. Each sub folder has the use case explanation.
+* In the [business-cases](/samples/nodejs/business-cases) folder, you can find test suites of real world applications. Each sub folder has the use case explanation.
     * checkOrdering 
     
 ## Run the samples

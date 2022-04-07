@@ -1,10 +1,10 @@
 # Test4z Python Samples
 
-This repository contains the Test4z Update Sample in Python. The tests are written using the Pytest framework.
+This repository contains the Test4z Update Sample in Python. The tests are written using the [Pytest Framework](https://docs.pytest.org/).
 
 ## Note
 Before continuing, make sure you completed the following installations:
-* [/Readme.md](/README.md)
+
 * [/samples/README.md](/samples/README.md)
 
 ## Installing
@@ -17,12 +17,14 @@ Before continuing, make sure you completed the following installations:
 
 3. Restart the command prompt.
 
-4. Make sure you have pip installed by executing the following command:
+4. Make sure the terminal directory is /samples/python
+
+5. Make sure you have pip installed by executing the following command:
 
         pip --version
     If it's not installed, install pip from https://pip.pypa.io/en/stable/installation, or from a reliable source.       
 
-5. Execute the following command to install the dependencies:
+6. Execute the following command to install the dependencies:
 
         python -m pip install -r requirements.txt
    on macOS use the python3 command instead of python as the default may be an earlier version.

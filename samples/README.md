@@ -6,7 +6,7 @@ This folder contains Test4z sample test suites and code snippets in Python and N
 Before continuing with the installation, make sure you met the prerequisites and you cloned the repository:
 * [/Readme.md](/README.md)
 
-## Continue Installing
+## Continue Installation
 
 1. Open a **new terminal** and run the following commands:
     

@@ -9,6 +9,8 @@ upload(){
   type=${3}
   replace=${4}
 
+  printf "Removing the already existing dataset\n"
+
   tempPath="$tempDirectoryName"/"$path"
 
   deleteDataset "$dataset"

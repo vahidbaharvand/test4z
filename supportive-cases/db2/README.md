@@ -9,14 +9,16 @@ Example use case scenario:
 
 
 ## Information
-* This sample test suite uses @zowe/db2-for-zowe-cli for the DB2 communication.
 * To be able to run the tests, at least one of the following conditions must be fulfilled:
     1. z/OSMF system and DB2 system are on the same LPAR
-    2. In the SetupBatchAppDB2.sh file, specify the DB2 system (ex: *JOBPARM SYSAFF=HB01)
+    2. In the /supportive-cases/db2/setup/script.sh file, specify the DB2 system (ex: *JOBPARM SYSAFF=HB01)
     
 ## Note
 Before continue to this installation, make sure you completed the following installations:
 * [/Readme.md](/README.md)
+
+* During the `npm install`, some of the dependencies may throw errors, as long as `npm install` doesn't interrupt, this errors must be ignored.
+
 
    
 ## Installation
@@ -38,16 +40,16 @@ Before continue to this installation, make sure you completed the following inst
     
         npx zowe config set --secure profiles.lpar1.profiles.zosmf.properties.password
 
-3. Run the following commands and enter the ZOSMF specific information. 
+3. Run the following commands and enter the DB2 specific information. 
    Ask your mainframe administrator for the information.
 
         npx zowe config set profiles.lpar1.profiles.db2.properties.host
     
-        npx zowe config set profiles.lpar1.profiles.test4z.properties.port
+        npx zowe config set profiles.lpar1.profiles.db2.properties.port
     
-        npx zowe config set profiles.lpar1.profiles.test4z.properties.database
+        npx zowe config set profiles.lpar1.profiles.db2.properties.database
     
-        npx zowe config set profiles.lpar1.profiles.test4z.properties.hlq
+        npx zowe config set profiles.lpar1.profiles.db2.properties.hlq
     
         
         npx zowe config set --secure profiles.lpar1.profiles.db2.properties.user
@@ -65,7 +67,7 @@ Before continue to this installation, make sure you completed the following inst
 
 * Run the tests using the following command:
 
-        npm run test <FILENAME>
+        npm run test db2Test
 
 
 ## Notes
