@@ -37,7 +37,7 @@ Once you have met the prerequisites,
 3. Select the samples you want to work and proceed with the installation. 
 
     * [Samples](/samples/README.md)  ***(Samples with Test4z features in Python and NodeJS environments)***
-    * Supportive Cases: ***(Additional test suites for various use cases)***
+    * Supportive Cases: ***(Additional test suites for various use cases – only available in NodeJS environment)***
         * [DB2](/supportive-cases/db2/README.md)
         * [Cascade](/supportive-cases/cascade/README.md)
 
