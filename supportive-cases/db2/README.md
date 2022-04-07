@@ -22,7 +22,7 @@ Before continue to this installation, make sure you completed the following inst
 ## Installation
 1. Open a **new terminal** and run the following commands:
     
-        cd special-samples/db2
+        cd supportive-cases/db2
     
         npm install
         
@@ -55,7 +55,7 @@ Before continue to this installation, make sure you completed the following inst
         npx zowe config set --secure profiles.lpar1.profiles.db2.properties.password
 
         
-4. Open the [/special-samples/db2/setup/script.sh](/special-samples/cascade/setup/script.sh)  file and fill in the required parameters listed at the beginning of the file. Important: Make sure you use UPPER CASE for HLQ and Job Card fields.
+4. Open the [/supportive-cases/db2/setup/script.sh](/supportive-cases/cascade/setup/script.sh)  file and fill in the required parameters listed at the beginning of the file. Important: Make sure you use UPPER CASE for HLQ and Job Card fields.
                                                                  
 5. Copy the JCL test files to your z/OS system by executing the following command: 
 

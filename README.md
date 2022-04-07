@@ -40,8 +40,8 @@ Once you have met the prerequisites,
 
     * [Samples](/samples/README.md)
     * Special Samples:
-        * [DB2](/special-samples/db2/README.md)
-        * [Cascade](/special-samples/cascade/README.md)
+        * [DB2](/supportive-cases/db2/README.md)
+        * [Cascade](/supportive-cases/cascade/README.md)
 
 ## Notes
  
