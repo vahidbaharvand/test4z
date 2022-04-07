@@ -25,8 +25,20 @@ Before continue to this installation, make sure you completed the following inst
         cd special-samples/db2
     
         npm install
-
+        
 2. Run the following commands and enter the ZOSMF specific information. 
+   Ask your mainframe administrator for the information.
+   **You can skip this step if you ran these commands before**
+
+        npx zowe config set profiles.lpar1.profiles.zosmf.properties.host
+    
+        npx zowe config set profiles.lpar1.profiles.zosmf.properties.port
+    
+        npx zowe config set --secure profiles.lpar1.profiles.zosmf.properties.user
+    
+        npx zowe config set --secure profiles.lpar1.profiles.zosmf.properties.password
+
+3. Run the following commands and enter the ZOSMF specific information. 
    Ask your mainframe administrator for the information.
 
         npx zowe config set profiles.lpar1.profiles.db2.properties.host
@@ -43,9 +55,9 @@ Before continue to this installation, make sure you completed the following inst
         npx zowe config set --secure profiles.lpar1.profiles.db2.properties.password
 
         
-3. Open the [/special-samples/db2/setup/script.sh](/special-samples/cascade/setup/script.sh)  file and fill in the required parameters listed at the beginning of the file. Important: Make sure you use UPPER CASE for HLQ and Job Card fields.
+4. Open the [/special-samples/db2/setup/script.sh](/special-samples/cascade/setup/script.sh)  file and fill in the required parameters listed at the beginning of the file. Important: Make sure you use UPPER CASE for HLQ and Job Card fields.
                                                                  
-4. Copy the JCL test files to your z/OS system by executing the following command: 
+5. Copy the JCL test files to your z/OS system by executing the following command: 
 
         npm run setup
         
