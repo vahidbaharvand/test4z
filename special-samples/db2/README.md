@@ -14,9 +14,12 @@ Example use case scenario:
     1. z/OSMF system and DB2 system are on the same LPAR
     2. In the SetupBatchAppDB2.sh file, specify the DB2 system (ex: *JOBPARM SYSAFF=HB01)
     
-    
-## Installation
+## Note
+Before continue to this installation, make sure you completed the following installations:
+* [/Readme.md](/README.md)
 
+   
+## Installation
 1. Open a **new terminal** and run the following commands:
     
         cd special-samples/db2
@@ -42,7 +45,7 @@ Example use case scenario:
         
 3. Open the [/special-samples/db2/setup/script.sh](/special-samples/cascade/setup/script.sh)  file and fill in the required parameters listed at the beginning of the file. Important: Make sure you use UPPER CASE for HLQ and Job Card fields.
                                                                  
-4. Copy the JCL test files to your z/OS system by executing the following command 
+4. Copy the JCL test files to your z/OS system by executing the following command: 
 
         npm run setup
         
