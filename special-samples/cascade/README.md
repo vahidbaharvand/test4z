@@ -11,7 +11,11 @@ The three sample files describe the way these jobs can be executed based on thei
 
     3. sequentialIndependentJobs : The sample test suite describes that if the jobs are independent from each other they can be executed in different test blocks. It continues to execute all of them irrespective of the status of the tests.
     
-    
+## Note
+Before continue to this installation, make sure you completed the following installations:
+* [/Readme.md](/README.md)
+
+   
 ## Installation
 
 1. Open a **new terminal** and run the following commands:
@@ -32,13 +36,13 @@ The three sample files describe the way these jobs can be executed based on thei
     
         npx zowe config set --secure profiles.lpar1.profiles.zosmf.properties.password
 
-3. Run the following commands and enter the your HLQ.
+3. Run the following commands and enter your HLQ:
 
         npx zowe config set profiles.lpar1.profiles.zosmf.properties.hlq
         
-4. Open the [/special-samples/cascade/setup/script.sh](/special-samples/cascade/setup/script.sh)  file and fill in the required parameters listed at the beginning of the file. Important: Make sure you use UPPER CASE for HLQ and Job Card fields.
+4. Open the [/special-samples/cascade/setup/script.sh](/special-samples/cascade/setup/script.sh) file and fill in the required parameters listed at the beginning of the file. Important: Make sure you use UPPER CASE for HLQ and Job Card fields.
                                                                  
-5. Copy the JCL test files to your z/OS system by executing the following command 
+5. Copy the JCL test files to your z/OS system by executing the following command: 
 
         npm run setup
 
