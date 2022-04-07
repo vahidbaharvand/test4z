@@ -30,7 +30,7 @@ Before continuing with the installation, make sure you met the prerequisites and
 
         npm run setup
     
-5. Test4z Samples are provided in Python and NodeJS environments. Selct the environment and proceed with the installation.
+5. Test4z Samples are provided in Python and NodeJS environments. Select the environment and proceed with the installation.
 
     * Python [/samples/python/README.md](/samples/python/README.md) 
     * NodeJS [/samples/nodejs/README.md](/samples/nodejs/README.md)

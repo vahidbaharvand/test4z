@@ -3,7 +3,7 @@
 This repository contains the Test4z Samples in NodeJS. 
 
 # Note
-Before continue to this installation, make sure you completed the following installations:
+Before continuing with the installation, make sure you completed the following installations:
 * [/Readme.md](/README.md)
 * [/samples/README.md](/samples/README.md)
 

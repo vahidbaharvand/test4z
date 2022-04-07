@@ -7,8 +7,6 @@ Test4z leverages z/OSMF and Zowe to facilitate batch application testing for fla
 * **Update** records in a dataset
 * **Copy** data set with filter, skip, limit possibilities
 
-#SOME EXPLANATION OF THE SAMPLE TYPES.
-
 ## Getting Started
 Follow these instructions to set up the Test4z Sample project on your local machine.
 
@@ -36,10 +34,10 @@ Once you have met the prerequisites,
     1. Go to File > Open Folder.
     2. Open the cloned git repository.
     
-3. Choose one 
+3. Select the samples you want to work and proceed with the installation. 
 
-    * [Samples](/samples/README.md)
-    * Special Samples:
+    * [Samples](/samples/README.md)  ***(Samples with Test4z features in Python and NodeJS environments)***
+    * Supportive Cases: ***(Additional test suites for various use cases)***
         * [DB2](/supportive-cases/db2/README.md)
         * [Cascade](/supportive-cases/cascade/README.md)
 
