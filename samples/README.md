@@ -3,7 +3,7 @@
 This folder contains Test4z sample test suites and code snippets in Python and NodeJS environments.
 
 ## Note
-Before continue to this installation, make sure you completed the following installations:
+Before continuing with the installation, make sure you met the prerequisites and you cloned the repository:
 * [/Readme.md](/README.md)
 
 ## Continue Installing
@@ -26,11 +26,11 @@ Before continue to this installation, make sure you completed the following inst
             
 3. Open the [/samples/setup/script.sh](/samples/setup/script.sh)  file and fill in the required parameters listed at the beginning of the file. Important: Make sure you use UPPER CASE for HLQ and Job Card fields.
                                                                  
-4. Copy the JCL test files to your z/OS system by executing the following command 
+4. Copy the JCL test files to your z/OS system by executing the following command: 
 
         npm run setup
     
-5. Test4z Samples are provided in Python and NodeJS environments. Choose one below and proceed for the final installation.
+5. Test4z Samples are provided in Python and NodeJS environments. Selct the environment and proceed with the installation.
 
     * Python [/samples/python/README.md](/samples/python/README.md) 
     * NodeJS [/samples/nodejs/README.md](/samples/nodejs/README.md)
