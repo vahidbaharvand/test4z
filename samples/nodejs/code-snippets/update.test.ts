@@ -25,7 +25,7 @@ describe("UPDATE-TEST - Batchapp validation", function () {
     });
 
 
-    test("UPDATE001 - Test using snapshot, job submit, search, update and roll-back-data", async function () {
+    test("UPDATE001 - Update snippet", async function () {
         //Update a particular record in the dataset, as the inputs defined above
         const updateResult = await Test4zService.update(updateModel);
         expect(updateResult).toBeSuccessfulResult(); //Verify the API Request was successful

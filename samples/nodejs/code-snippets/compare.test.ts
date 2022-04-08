@@ -10,7 +10,7 @@ let mainDataset = "TEST4Z.BATCHAPP.DATA(CUSTIN)";
 let copyDataset = "TEST4Z.BATCHAPP.DATA(CUSTINT)";
 let copybook = "TEST4Z.BATCHAPP.COPY(CUSTREC)";
 
-describe("compare - Batchapp validation", function () {
+describe("COMPARE-TEST - Batchapp validation", function () {
     beforeAll(async () => {
         //Retrieve HLQ from config property
         const HLQ: any = await Test4zService.getProfileProp("test4z", "hlq");
@@ -19,7 +19,7 @@ describe("compare - Batchapp validation", function () {
         copybook = HLQ+"."+copybook;
     });
 
-    test("COMPARE001 - Test using snapshot, job submit, compare and roll-back-data", async function () {
+    test("COMPARE001 - Compare snippet", async function () {
         //Compare the mainDataset with the copyDataset to identify any changes.
         const compareResult = await Test4zService.compare(mainDataset, copyDataset);
         expect(compareResult).toBeSuccessfulResult(); //Verify the API Request was successful
@@ -33,7 +33,7 @@ describe("compare - Batchapp validation", function () {
         expect(compareResult.data.summary.deletedLines).toBe(5);
     });
 
-    test("COMPARE002 - Test using snapshot, job submit, compare (with field include feature) and roll-back-data", async function () {
+    test("COMPARE002 - Compare snippet (with field include feature)", async function () {
         //Compare the mainDataset with the copyDataset to identify any changes.
         //Notice the additional parameters in the compare request, the service only
         //considers the changes within the NOTIFICATION-DATE field, CUST-NAME field is a reference field without any changes.

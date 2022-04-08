@@ -29,13 +29,13 @@ describe("COPY-TEST - Batchapp validation", function () {
         //Generate the copy filter
         copyFilter = new CopyFilter(copybook, filter);
     });
-    test("COPY001 - Test using copy, job submit, search and roll-back-data", async function () {
+    test("COPY001 - Copy snippet", async function () {
         //Create a subset of data from the mainDataset using the copy feature with the given filter
         const copyResult = await Test4zService.copy(mainDataset, copyDataset);
         expect(copyResult).toBeSuccessfulResult(); //Verify the API Request was successful
     });
 
-    test("COPY001 - Test using copy, job submit, search and roll-back-data", async function () {
+    test("COPY002 - Copy snippet (with record filtering)", async function () {
         //Create a subset of data from the mainDataset using the copy feature with the given filter
         const copyResult = await Test4zService.copy(mainDataset, copyDataset, 0, 0, copyFilter);
         expect(copyResult).toBeSuccessfulResult(); //Verify the API Request was successful

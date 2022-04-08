@@ -36,7 +36,7 @@ describe("SEARCH-TEST - Batchapp validation", function () {
         copybook = HLQ+"."+copybook;
     });
 
-    test("SEARCH001 - Test using snapshot, search, job submit and roll-back-data - basic", async function () {
+    test("SEARCH001 - Search snippet", async function () {
         const searchResult1 = await Test4zService.search(mainDataset, copybook , filters);
         expect(searchResult1).toBeSuccessfulResult(); //Verify the API Request was successful
         const records = searchResult1.data;
