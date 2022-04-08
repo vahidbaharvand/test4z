@@ -82,7 +82,7 @@ const filterCriteria: InstanceType<typeof Filter> = new FilterBuilder().Fieldnam
     .build();
 var updateModel: InstanceType<typeof UpdateModel>;
 
-describe("UPDATE-TEST - Batchapp validation", function () {
+describe("Check Ordering Batchapp validation", function () {
     beforeAll(async () => {
         //Retrieve HLQ from config property
         const HLQ: any = await Test4zService.getProfileProp("test4z", "hlq");
@@ -102,11 +102,11 @@ describe("UPDATE-TEST - Batchapp validation", function () {
     beforeEach(async () => {
         //Since the BATCH app will be updating the original data set, we want to make a copy of the data set before we modify it.
         //After the test, the data set copy will be used to revert the original data set back to its initial state.
-        const result = await Test4zService.takeSnapShot(mainDataset, copyDataset );
+        const result = await Test4zService.copy(mainDataset, copyDataset );
         expect(result).toBeSuccessfulResult(); //Verify the API Request was successful
     });
 
-    test("UPDATE001 - Test using snapshot, job submit, search, update and roll-back-data", async function () {
+    test("TEST001 - Test using copy, job submit, search, update and roll-back-data", async function () {
         //Execute Batch Application to modify the main data set
         const job = await Test4zService.submitJobViaZOSMF(batchAppJCLDataset);
         expect(job).toBeSuccessful(); //Verify BatchApp JCL executed successfully
