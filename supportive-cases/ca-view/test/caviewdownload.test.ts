@@ -1,41 +1,25 @@
 /* Copyright (c) 2021 Broadcom.
    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED
    FOR DETAILED INFORMATION ABOUT THIS TEST SUITE AND THE USE CASE, PLEASE CHECK THE readme.md
-
-   Example test suite for Test4z WebViewer research
 */
-import { Test4zService, Filter, Operators, Types, QueryOperators, FilterBuilder, TestHelpers } from "@broadcom/test4z";
-import { Authentication, CrossReportIndexes, ExportRules, Reports, ReportContent, Repositories, Users, ViewRestClient, Features } from "@broadcom/caview-for-zowe-cli";
-import {ITestEnvironment, TestEnvironment, TestCommon} from "@broadcom/caview-for-zowe-cli";
-import { ICommandDefinition } from "@zowe/imperative";
-import { hasUncaughtExceptionCaptureCallback } from "process";
-//import { DownloadReport, ExportReport, GetUserDefinition, ListRepositories, ListReports, ListExportRules, ListReport } from "@broadcom/caview-for-zowe-cli";
+import {Repositories, IRepository, Reports, IReport} from "@broadcom/caview-for-zowe-cli";
+import {Session,ISession} from "@zowe/imperative";
+import {ViewSession} from "@broadcom/caview-for-zowe-cli/lib/cli";
 
-//Testing variables, the datasets
-let batchAppJCLDataset = "PTCINCUB.SPITFIRE.JCL(CUSTVIE2)";
-
-describe("SAMPLE-TEST - Batchapp validation", function () {
+describe("CA-View report Demonstration", function () {
     
-       test("SAMPLE001 - Submission of a job through Zowe", async function () {
-        //Execute Batch Application to modify the main data set
-        const job = await Test4zService.submitJobUsingDataset(batchAppJCLDataset);
-        expect(job).toBeSuccessful(); //Verify BatchApp JCL executed successfully
-        const job1 = await Authentication.login(Session);
+       test("Get repository ID", async function () {
 
-        expect(job1).toBeSuccessful();
-        const repository = await Repositories.get
+           let session : ISession = { "hostname":"" , "port":2100 ,
+               "user":"" , "password":"" ,
+               "basePath":"web-viewer" , "protocol":"http" , "rejectUnauthorized":false, "type":"basic"};
 
-        const report = await Reports.
+           let repository:Repositories = new Repositories(new Session(session));
+           let repositoryList:IRepository[] =  await repository.list();
+           console.log("First Repository ID :: "+repositoryList[0].id);
 
-
+           let reports:Reports = new Reports(new Session(session),1);
+           let report:IReport[] = await reports.listReports();
+           console.log("Report Handle :"+report[0].handle);
     });
 });
-describe("SAMPLE-APIs - Downloading Reports", function () {
-    test("SAMPLE001 - Authentication", async function () {
-     //Execute Batch Application to modify the main data set
-     const job = await Test4zService.submitJobUsingDataset(batchAppJCLDataset);
-     expect(job).toBeSuccessful(); //Verify BatchApp JCL executed successfully
-
- });
-});
-
