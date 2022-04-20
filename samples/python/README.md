@@ -15,6 +15,8 @@ Before continuing, make sure you completed the following installations:
 
 2. Download Python 3 from https://www.python.org/downloads
 
+3. **For Windows users,** make sure to have the path variable for Python in the system settings. Follow [this](https://www.educative.io/edpresso/how-to-add-python-to-path-variable-in-windows) to see the guide.
+
 3. Restart the command prompt.
 
 4. Make sure the terminal directory is /samples/python
