@@ -14,7 +14,7 @@ Before continuing with the installation, make sure you met the prerequisites and
     
         npm install
     
-2. Run the following command and enter the ZOSMF specific information. Ask your mainframe administrator for the information.
+2. Run the following command and enter the Z/OSMF specific information. Ask your mainframe administrator for the information.
     
         npm run setZosmf
             
@@ -26,8 +26,8 @@ Before continuing with the installation, make sure you met the prerequisites and
     
 5. Test4z Samples are provided in Python and NodeJS environments. Select the environment and proceed with the installation.
 
-    * Python [/samples/python/README.md](/samples/python/README.md) 
     * NodeJS [/samples/nodejs/README.md](/samples/nodejs/README.md)
+    * Python [/samples/python/README.md](/samples/python/README.md) 
 
 
 ## Notes
