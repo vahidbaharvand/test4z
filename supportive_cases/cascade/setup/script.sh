@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-source ../../BaseScript.sh
+source ../../../BaseScript.sh
 
 ############# IMPORTANT! UPDATE THE FOLLOWING PARAMETERS BEFORE RUNNING THIS SCRIPT: #############
 hlq=""; #<--------------- The high-level qualifier of the mainframe user (as defined in the test4z profile in zowe.config.json )
