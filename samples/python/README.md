@@ -42,8 +42,8 @@ Open the **src/python/config.cfg** file and enter the required parameters. The T
         
 2. Check the service status by executing the following command:
 
-        pytest -s  diagnostic_check.py 
+        pytest diagnostic_check.py 
 
 2. Run the test using the following command:
 
-        pytest -s  test_update_sample.py 
+        pytest test_update_sample.py 
