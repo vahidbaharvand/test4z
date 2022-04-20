@@ -11,7 +11,7 @@ Example use case scenario:
 ## Information
 * To be able to run the tests, at least one of the following conditions must be fulfilled:
     1. z/OSMF system and DB2 system are on the same LPAR
-    2. In the /supportive-cases/db2/setup/script.sh file, specify the DB2 system (ex: *JOBPARM SYSAFF=HB01)
+    2. In the /supportive_cases/db2/setup/script.sh file, specify the DB2 system (ex: *JOBPARM SYSAFF=HB01)
     
 ## Note
 Before continue to this installation, make sure you completed the following installations:
@@ -24,40 +24,23 @@ Before continue to this installation, make sure you completed the following inst
 ## Installation
 1. Open a **new terminal** and run the following commands:
     
-        cd supportive-cases/db2
+        cd supportive_cases/db2
     
         npm install
         
-2. Run the following commands and enter the ZOSMF specific information. 
+2. Run the following command and enter the ZOSMF specific information. 
    Ask your mainframe administrator for the information.
-   **You can skip this step if you ran these commands before**
+   **You can skip this step if you ran this command before**
 
-        npx zowe config set profiles.lpar1.profiles.zosmf.properties.host
-    
-        npx zowe config set profiles.lpar1.profiles.zosmf.properties.port
-    
-        npx zowe config set --secure profiles.lpar1.profiles.zosmf.properties.user
-    
-        npx zowe config set --secure profiles.lpar1.profiles.zosmf.properties.password
+        npm run setZosmf
 
-3. Run the following commands and enter the DB2 specific information. 
+3. Run the following command and enter the DB2 specific information. 
    Ask your mainframe administrator for the information.
 
-        npx zowe config set profiles.lpar1.profiles.db2.properties.host
-    
-        npx zowe config set profiles.lpar1.profiles.db2.properties.port
-    
-        npx zowe config set profiles.lpar1.profiles.db2.properties.database
-    
-        npx zowe config set profiles.lpar1.profiles.db2.properties.hlq
-    
-        
-        npx zowe config set --secure profiles.lpar1.profiles.db2.properties.user
-    
-        npx zowe config set --secure profiles.lpar1.profiles.db2.properties.password
+        npm run setDb2
 
         
-4. Open the [/supportive-cases/db2/setup/script.sh](/supportive-cases/cascade/setup/script.sh)  file and fill in the required parameters listed at the beginning of the file. Important: Make sure you use UPPER CASE for HLQ and Job Card fields.
+4. Open the [/supportive_cases/db2/setup/script.sh](/supportive_cases/cascade/setup/script.sh)  file and fill in the required parameters listed at the beginning of the file. Important: Make sure you use UPPER CASE for HLQ and Job Card fields.
                                                                  
 5. Copy the JCL test files to your z/OS system by executing the following command: 
 

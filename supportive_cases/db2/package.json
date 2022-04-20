@@ -7,7 +7,9 @@
     "test": "run-script-os",
     "test:win32": "set PATH=.\\node_modules\\@zowe\\db2-for-zowe-cli\\node_modules\\ibm_db\\installer\\clidriver\\bin;.\\node_modules\\@zowe\\db2-for-zowe-cli\\node_modules\\ibm_db\\installer\\clidriver\\bin\\amd64.VC12.CRT;.\\node_modules\\@zowe\\db2-for-zowe-cli\\node_modules\\ibm_db\\installer\\clidriver\\bin\\icc64;.\\node_modules\\@zowe\\db2-for-zowe-cli\\node_modules\\ibm_db\\installer\\clidriver\\lib;.\\node_modules\\.bin;%PATH% && set LIB=.\\node_modules\\@zowe\\db2-for-zowe-cli\\node_modules\\ibm_db\\installer\\clidriver\\bin;.\\node_modules\\@zowe\\db2-for-zowe-cli\\node_modules\\ibm_db\\installer\\clidriver\\bin\\icc64;.\\node_modules\\@zowe\\db2-for-zowe-cli\\node_modules\\ibm_db\\installer\\clidriver\\lib;%LIB% && jest",
     "test:default": "jest",
-    "setup": "cd setup && sh script.sh"
+    "setup": "sh setup/script.sh",
+    "setZosmf": "sh ../../samples/setup/setZosmf.sh",
+    "setDb2": "sh setup/setDb2.sh"
   },
   "repository": {
     "type": "git",

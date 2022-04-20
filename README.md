@@ -38,8 +38,8 @@ Once you have met the prerequisites,
 
     * [Samples](/samples/README.md)  ***(Test case samples demonstrating Test4z features and functions using different languages and test frameworks.)***
     * Supportive Cases: ***(Handy test case samples demonstrating various techniques, integrations and subsystems)***
-        * [DB2](/supportive-cases/db2/README.md)
-        * [Job Cascade](/supportive-cases/cascade/README.md)
+        * [DB2](/supportive_cases/db2/README.md)
+        * [Job Cascade](/supportive_cases/cascade/README.md)
 
 ## Notes
  

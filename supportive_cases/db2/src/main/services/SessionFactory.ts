@@ -1,5 +1,5 @@
 import {IDB2Session} from "@zowe/db2-for-zowe-cli/lib";
-import {IProfArgAttrs, ProfileInfo, Session,} from "@zowe/imperative";
+import {IProfArgAttrs, ProfileInfo} from "@zowe/imperative";
 
 
 export class SessionFactory {

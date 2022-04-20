@@ -5,7 +5,9 @@
   "author": "Broadcom",
   "scripts": {
     "test": "jest",
-    "setup": "cd setup && sh script.sh"
+    "setup": "sh setup/script.sh",
+    "setZosmf": "sh ../../samples/setup/setZosmf.sh",
+    "setHlq": "sh setup/setHlq.sh"
   },
   "repository": {
     "type": "git",

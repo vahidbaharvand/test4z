@@ -14,27 +14,21 @@ Before continue to this installation, make sure you completed the following inst
 
 1. Open a **new terminal** and run the following commands:
     
-        cd supportive-cases/cascade
+        cd supportive_cases/cascade
     
         npm install
 
-2. Run the following commands and enter the ZOSMF specific information. 
+2. Run the following command and enter the ZOSMF specific information. 
    Ask your mainframe administrator for the information.
-   **You can skip this step if you ran these commands before**
+   **You can skip this step if you ran this command before**
 
-        npx zowe config set profiles.lpar1.profiles.zosmf.properties.host
-    
-        npx zowe config set profiles.lpar1.profiles.zosmf.properties.port
-    
-        npx zowe config set --secure profiles.lpar1.profiles.zosmf.properties.user
-    
-        npx zowe config set --secure profiles.lpar1.profiles.zosmf.properties.password
+        npm run setZosmf
 
-3. Run the following commands and enter your HLQ:
+3. Run the following command and enter your HLQ:
 
-        npx zowe config set profiles.lpar1.profiles.zosmf.properties.hlq
+        npm run setHlq
         
-4. Open the [/supportive-cases/cascade/setup/script.sh](/supportive-cases/cascade/setup/script.sh) file and fill in the required parameters listed at the beginning of the file. Important: Make sure you use UPPER CASE for HLQ and Job Card fields.
+4. Open the [/supportive_cases/cascade/setup/script.sh](/supportive_cases/cascade/setup/script.sh) file and fill in the required parameters listed at the beginning of the file. Important: Make sure you use UPPER CASE for HLQ and Job Card fields.
                                                                  
 5. Copy the JCL test files to your z/OS system by executing the following command: 
 
