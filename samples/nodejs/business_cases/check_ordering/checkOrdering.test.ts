@@ -2,7 +2,9 @@
    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED
    FOR DETAILED INFORMATION ABOUT THIS TEST SUITE AND THE USE CASE, PLEASE CHECK THE readme.md
 */
-import { Test4zService, Filter, FilterBuilder, Operators, QueryOperators, UpdateCriteria, Types, UpdateModel, TestHelpers } from "@broadcom/test4z";
+import { Test4zService, Filter, FilterBuilder, Operators, QueryOperators, UpdateCriteria, Types, UpdateModel } from "@broadcom/test4z";
+import { TestHelpers } from "../../TestHelpers";
+
 
 //Testing variables, replace [HLQ] with the proper values
 let batchAppJCLDataset = "TEST4Z.BATCHAPP.JCL(CUSTSEQ)";
