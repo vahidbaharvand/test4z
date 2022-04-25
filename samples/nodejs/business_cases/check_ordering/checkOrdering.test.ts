@@ -118,7 +118,6 @@ describe("Check Ordering Batchapp validation", function () {
         //Verify the number of the records changed after the batch application
         expect(records.Record.length).toBe(24);
         const todaysDate = new Date().toISOString().slice(0, 10).replace(/[-]/g, ""); //Get today's date in YYYYMMDD format
-        debugger;
         expect(TestHelpers.getNotificationDates(records)).toBeNotificationDatesEqualTo(todaysDate); //Verify all the notification dates were updated today for the selected records
 
         //Roll back the changes by replacing the main data set with the copy data set
