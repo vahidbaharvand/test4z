@@ -56,7 +56,7 @@ createteLibrary "$TEST4ZDB_BATCHAPP_LOADLIB"
 create "$TEST4ZDB_BATCHAPP_DBRMLIB" PDS
 removeDirectory "$tempDirectoryName";
 createDatabase "$TEST4ZDB_BATCHAPP_DB""(CREATEDB)";
-##submitDbHook "$TEST4ZDB_BATCHAPP_JCL""(DBHOOK)";
+compileDB2Cobol "$TEST4ZDB_BATCHAPP_JCL""(BUILD)";
 
 printf "\n\n\nBash execution was successful: DB2 sample data sets were successfully deployed to the mainframe.\n";
 printf "Execute the db2 test case, explore how it works and use it to build your own test cases.\n\n";

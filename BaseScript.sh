@@ -209,7 +209,7 @@ createDatabase(){
   echo "Db2 database is being created by submiting the JCL ${dataset}, please wait"
   jobsubmit=$(npx zowe jobs submit ds "$dataset" --wfo)
   if [[ $jobsubmit == *"CC 0000"* ]]; then
-    printf "\n DB2 table %s.%s created successfully\n" "$hlq" "$db2TableName"
+    printf "\nDB2 table %s.%s created successfully\n" "$hlq" "$db2TableName"
   else
     errorMessage "Db2 dataset creation failed, check:$jobsubmit" "$dataset"
   fi
@@ -224,13 +224,13 @@ compileCobol(){
     errorMessage "COBOL application compilation failed, check:$jobsubmit" "$dataset"
   fi
 }
-submitDbHook(){
+compileDB2Cobol(){
   dataset=${hlq}.${1}
-  echo "Db2 database being linked with the cobol application, please wait"
-    jobsubmit=$(npx zowe jobs submit ds "$dataset" --wfo)
-  if [[ $jobsubmit == *"CC 0000"* ]]; then
-    printf "\nDB2 table linked to the batch application successfully\n"
+  echo "Cobol application is being compiled by submiting the JCL ${dataset}, please wait"
+  jobsubmit=$(npx zowe jobs submit ds "$dataset" --wfo)
+  if [[ $jobsubmit =~ "CC 0000" ||  $jobsubmit =~ "CC 0004" ]];then
+    printf "\nCOBOL application compiled successfully"
   else
-    errorMessage "Db2 table - batch application link creation failed, check:$jobsubmit" "$dataset"
+    errorMessage "COBOL application compilation failed, check:$jobsubmit" "$dataset"
   fi
 }
