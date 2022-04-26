@@ -25,7 +25,6 @@
   },
   "dependencies": {
     "@broadcom/caview-for-zowe-cli": "1.2.4",
-    "@zowe/imperative": "4.18.1",
-    "@broadcom/test4z": "1.2.2"
+    "@broadcom/test4z": "2.0.0"
   }
 }
