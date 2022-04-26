@@ -1,0 +1,25 @@
+$$JOBCARD
+//*****************************************************************//
+//* This job runs the TEST4Z sample COBOL program.                 *//
+//*                                                                *//
+//* Follow these steps:                                            *//
+//* 1) Set your high-level qualifier of your TEST4Z installation   *//
+//*    in the HLQ SET field.                                       *//
+//* 2) Edit the job card to your specifications.                   *//
+//*                                                                *//
+//******************************************************************//
+//HLQ     SET HLQ=$$HLQ
+//* ------------------------------------------------------------------
+//*                       RUN                            -------------
+//* ------------------------------------------------------------------
+//*RUN CUSTSEQ
+//EDIT EXEC PGM=CUSTSEQ
+//STEPLIB   DD DISP=SHR,DSN=&HLQ..TEST4Z.BATCHAPP.LOADLIB
+//******* ADDITIONAL RUNTIME JCL HERE ******
+//CUSTIN   DD DSN=&HLQ..TEST4Z.BATCHAPP.DATA(CUSTIN),DISP=SHR
+//CUSTOUT  DD DSN=&HLQ..TEST4Z.BATCHAPP.DATA(CUSTIN),DISP=SHR
+//SORTWORK DD AVGREC=K,SPACE=(186,(1000,1000),RLSE)
+//******* ADDITIONAL RUNTIME JCL HERE ******
+//SYSOUT   DD SYSOUT=*
+//SYSPRINT DD SYSOUT=*
+//*
