@@ -1,12 +1,8 @@
-//Factory class for creating the various request profiles
+import {ISession} from "@zowe/imperative";
+import {SessionFactory}  from "@broadcom/test4z";
 
-import { ISession} from "@zowe/imperative";
-import {SessionFactory }  from "@broadcom/test4z";
-//import { SessionFactory } from "./CASessionFactory";
-
-export class CASessionFactory{
-       public static async getcaviewSession(): Promise <ISession> { 
-            //public static async getCAViewProfile(): Promise<ISession> {
+export class CAViewSessionFactory{
+       public static async getSession(): Promise <ISession> { 
             const _hostname = await SessionFactory.getProfileProp("caview", "host")
             const _protocol = await SessionFactory.getProfileProp("caview", "protocol")
             const _port = await SessionFactory.getProfileProp("caview", "port")
