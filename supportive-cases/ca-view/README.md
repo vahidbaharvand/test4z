@@ -19,6 +19,9 @@ The Web-Viewer instance is ready and running..
        npx zowe config set --secure profiles.lpar1.profiles.caview.properties.user
        npx zowe config set --secure profiles.lpar1.profiles.caview.properties.password
 
+# Configuration
+- Enter the ca-view relevant prameters in the zowe.config.json file.
+
 # Run the Samples
 - Run the samples using the following command:
 
