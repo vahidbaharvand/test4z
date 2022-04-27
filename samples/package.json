@@ -6,8 +6,8 @@
   "scripts": {
     "test": "cd  nodejs && jest",
     "setup": "cd setup && sh script.sh && cd ..",
-    "setZosmf": "sh setup/setZosmf.sh",
-    "setTest4z": "sh nodejs/setTest4z.sh",
+    "setZosmf": "sh ../.scripts/setZosmf.sh",
+    "setTest4z": "sh ../.scripts/setTest4z.sh",
     "diagnostic": "npx ts-node nodejs/DiagnosticCheck.ts"
   },
   "repository": {
