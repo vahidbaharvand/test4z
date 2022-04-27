@@ -1,11 +1,10 @@
 {
-  "name": "test4z-sample",
+  "name": "caview-sample",
   "version": "1.2.2",
-  "description": "Test samples repository for test4z",
+  "description": "Test sample for CAView",
   "author": "Broadcom",
   "scripts": {
-    "test": "jest",
-    "setup": "cd setup && sh script.sh"
+    "test": "jest"    
   },
   "repository": {
     "type": "git",

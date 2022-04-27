@@ -1,32 +1,25 @@
-/* Copyright (c) 2021 Broadcom.
+/* Copyright (c) 2022 Broadcom.
    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED
    FOR DETAILED INFORMATION ABOUT THIS TEST SUITE AND THE USE CASE, PLEASE CHECK THE readme.md
 */
 import {Repositories, IRepository, Reports, IReport, ReportContent} from "@broadcom/caview-for-zowe-cli";
 import {Session,ISession} from "@zowe/imperative";
-import { CAViewSessionFactory } from "../main/services/CASessionFactory";
+import { CAViewSessionFactory } from "../main/services/CAViewSessionFactory";
 
-   test("Get repository ID", async function () {
+   test("Download Report", async function () {
 
-           let session : ISession =  await CAViewSessionFactory.getSession();
-           let session1 = new Session(session);
-           let repository:Repositories = new Repositories(session1);
+           let session : Session =  new Session(await CAViewSessionFactory.getSession());
+           let repository:Repositories = new Repositories(session);
            let repositoryList:IRepository[] =  await repository.list();
+           expect(repositoryList.length).toBeGreaterThan(0);
            let repositoryID :number = repositoryList[0].id
-           if(repository.list() ==  null ) 
-           {
-              console.log ("Repository list is empty")
-           }
-           else {
-              console.log("First Repository ID :"+repositoryList[0].id);
-           }
-
-           let reports:Reports = new Reports(session1,repositoryID);
+           
+           let reports:Reports = new Reports(session,repositoryID);
            let report:IReport[] = await reports.listReports();
+           expect(report.length).toBeGreaterThan(0);
            let reportHandleID :string = report[0].handle; 
-           console.log("Report Handle :"+report[0].handle);
-
-           let reportcontent:ReportContent = new ReportContent(session1,repositoryID,reportHandleID);
-           let report1:IReport[] = await reportcontent.download(".\CAVIEW2 report.pdf", false);
-           console.log("Report Content is downloaded ");
+           
+           let reportcontent:ReportContent = new ReportContent(session,repositoryID,reportHandleID);
+           await reportcontent.download(".\job_report.pdf", false);
+           console.log("job_report.pdf is downloaded ");
     });
