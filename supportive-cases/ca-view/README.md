@@ -12,15 +12,10 @@ The Web-Viewer instance is ready and running..
     
         npm install
 
-2. Run the following commands. Provide the username and password when prompted. 
-   Ask your mainframe administrator for the information.
-   **You can skip this step if you ran these commands before**
+2. Run the following command and enter the z/OSMF specific information. Ask your mainframe administrator for the information.
 
-       npx zowe config set --secure profiles.lpar1.profiles.caview.properties.user
-       npx zowe config set --secure profiles.lpar1.profiles.caview.properties.password
+       npm run setCAView
 
-# Configuration
-- Enter the ca-view relevant prameters in the zowe.config.json file.
 
 # Run the Samples
 - Run the samples using the following command:
