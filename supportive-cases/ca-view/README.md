@@ -2,7 +2,7 @@
 This test folder contains samples to download the reports from Web Viewer instance by using the caview-plugin-for-zowe when the job is submitted from Zowe.
 
 # Prerequisites
-Web-Viwer instance ready and running to collect the jobs submitted through zOSMF.
+Web-Viewer instance ready and running to collect the jobs submitted through zOSMF.
 
 ## Installation
 
@@ -12,8 +12,10 @@ Web-Viwer instance ready and running to collect the jobs submitted through zOSMF
     
         npm install
 
-2. Run the following command by providing the username and password. 
+2. Run the following commands by providing the username and password. 
    Ask your mainframe administrator for the information.
    **You can skip this step if you ran these commands before**
 
-        $ zowe profiles create caview myProfile --protocol https --hostname lpar1.company.com --port 1443 --username johndoe --password secret
+       npx zowe config set --secure profiles.lpar1.profiles.caview.properties.user
+       npx zowe config set --secure profiles.lpar1.profiles.caview.properties.password
+
