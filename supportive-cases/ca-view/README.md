@@ -12,7 +12,7 @@ The Web-Viewer instance is ready and running..
     
         npm install
 
-2. Run the following command and enter the z/OSMF specific information. Ask your mainframe administrator for the information.
+2. Run the following command and enter the ca-view specific information. Ask your mainframe administrator for the information.
 
        npm run setCAView
 
