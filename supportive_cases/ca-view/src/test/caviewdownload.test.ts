@@ -22,5 +22,5 @@ import { CAViewSessionFactory } from "../main/services/CAViewSessionFactory";
            let reportcontent:ReportContent = new ReportContent(session,repositoryID,reportHandleID);
            await reportcontent.download(".\job_report.pdf", false);
            console.log("job1_report.pdf is downloaded ");
-           console.log(JSON.stringify("job_report.pdf"));
+           
     });
