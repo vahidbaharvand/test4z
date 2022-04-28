@@ -4,7 +4,8 @@
   "description": "Test sample for CAView",
   "author": "Broadcom",
   "scripts": {
-    "test": "jest"    
+    "test": "jest",
+    "setup": "cd setup && sh setCAView.sh"    
   },
   "repository": {
     "type": "git",
