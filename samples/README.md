@@ -14,15 +14,9 @@ Before continuing with the installation, make sure you met the prerequisites and
     
         npm install
     
-2. Run the following commands and enter the ZOSMF specific information. Ask your mainframe administrator for the information.
+2. Run the following command and enter the Z/OSMF specific information. Ask your mainframe administrator for the information.
     
-        npx zowe config set profiles.lpar1.profiles.zosmf.properties.host
-    
-        npx zowe config set profiles.lpar1.profiles.zosmf.properties.port
-    
-        npx zowe config set --secure profiles.lpar1.profiles.zosmf.properties.user
-    
-        npx zowe config set --secure profiles.lpar1.profiles.zosmf.properties.password
+        npm run setZosmf
             
 3. Open the [/samples/setup/script.sh](/samples/setup/script.sh)  file and fill in the required parameters listed at the beginning of the file. Important: Make sure you use UPPER CASE for HLQ and Job Card fields.
                                                                  
@@ -32,8 +26,8 @@ Before continuing with the installation, make sure you met the prerequisites and
     
 5. Test4z Samples are provided in Python and NodeJS environments. Select the environment and proceed with the installation.
 
-    * Python [/samples/python/README.md](/samples/python/README.md) 
     * NodeJS [/samples/nodejs/README.md](/samples/nodejs/README.md)
+    * Python [/samples/python/README.md](/samples/python/README.md) 
 
 
 ## Notes

@@ -9,17 +9,9 @@ Before continuing with the installation, make sure you completed the following i
 
 ## Continue Installing
 
-1. Run the following commands and enter the Test4z specific information. Ask your mainframe administrator for the information. 
+1. Run the following command and enter the Test4z specific information. Ask your mainframe administrator for the information. 
 
-        npx zowe config set profiles.lpar1.profiles.test4z.properties.host
-
-        npx zowe config set profiles.lpar1.profiles.test4z.properties.port
-
-        npx zowe config set profiles.lpar1.profiles.test4z.properties.hlq
-
-        npx zowe config set --secure profiles.lpar1.profiles.test4z.properties.user
-
-        npx zowe config set --secure profiles.lpar1.profiles.test4z.properties.password
+        npm run setTest4z
     
 2. Before running the samples, check Test4z Service health status by executing the following command:
 
@@ -43,13 +35,13 @@ Before continuing with the installation, make sure you completed the following i
 
 ## Test4z Test Samples
 
-* In the [code-snippets](/samples/nodejs/code-snippets) folder, you can find small code snippets for each of the Tezt4z features. These functional snippets can lead you to use in your own tests
+* In the [code_snippets](/samples/nodejs/code_snippets) folder, you can find small code snippets for each of the Tezt4z features. These functional snippets can lead you to use in your own tests
     * compare
     * copy
     * search
     * update
     
-* In the [business-cases](/samples/nodejs/business-cases) folder, you can find test suites of real world applications. Each sub folder has the use case explanation.
+* In the [business_cases](/samples/nodejs/business_cases) folder, you can find test suites of real world applications. Each sub folder has the use case explanation.
     * checkOrdering 
     
 ## Run the samples

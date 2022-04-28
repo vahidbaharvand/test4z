@@ -9,11 +9,13 @@ Before continuing, make sure you completed the following installations:
 
 ## Installing
 
-1. Navigate to the Python directory **/test4z/samples/python**
+1. Download Python 3 from https://www.python.org/downloads
 
-        cd python
+2. **For Windows users,** make sure to have the path variable for Python in the system settings. Try the following command to check (result should be Python 3.x.x):
 
-2. Download Python 3 from https://www.python.org/downloads
+        python --version
+
+   If the command is not recognised, follow [this](https://www.educative.io/edpresso/how-to-add-python-to-path-variable-in-windows) url to see the guide.
 
 3. Restart the command prompt.
 
@@ -27,7 +29,13 @@ Before continuing, make sure you completed the following installations:
 6. Execute the following command to install the dependencies:
 
         python -m pip install -r requirements.txt
-   on macOS use the python3 command instead of python as the default may be an earlier version.
+   On macOS use the python3 command instead of python as the default may be an earlier version.
+
+7. **For Windows users,** make sure to have the path variable for Pytest in the system settings. Try the following command to check:
+
+        pytest --version
+
+   If the command is not recognised, follow [this](https://www.educative.io/edpresso/how-to-add-python-to-path-variable-in-windows) url to see the guide.
 
       
 # Configuration 
@@ -42,8 +50,8 @@ Open the **src/python/config.cfg** file and enter the required parameters. The T
         
 2. Check the service status by executing the following command:
 
-        pytest -s  diagnostic_check.py 
+        pytest diagnostic_check.py 
 
 2. Run the test using the following command:
 
-        pytest -s  test_update_sample.py 
+        pytest test_update_sample.py 

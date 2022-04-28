@@ -23,7 +23,7 @@ def copy(input_dataset, output_dataset):
     except Exception:
         raise Exception("Unexpected error")
 
-# Reverting data back to the original state using the snapshot endpoint
+# Reverting data back to the original state using the copy endpoint
 # @inputDataset - Source dataset - the dataset which you have the backup data
 # @outputDataset - Target dataset - the dataset which you want to override data from the source dataset (original dataset)
 # @response - boolean success of the request
