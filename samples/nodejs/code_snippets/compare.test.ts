@@ -3,8 +3,7 @@
    FOR DETAILED INFORMATION ABOUT THIS TEST SUITE AND THE USE CASE, PLEASE CHECK THE readme.md
    Example test suite for Test4z compare feature
 */
-import {CompareResult, Test4zService} from "@broadcom/test4z";
-import {FieldPair} from "@broadcom/test4z/lib/main/models/diffLayoutCompare/DiffLayoutCompareModel";
+import {CompareResult, FieldPair, Test4zService} from "@broadcom/test4z";
 
 //Testing variables, the datasets
 let mainDataset = "TEST4Z.BATCHAPP.DATA(CUSTIN)";
