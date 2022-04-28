@@ -47,6 +47,22 @@
                         "user",
                         "password"
                     ]
+                },
+                "caview": {
+                    "type": "caview",
+                    "properties": {
+                        "host": "",
+                        "protocol": "http",
+                        "type": "basic",
+                        "port": 0,
+                        "basePath": "web-viewer",
+                        "strictSSL": false,
+                        "rejectUnauthorized": false
+                    },
+                    "secure": [
+                        "user",
+                        "password"
+                    ]
                 }
             }
         },
@@ -65,7 +81,8 @@
         "zosmf": "lpar1.zosmf",
         "base": "my_base",
         "test4z": "lpar1.test4z",
-        "db2": "lpar1.db2"
+        "db2": "lpar1.db2",
+        "caview": "lpar1.caview"
     },
     "plugins": []
 }
