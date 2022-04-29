@@ -8,7 +8,7 @@ The Web-Viewer instance is ready and running..
 
 1. Open a **new terminal** and run the following commands:
     
-        cd supportive-cases/ca-view
+        cd supportive_cases/ca-view
     
         npm install
 
