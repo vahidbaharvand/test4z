@@ -1,8 +1,8 @@
 # Test4z Sample
 The Test4z sample project contains client-side installation of Test4z as well as a series of sample tests that use the Test4z API to run tests on data sets on your z/OS system.
 
-Test4z leverages z/OSMF and Zowe to facilitate batch application testing for flat files on the z/OS platform. Installing Test4z on your z/OS system lets you perform certain operations on your data sets from a client machine. Currently, the following operations are supported:
-* **Compare** records contained in two different versions of a data set.
+Test4z leverages z/OSMF and Zowe to facilitate batch application testing for files on the z/OS platform. Test4z lets you perform certain operations on your data sets from a client machine. Currently, the following operations are supported:
+* **Compare** records contained in two different of a data sets.
 * **Search** through records in a data set.
 * **Update** records in a dataset
 * **Copy** data set with filter, skip, limit possibilities
@@ -34,12 +34,13 @@ Once you have met the prerequisites,
     1. Go to File > Open Folder.
     2. Open the cloned git repository.
     
-3. Select the samples you want to work and proceed with the installation. 
+3. To continue with the installation,  refer to the Readme of the specific location: 
 
-    * [Samples](/samples/README.md)  ***(Test case samples demonstrating Test4z features and functions using different languages and test frameworks.)***
-    * Supportive Cases: ***(Handy test case samples demonstrating various techniques, integrations and subsystems)***
+    * [Samples](/samples/README.md)  ***(Test case samples that demonstrate the features and functions of Test4z using different languages and test frameworks.)***
+    * Supportive Cases: ***(Handy test case samples that demonstrate various techniques, integrations, and subsystems)***
         * [DB2](/supportive_cases/db2/README.md)
         * [Job Cascade](/supportive_cases/cascade/README.md)
+        * [Ca-View](/supportive_cases/ca-view/README.md)
 
 ## Notes
  
@@ -47,4 +48,4 @@ Once you have met the prerequisites,
    12.0 and the required PTF installation. Make sure you have the required PTF to be able to use the field exclusion.
   
 ## License
-Visit [LICENSE.md](LICENSE.md) file.
+See the [LICENSE.md](LICENSE.md) file.
