@@ -5,8 +5,8 @@
   "author": "Broadcom",
   "scripts": {
     "test": "jest",
-    "setup": "cd setup && sh setCAView.sh"    
-  },
+    "setCAView": "sh ../../.scripts/setCAView.sh"
+    },
   "repository": {
     "type": "git",
     "url": "https://github.com/BroadcomMFD/test4z.git"
@@ -24,7 +24,8 @@
     "keytar": "7.8.0"
   },
   "dependencies": {
-    "@broadcom/caview-for-zowe-cli": "1.2.4",
-    "@broadcom/test4z": "2.0.0"
+    "@broadcom/caview-for-zowe-cli": "2.0.0",
+    "@broadcom/test4z": "2.0.0",
+    "@zowe/cli": "7.0.0-next.202203101634"
   }
 }
