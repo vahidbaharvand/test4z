@@ -17,7 +17,7 @@ Example use case scenario:
 Before continue to this installation, make sure you completed the following installations:
 * [/Readme.md](/README.md)
 
-* During the `npm install`, some of the dependencies may throw errors, as long as `npm install` doesn't interrupt, this errors must be ignored.
+* During the `npm install`, some of the dependencies may throw errors, as long as `npm install` doesn't interrupt, these errors can be ignored.
 
 
    
@@ -51,8 +51,3 @@ Before continue to this installation, make sure you completed the following inst
 * Run the tests using the following command:
 
         npm run test db2Test
-
-
-## Notes
-
-1. During the `npm install`, some of the dependencies may throw errors, as long as `npm install` doesn't interrupt, this errors must be ignored.
