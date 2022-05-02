@@ -1,7 +1,7 @@
 import express, { Express, Request, Response } from 'express';
 import bodyParser from "body-parser";
 import { Test4zService } from "@broadcom/test4z";
-import {parseRequest} from "./parser";
+import { parseRequest } from "./parser";
 const app: Express = express();
 const jsonParser = bodyParser.json();
 
@@ -10,17 +10,13 @@ const jsonParser = bodyParser.json();
     const port: any = await Test4zService.getProfileProp("test4z", "port");
 
     app.get(basePath + '/*', jsonParser, (req: Request, res: Response) => {
-
-        console.log(req.url)
-        //const response = parseRequest(req.url.replace(basePath, ""), JSON.stringify(req.body))
-        //res.send(JSON.parse(response));
+        const response = parseRequest(req.url.replace(basePath, ""), "")
+        res.send(JSON.parse(response));
     });
 
     app.post(basePath + '/*', jsonParser, (req: Request, res: Response) => {
-
-        console.log(req.url)
-        //const response = parseRequest(req.url.replace(basePath, ""), JSON.stringify(req.body))
-        //res.send(JSON.parse(response));
+        const response = parseRequest(req.url.replace(basePath, ""), JSON.stringify(req.body))
+        res.send(JSON.parse(response));
     });
 
     app.put("/zosmf/restjobs/jobs", jsonParser, (req: Request, res: Response) => {

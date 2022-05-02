@@ -37,9 +37,9 @@ describe("SEARCH-TEST - Batchapp validation", function () {
     });
 
     test("SEARCH001 - Search snippet", async function () {
-        const searchResult1 = await Test4zService.search(mainDataset, copybook , filters);
-        expect(searchResult1).toBeSuccessfulResult(); //Verify the API Request was successful
-        const records = searchResult1.data;
+        const searchResult = await Test4zService.search(mainDataset, copybook , filters);
+        expect(searchResult).toBeSuccessfulResult(); //Verify the API Request was successful
+        const records = searchResult.data;
         expect(records).toBeHaveTestData(); //Verify the API Result's Data contains records to test.
         expect(records.Record.length).toBe(22); //Verify number of the records
     });
