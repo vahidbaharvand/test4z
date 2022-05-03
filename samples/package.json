@@ -10,8 +10,7 @@
     "setTest4z": "sh ../.scripts/setTest4z.sh",
 
     "diagnostic": "npx ts-node nodejs/DiagnosticCheck.ts",
-    "setMock": "sh ../.scripts/setMock.sh",
-    "startMock": "npx ts-node mock/src/app.ts"
+    "startMock": "sh ../.scripts/startMock.sh"
   },
   "repository": {
     "type": "git",

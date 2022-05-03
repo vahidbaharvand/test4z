@@ -83,7 +83,7 @@ search_filters = [
     .build(),
 ]
 
-update_criteria = [
+update_filter = [
     UpdateCriteriaBuilder()
         .field_name("PRODUCT-TYPE")
         .field_operator(Operators.LIKE.value)
@@ -127,7 +127,7 @@ def test_with_yield_fixture(yield_fixture):
     assert request_successful(roll_back_result)
 
     # Update a particular record in the dataset and assert the number of the customers affected
-    update_result = update(main_dataset, copybook, update_criteria, filter_criteria)
+    update_result = update(main_dataset, copybook, update_filter, filter_criteria)
     assert request_successful(update_result)
     assert update_result['data']['recordsChanged'] == 1
 
@@ -136,6 +136,6 @@ def test_with_yield_fixture(yield_fixture):
     assert job_successful(job2)
 
     # Pick some customers using the given inputs and assert the number of the customers
-    search_result2 = search(main_dataset, copybook, search_filters)
+    search_result2 = search(main_dataset, copybook, update_filter)
     assert request_successful(search_result2)
-    assert len(search_result2['data']['Record']) == 25
+    assert len(search_result2['data']['Record']) == 2
