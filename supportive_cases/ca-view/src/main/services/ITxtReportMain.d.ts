@@ -1,4 +1,4 @@
-import {ITxtReport} from "./Itxtreport";
+import {ITxtReportData} from "./ITxtReportData";
 export interface ITxtReportMain {
     id: string;
     rptHandle: string;
@@ -10,5 +10,5 @@ export interface ITxtReportMain {
     record: string;
     page: string;
     sessionId: number;
-    "Report Data": ITxtReport[];
+    "Report Data": ITxtReportData[];
 }

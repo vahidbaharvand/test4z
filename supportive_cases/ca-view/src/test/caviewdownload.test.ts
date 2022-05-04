@@ -21,7 +21,9 @@ import { IResult } from "../main/services/IResult";
            let reportHandleID :string = report[0].handle; 
 
            let responsetxt:IResult = await ViewRestClient.getExpectJSON(session,"/v1/view/rptdata/"+repositoryID+"/"+reportHandleID) as IResult;
+           let responsestring = "";
            for (let data of responsetxt.result["Report Data"]) {
-            console.log(data.data);
-          }    
+               responsestring += data.data + "\n";
+               console.log(responsestring);
+           }    
     });

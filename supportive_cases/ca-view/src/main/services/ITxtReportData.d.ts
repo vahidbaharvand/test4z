@@ -1,4 +1,4 @@
-export interface ITxtReport {
+export interface ITxtReportData {
     lNum: number;
     pNum: number;
     plNum: number;
