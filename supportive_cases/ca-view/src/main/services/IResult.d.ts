@@ -1,4 +1,4 @@
-import {ITxtReportMain} from "../services/ITxtReportMain"
+import {ITxtReport} from "./ITxtReport"
 export interface IResult {
-    result: ITxtReportMain;
+    result: ITxtReport;
 }

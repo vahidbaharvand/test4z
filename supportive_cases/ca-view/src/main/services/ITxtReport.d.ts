@@ -1,5 +1,5 @@
 import {ITxtReportData} from "./ITxtReportData";
-export interface ITxtReportMain {
+export interface ITxtReport {
     id: string;
     rptHandle: string;
     filter: string;
