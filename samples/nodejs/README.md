@@ -41,6 +41,6 @@ Run the following command and enter the Test4z specific information to continue 
     **Possible values for these controls : Pass, Fail and Skip**
     
     In case of a failure get in touch with your System Administrator
-2. Run the tests using the following command:
+2. Run the tests using the following command. Select one of the files contained in the [code_snippets](/samples/nodejs/code_snippets), or [business_cases](/samples/nodejs/business_cases) folder.
 
         npm run test <FILENAME>
