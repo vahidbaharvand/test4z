@@ -1,7 +1,7 @@
-# Mocking
-This repository contains the mocking server for Test4z. Run the Test4z mocking server to use the Test4z samples when Test4z is not running on mainframe. Once the server is running, you can run the samples.
+# Mock
+This repository contains the mock server for Test4z. Run the Test4z mock server to use the Test4z samples when Test4z is not running on mainframe. Once the server is running, you can run the samples.
 
-## Installing and Running the Mocking Server
+## Installing and Running the Mock Server
 1. Open a new terminal.
 2. Navigate to the samples folder.
    ```
@@ -11,7 +11,7 @@ This repository contains the mocking server for Test4z. Run the Test4z mocking s
    ```
    npm install
    ```
-4. Submit the following command to start the mocking server.
+4. Submit the following command to start the mock server.
    ```
    npm run startMock
    ```
@@ -31,7 +31,7 @@ It is not necessaty to install the samples.
 ## Python Samples
 Follow these steps to use the Python samples with mocked Test4z:
 1. Install Python and pip as described in [Installing](/samples/python/README.md#installing).
-2. Submit the following command to configure the mocking server:
+2. Submit the following command to configure the mock server:
     ```
    cd src/main/.scripts/ && python set_mock.py && cd ../../..
    ```
