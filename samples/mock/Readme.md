@@ -1,7 +1,7 @@
 # Mocking
-This repository contains the mocking service for Test4z. Run the Test4z mocking service for using the samples when Test4z is not running on mainframe.
+This repository contains the mocking service for Test4z. Run the Test4z mocking service to use the Test4z samples when Test4z is not running on mainframe. Once the service is running, you can start the samples.
 
-## Install and Run the Mocking Service
+## Installing and Running the Mocking Service
 1. Open a new terminal.
 2. Navigate to the samples folder.
    ```
@@ -36,3 +36,5 @@ Follow these steps to use the Python samples with mocked Test4z:
    cd src/main/.scripts/ && python set_mock.py && cd ../../..
    ```
 3. Run the sample as described in [Run the Test4z Python Samples](/samples/python/README.md#run-test4z-python-samples).
+### Note
+It is not necessaty to configure Test4z and z/OSMF.
