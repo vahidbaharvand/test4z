@@ -8,7 +8,7 @@
     "setup": "cd setup && sh script.sh && cd ..",
     "setZosmf": "sh ../../.scripts/setZosmf.sh",
     "setCAView": "sh ../../.scripts/setCAView.sh"
-    },
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/BroadcomMFD/test4z.git"
@@ -31,7 +31,6 @@
   "dependencies": {
     "@broadcom/caview-for-zowe-cli": "2.0.0",
     "@broadcom/test4z": "2.0.0",
-    "@zowe/cli": "7.0.0-next.202203101634",
-    "@zowe/zos-jobs-for-zowe-sdk": "7.0.0-next.202203101634"
+    "@zowe/cli": "7.0.0-next.202203101634"
   }
 }
