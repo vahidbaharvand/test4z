@@ -20,4 +20,7 @@ The Web-Viewer instance is ready and running..
 # Run the Samples
 - Run the samples using the following command:
 
-        npm run test caviewdownload
+        npm run test caviewsample
+
+
+3. Uncomment the second testcase to retrieve the job logs from CA View.

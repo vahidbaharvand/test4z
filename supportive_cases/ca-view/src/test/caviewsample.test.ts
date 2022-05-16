@@ -1,40 +1,45 @@
-import {Repositories, IRepository, Reports, IReport, ReportContent, ViewRestClient} from "@broadcom/caview-for-zowe-cli";
-import { CAViewSessionFactory } from "../main/services/CAViewSessionFactory";
-import {Session} from "@zowe/imperative"
-import { IResult } from "../main/services/IResult";
-import { Profiles, SessionFactory  } from "@broadcom/test4z";
-import { GetJobs, IJob, IJobFile, SubmitJobs } from "@zowe/cli";
+import {Repositories, IRepository, Reports, IReport, ViewRestClient} from "@broadcom/caview-for-zowe-cli";
+import {IResult} from "../main/services/IResult";
+import {Profiles, SessionFactory} from "@broadcom/test4z";
+import {Session} from "@zowe/imperative";
+import {IJob, SubmitJobs, GetJobs, IJobFile} from "@zowe/cli";
+import { assert } from "console";
 
 let JCLDSName = "PTCINCUB.SPITFIRE.JCL(T4ZVIEW)";
  
-test("Submit a job through ZOSMF", async function () {
+test("Submit a job through ZOSMF and retrieve the contents", async function () {
 
     let zOSMFSession : Session = await SessionFactory.getSession(Profiles.zosmf);
     const job: IJob = await SubmitJobs.submitJobNotify(zOSMFSession, JCLDSName);
     console.log("---- JOB Details ---- \n"+ JSON.stringify(job));
 
-    // let jobFile = await GetJobs.getJob(zOSMFSession,job.jobid);
-    // let output = await GetJobs.getSpoolContent(zOSMFSession,jobFile);
-    // console.log(output);
+    let logs = "";
+    const jobLogs: IJobFile[] = await GetJobs.getSpoolFilesForJob(zOSMFSession, job);
+    for(const jobLog of jobLogs){
+        if(jobLog.ddname === "SORTOUT"){
+            logs = await GetJobs.getSpoolContent(zOSMFSession,jobLog);
+        }
+    }
+    expect(logs).toContain("ALL RECORDS ARE SORTED");
+
 });
 
-       test("Download Report", async function () {
-
-        let session : Session =  new Session(await CAViewSessionFactory.getSession());
-        let repository:Repositories = new Repositories(session);
-        let repositoryList:IRepository[] =  await repository.list();
-        expect(repositoryList.length).toBeGreaterThan(0);
-        let repositoryID :number = repositoryList[0].id
+    //    test("Retrieve the job logs from CA View", async function () {
+    //     let session : Session = await SessionFactory.getSessionByName("caview");
+    //     let repository:Repositories = new Repositories(session);
+    //     let repositoryList:IRepository[] =  await repository.list();
+    //     expect(repositoryList.length).toBeGreaterThan(0);
+    //     let repositoryID :number = repositoryList[0].id
         
-        let reports:Reports = new Reports(session,repositoryID);
-        let report:IReport[] = await reports.listReports();
-        expect(report.length).toBeGreaterThan(0);
-        let reportHandleID :string = report[19].handle; 
+    //     let reports:Reports = new Reports(session,repositoryID);
+    //     let report:IReport[] = await reports.listReports();
+    //     expect(report.length).toBeGreaterThan(0);
+    //     let reportHandleID :string = report[19].handle; 
     
-        let responsetxt:IResult = await ViewRestClient.getExpectJSON(session,"/v1/view/rptdata/"+repositoryID+"/"+reportHandleID) as IResult;
-        let responsestring = "";
-        for (let reportData of responsetxt.result["Report Data"]) {
-            responsestring += reportData.data + "\n";
-         }  
-        console.log("----JOB LOGS---- \n",responsestring);
-    });
+    //     let responsetxt:IResult = await ViewRestClient.getExpectJSON(session,"/v1/view/rptdata/"+repositoryID+"/"+reportHandleID) as IResult;
+    //     let responsestring = "";
+    //     for (let reportData of responsetxt.result["Report Data"]) {
+    //         responsestring += reportData.data + "\n";
+    //      }  
+    //     console.log("----JOB LOGS---- \n",responsestring);
+    //});
