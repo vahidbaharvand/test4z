@@ -2,6 +2,7 @@ import {Repositories, IRepository, Reports, IReport, ViewRestClient} from "@broa
 import {IResult} from "../main/services/IResult";
 import {Profiles, SessionFactory} from "@broadcom/test4z";
 import {Session} from "@zowe/imperative";
+import { Test4zService,Filter, Operators, Types, QueryOperators, FilterBuilder } from "@broadcom/test4z";
 import {IJob, SubmitJobs, GetJobs, IJobFile} from "@zowe/cli";
 import { assert } from "console";
 
@@ -11,7 +12,7 @@ test("Submit a job through ZOSMF and retrieve the contents", async function () {
 
     let zOSMFSession : Session = await SessionFactory.getSession(Profiles.zosmf);
     const job: IJob = await SubmitJobs.submitJobNotify(zOSMFSession, JCLDSName);
-    console.log("---- JOB Details ---- \n"+ JSON.stringify(job));
+    expect(job.retcode).toMatch("CC 0000");
 
     let logs = "";
     const jobLogs: IJobFile[] = await GetJobs.getSpoolFilesForJob(zOSMFSession, job);
