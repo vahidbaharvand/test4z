@@ -2,9 +2,6 @@
 This folder contains test samples for submitting the jobs and retrieving the job spool content through Zosmf. 
 The Web-Viewer instance collects the jobs submitted through z/OSMF. Using the caview-plugin-for-zowe , the job spool content is retrieved from the Web Viewer instance.
 
-# Prerequisites
-The Web-Viewer instance is ready and running..
-
 # Installation
 
 1. Open a **new terminal** and run the following commands:
@@ -25,6 +22,10 @@ The Web-Viewer instance is ready and running..
 
 4. Run the following command and enter the ca-view specific information. Ask your mainframe administrator for the information.
 
+       npm run setup
+
+5. Optional: To run the tests related to CA View, the Web-Viewer instance should be ready and running. 
+ 
        npm run setCAView
 
 
