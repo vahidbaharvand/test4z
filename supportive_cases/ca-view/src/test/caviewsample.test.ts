@@ -14,14 +14,14 @@ test("Submit a job through ZOSMF and retrieve the contents", async function () {
     const job: IJob = await SubmitJobs.submitJobNotify(zOSMFSession, JCLDSName);
     expect(job.retcode).toMatch("CC 0000");
 
-    let logs = "";
+    let spoolcontent = {};
     const jobLogs: IJobFile[] = await GetJobs.getSpoolFilesForJob(zOSMFSession, job);
     for(const jobLog of jobLogs){
         if(jobLog.ddname === "SORTOUT"){
-            logs = await GetJobs.getSpoolContent(zOSMFSession,jobLog);
+            spoolcontent = await GetJobs.getSpoolContent(zOSMFSession,jobLog);
         }
     }
-    expect(logs).toContain("ALL RECORDS ARE SORTED");
+    expect(spoolcontent).toContain("ALL RECORDS ARE SORTED");
 
 });
 
