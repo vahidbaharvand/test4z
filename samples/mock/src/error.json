@@ -1,0 +1,1 @@
+"{\"messages\":[{\"messageType\":\"ERROR\",\"messageNumber\":\"ZWEAS404\",\"messageContent\":\"The mock service can not find the requested resource.\",\"messageKey\":\"notFound\",\"messageInstanceId\":\"a84as02a-5730-4e08-a08b-5c1c15e84ad9\",\"messageComponent\":\"CustomRestExceptionHandler\",\"messageSource\":\"Test4z.mock\"}]}"

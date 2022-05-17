@@ -1,4 +1,4 @@
-# Test4z Sample
+# Samples
 
 This folder contains Test4z sample test suites and code snippets in Python and NodeJS environments.
 
