@@ -4,12 +4,12 @@ import {Profiles, SessionFactory, Test4zService} from "@broadcom/test4z";
 import {Session} from "@zowe/imperative";
 import {IJob, SubmitJobs, GetJobs, IJobFile} from "@zowe/cli";
 
-let JCLDSName = "TEST4Z.BATCHAPP.CASCADE(T4ZVIEW)";
+let JCLDSName = "TEST4Z.BATCHAPP.CAVIEW(T4ZVIEW)";
  
 test.only("Submit a job & retrieve the spool content for SORTOUT DD through ZOSMF", async function () {
 
     let zOSMFSession : Session = await SessionFactory.getSession(Profiles.zosmf);
-    const HLQ: any = await Test4zService.getProfileProp("zosmf", "hlq");
+    const HLQ: any = await Test4zService.getProfileProp(Profiles.zosmf, "hlq");
     const job: IJob = await SubmitJobs.submitJobNotify(zOSMFSession, HLQ+"."+JCLDSName);
     expect(job.retcode).toMatch("CC 0000" || "CC 0004");
     let spoolContent = "";
