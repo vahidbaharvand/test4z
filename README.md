@@ -1,11 +1,11 @@
 # Test4z Sample
-The Test4z sample project contains client-side installation of Test4z as well as a series of sample tests that use the Test4z API to run tests on data sets on your z/OS system.
+The Test4z sample project contains the client-side installation of Test4z and a series of sample tests that use the Test4z API to run tests on data sets on your z/OS system.
 
 Test4z leverages z/OSMF and Zowe to facilitate batch application testing for files on the z/OS platform. Test4z lets you perform certain operations on your data sets from a client machine. Currently, the following operations are supported:
 * **Compare** records contained in two different data sets.
 * **Search** through records in a data set.
-* **Update** records in a dataset
-* **Copy** data set with filter, skip, limit possibilities
+* **Update** records in a dataset.
+* **Copy** data sets with the possibility of filtering, skipping, and limiting.
 
 ## Getting Started
 Follow these instructions to set up the Test4z Sample project on your local machine.
@@ -13,7 +13,7 @@ Follow these instructions to set up the Test4z Sample project on your local mach
 ### Prerequisites
 Before you attempt to install the Test4z Sample project, ensure you meet the following prerequisites:
 
-* Test4z is deployed, configured and running on your z/OS system.
+* Test4z is deployed, configured and running on your z/OS system. This is optional if you use the mock service.
 * [Visual Studio Code](https://code.visualstudio.com/download) (VS Code) is installed.
 * [Node.js](https://nodejs.org/en/download/) is installed.
 * If you use Windows, ensure VS Code uses bash to execute shell (.sh) scripts. Follow these steps:
@@ -44,8 +44,15 @@ Once you have met the prerequisites,
 
 ## Notes
  
-1. Exclude feature of the Compare endpoint requires a certain File Master Plus version 
-   12.0 and the required PTF installation. Make sure you have the required PTF to be able to use the field exclusion.
+Exclude feature of the Compare endpoint requires a certain File Master Plus version 12.0 and the required PTF installation. Make sure you have the required PTF to be able to use the field exclusion.
+
+## Compatibility
+The following table show the compatibility matrix between the Test4z sample aproject and the Test4z service that runs on z/O.S
+|Compatibility/Release|1.0|1.1.1|1.2.2|
+|-----|----|----|----|
+|Test4z service 1.0|YES|NO|NO|
+|Test4z service 1.1.1|YES|YES|NO|
+|Test4z service 1.2.2|YES|YES|YES|
   
 ## License
 See the [LICENSE.md](LICENSE.md) file.
