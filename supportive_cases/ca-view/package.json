@@ -6,6 +6,7 @@
   "scripts": {
     "test": " jest",
     "setup": "cd setup && sh script.sh && cd ..",
+    "setHlq": "sh ../../.scripts/setHlq.sh",
     "setZosmf": "sh ../../.scripts/setZosmf.sh",
     "setCAView": "sh ../../.scripts/setCAView.sh"
   },
