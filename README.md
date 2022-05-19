@@ -13,7 +13,7 @@ Follow these instructions to set up the Test4z Sample project on your local mach
 ### Prerequisites
 Before you attempt to install the Test4z Sample project, ensure you meet the following prerequisites:
 
-* Test4z is deployed, configured and running on your z/OS system. This is optional if you use the mock service.
+* Test4z is deployed, configured and running on your z/OS system. This is optional when you use the mock service.
 * [Visual Studio Code](https://code.visualstudio.com/download) (VS Code) is installed.
 * [Node.js](https://nodejs.org/en/download/) is installed.
 * If you use Windows, ensure VS Code uses bash to execute shell (.sh) scripts. Follow these steps:
@@ -47,7 +47,7 @@ Once you have met the prerequisites,
 Exclude feature of the Compare endpoint requires a certain File Master Plus version 12.0 and the required PTF installation. Make sure you have the required PTF to be able to use the field exclusion.
 
 ## Compatibility
-The following table show the compatibility matrix between the Test4z sample project and the Test4z service that runs on z/OS
+The following table shows the compatibility matrix between the Test4z sample project and the Test4z service that runs on z/OS.
 |Compatibility/Release|1.0|1.1.1|1.2.2|
 |-----|----|----|----|
 |Test4z service 1.0|YES|NO|NO|
